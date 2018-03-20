@@ -1,7 +1,7 @@
 //NPM and Node Modules
 const express = require('express');
 const path = require('path');
-const sass = require('node-sass');
+const sass = require('node-sass-middleware');
 
 //Config
 const config = process.env.NODE_ENV == 'production' ? require('./config/config_prod.js') : require('./config/config_dev.js');
@@ -29,5 +29,5 @@ app.all('/*', (req, res) => {
 
 //Exported functions and objects
 module.exports = {
-
+    app
 };
