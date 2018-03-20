@@ -1,7 +1,7 @@
 //NPM and Node Modules
 const express = require('express');
 const path = require('path');
-const sass = require('node-sass-middleware');
+const sass = require('node-sass');
 
 //Config
 const config = process.env.NODE_ENV == 'production' ? require('./config/config_prod.js') : require('./config/config_dev.js');
