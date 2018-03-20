@@ -24,7 +24,7 @@
   "homepage": "https://github.com/adamtarrant/invocode-portfolio#readme",
   "dependencies": {
     "express": "4.16.2",
-    "node-sass-middleware": "^0.11.0"
+    "node-sass": "^4.7.2"
   },
   "engines": {
     "node": "9.5.0"
