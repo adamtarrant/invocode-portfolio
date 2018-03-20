@@ -1,0 +1,33 @@
+{
+  "name": "invocode-portfolio",
+  "version": "0.0.1",
+  "description": "API that accepts image search string and returns JSON formatted links and descriptions of images",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server/server.js",
+    "webpack": "./node_modules/.bin/webpack -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamtarrant/invocode-portfolio.git"
+  },
+  "keywords": [
+    "image",
+    "search"
+  ],
+  "author": "Adam Tarrant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamtarrant/invocode-portfolio/issues"
+  },
+  "homepage": "https://github.com/adamtarrant/invocode-portfolio#readme",
+  "dependencies": {
+    "express": "4.16.2",
+    "node-sass": "^4.7.2"
+  },
+  "engines": {
+    "node": "9.5.0"
+  },
+  "devDependencies": {}
+}
