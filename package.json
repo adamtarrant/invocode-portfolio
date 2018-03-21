@@ -4,7 +4,7 @@
   "description": "API that accepts image search string and returns JSON formatted links and descriptions of images",
   "main": "server.js",
   "scripts": {
-    "start": "node src/server/server.js",
+    "start": "nodemon src/server/server.js",
     "webpack": "./node_modules/.bin/webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,11 +23,15 @@
   },
   "homepage": "https://github.com/adamtarrant/invocode-portfolio#readme",
   "dependencies": {
+    "ejs": "^2.5.7",
     "express": "4.16.2",
-    "node-sass": "^4.7.2"
+    "node-sass": "^4.7.2",
+    "node-sass-middleware": "^0.11.0",
+    "nodemon": "^1.17.2"
   },
   "engines": {
-    "node": "9.5.0"
+    "node": "9.5.0",
+    "nodemon": "^1.17.2"
   },
   "devDependencies": {}
 }
