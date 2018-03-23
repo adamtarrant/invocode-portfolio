@@ -1,16 +1,166 @@
 @import url('https://fonts.googleapis.com/css?family=Krona+One|Poppins|Roboto+Mono');
 
 $main-bg-color: #1CC89D;
+$home-bg-color: #1CC89D;
+$about-bg-color: #ED5B62;
+$portfolio-bg-color: #8BBBDB;
+$contact-bg-color: #6B4367;
 $main-text-color: #eee;
-$main-fg-color: #FFB724;
-$button-hl-color: #32d3ab;
-$file-bg-color: #8971BC;
-$output-bg-color: #8971BC; 
 
 body {
   background: $main-bg-color;
   font-size: 12px;
   margin: 0;
   color: $main-text-color;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  height: 5vh;
+  
+  ul {
+    list-style: none;
+  }
+  
+  li {
+    float: left;
+    margin: 0 15px;
+  }
+  
+  nav {
+    display: flex;
+    
+  }
+  
+}
+
+.logo {
+  width: 10vw;
+}
+
+.menu-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25px;
+  height: 25px;
+  border: 2px solid $main-text-color;
+  border-radius: 10px;
+  padding: 2px 8px;
+  display: none;
+
+}
+
+.icon-bar {
+  border-bottom: 2px solid $main-text-color;
+}
+
+@media(max-width: 670px) {
+.nav-list {
+  display: none;
+}
+
+.menu-hamburger {
+  display: inherit;
+}
+
+}
+
+.visible {
+  visibility: visible;
+}
+
+.social-icons {
+  
+}
+
+section {
+  height: 100vh;
+  padding: 5px 0;
+}
+
+h1 {
+    margin: 10vh 0 20px 15vw;
+  }
+
+.home-section {
+  background-color: $home-bg-color;
+}
+
+.about-section {
+  background-color: $about-bg-color;
+}
+
+.portfolio-section {
+  background-color: $portfolio-bg-color;
+}
+
+.contact-section {
+  background-color: $contact-bg-color;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+}
+
+.about-desc-wrapper {
+  width: 40vw;
+  min-width: 300px;
+}
+
+  .img-wrapper {
+      margin: 0 50px 50px 50px;
+      vertical-align: middle;
+      width: 20vw;
+      height: auto;
+      overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+    }
+  }
+
+.slider {
+  width: 80vw;
+  height: 40%;
+  margin: 50px 0 0 0;
+}
+
+.slider-item {
+  height: 50vh;
+}
+
+#form-container {
+  height: 100%;
+}
+
+#form-container label {
+  color: $main-text-color;
+  position: relative;
+  font-size: 1.2em;
+  float: left;
+  margin-left: 10px;
+  opacity: 0;
+  top: 2em;
+  -webkit-transition: top .3s ease,opacity .3s ease;
+  -moz-transition: top .3s ease,opacity .3s ease;
+  -ms-transition: top .3s ease,opacity .3s ease;
+  transition: top .3s ease,opacity .3s ease;
+}
+
+#form-container .label-visible {
+  opacity: 1;
+  top: 0em;
 }
