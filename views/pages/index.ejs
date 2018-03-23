@@ -5,10 +5,78 @@
         <div id="root">
             <header>
                 <div class="logo"></div>
-                <nav class="nav"></nav>
-                <div class="social-icons"></div>
+                <nav class="nav">
+                    <div class="menu-hamburger">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </div>
+                    <ul class="nav-list">
+                        <li>About</li>
+                        <li>Portfolio</li>
+                        <li>Contact</li>
+                    </ul>
+                </nav>
+                <div class="social-icons">
+                  <ul>
+                    <li class="toolt"><a class="fa fa-fw fa-github" href="https://github.com/AdamTaz"></a><span class="tooltiptext">Github</span></li>
+                    <li class="toolt"><a class="fa fa-fw fa-linkedin" href="#"></a><span class="tooltiptext">LinkedIn</span></li>
+                    <li class="toolt"><a class="fa fa-fw fa-twitter" href="#"></a><span class="tooltiptext">Twitter</span></li>
+                  </ul>
+                </div>
             </header>
-
+            <section class="home-section">
+            <h1>InvoCode</h1>                
+            <div class="content home-content">
+                <p>Infinitely Inventive and Innovative</p>
+                <p>Full stack web development</p>
+                </div>
+            </section>
+            <section class="about-section">
+            <h1>About</h1>
+            <div class="content about-content">
+                <div class="about-desc-wrapper">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Aenean nulla nisi, posuere vitae erat vitae, iaculis fringilla urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. 
+                Suspendisse in metus in mi rhoncus suscipit ut non magna. 
+                Nam aliquam neque sed nisl tincidunt, at eleifend quam pellentesque.</p>
+                </div>
+                <div class="img-wrapper"><img src="img/me.jpg"/></div>
+                </div>
+            </section>
+            <section class="portfolio-section">
+             <h1>Portfolio</h1>
+                <div class="content">
+                <div class="slider">
+                  <div class="slider-item">1</div>
+                  <div class="slider-item">2</div>
+                  <div class="slider-item">3</div>
+                  <div class="slider-item">4</div>
+                  <div class="slider-item">5</div>
+                  <div class="slider-item">6</div>
+                  <div class="slider-item">7</div>
+                </div>
+                </div>
+            </section>
+            <section class="contact-section">
+            <h1>Contact</h1>
+                <div class="content">
+                <div id="form-container">
+        <form>
+          <label for="name">Name</label>
+          <input class="form-item" type="text" name="name" placeholder="Name"><br>
+          <label for="email">Email</label>
+          <input class="form-item" type="email" name="email" placeholder="Email Address"><br>
+          <label for="phone">Phone Number</label>
+          <input class="form-item" type="text" name="phone" placeholder="Phone Number"><br>
+          <label for="message">Message</label>
+          <textarea class="form-item" type="text" rows="5" name="message" placeholder="Message"></textarea><br>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      </div>
+            </section>
         </div>
+    <% include ../partials/scripts %>
     </body>
 </html>
