@@ -1,5 +1,35 @@
 
 $(document).ready(function(){
+
+//initialises scroll snapping with options
+
+$('#fullpage').fullpage({
+    menu: '#menu',
+    lockAnchors: false,
+    navigation: true,
+    navigationPosition: 'right',
+    navigationTooltips: ['Home', 'About', 'Portfolio', 'Contact'],
+    showActiveTooltip: false,
+    slidesNavigation: false,
+    slidesNavPosition: 'bottom',
+    css3: true,
+    scrollingSpeed: 700,
+    autoScrolling: true,
+    fitToSection: true,
+    fitToSectionDelay: 1000,
+    scrollBar: true,
+    easing: 'easeInOutCubic',
+    paddingTop: '3em',
+    paddingBottom: '10px',
+    fixedElements: '#header, .footer',
+    responsiveWidth: 0,
+    responsiveHeight: 0,
+    responsiveSlides: false,
+    parallax: false,
+    parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
+    sectionSelector: 'section',
+});
+
 //initialises the slider carousel using the slick library
       $('.slider').slick({
         dots: true,
@@ -43,5 +73,5 @@ $(document).ready(function(){
     $(".menu-hamburger").on("click", function(){
        $(".nav-list").toggleClass("visible"); 
     });
-    
+
     });
