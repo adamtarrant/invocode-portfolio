@@ -1,7 +1,7 @@
 {
   "name": "invocode-portfolio",
   "version": "0.0.1",
-  "description": "API that accepts image search string and returns JSON formatted links and descriptions of images",
+  "description": "Portfolio site for InvoCode",
   "main": "server.js",
   "scripts": {
     "start": "nodemon src/server/server.js",
@@ -13,8 +13,7 @@
     "url": "git+https://github.com/adamtarrant/invocode-portfolio.git"
   },
   "keywords": [
-    "image",
-    "search"
+
   ],
   "author": "Adam Tarrant",
   "license": "ISC",
