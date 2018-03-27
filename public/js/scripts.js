@@ -1,10 +1,11 @@
 
 $(document).ready(function(){
 
-//initialises scroll snapping with options
-
+//initialises scroll snapping with options using fullpage.js
 $('#fullpage').fullpage({
-    menu: '#menu',
+    menu: '.nav-list',
+    anchors: ['home', 'about', 'portfolio', 'contact'],
+    recordHistory: false,
     lockAnchors: false,
     navigation: true,
     navigationPosition: 'right',
@@ -12,20 +13,24 @@ $('#fullpage').fullpage({
     showActiveTooltip: false,
     slidesNavigation: false,
     slidesNavPosition: 'bottom',
+    bigSectionsDestination: 'top',
     css3: true,
     scrollingSpeed: 700,
     autoScrolling: true,
     fitToSection: true,
     fitToSectionDelay: 1000,
     scrollBar: true,
+    scrollOverflow: false,
+    scrollOverflowReset: false,
+    scrollOverflowOptions: {scrollX: false, scrollY: true},
+    scrollHorizontally: false,
     easing: 'easeInOutCubic',
-    paddingTop: '3em',
-    paddingBottom: '10px',
+    fadingEffect: true,
     fixedElements: '#header, .footer',
     responsiveWidth: 0,
     responsiveHeight: 0,
     responsiveSlides: false,
-    parallax: false,
+    parallax: true,
     parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
     sectionSelector: 'section',
 });
@@ -72,6 +77,16 @@ $('#fullpage').fullpage({
 // makes hamburger button expand the nav menu
     $(".menu-hamburger").on("click", function(){
        $(".nav-list").toggleClass("visible"); 
+    });
+
+
+//makes nav menu buttons move to header when not on home section
+    $(".home-section").bind("DOMSubtreeModified", function(e) {
+        if (!$(".home-section").hasClass("active")) {
+        $("nav").removeClass("nav-home");
+        } else {
+        $("nav").addClass("nav-home"); 
+        }
     });
 
     });
