@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Krona+One|Poppins|Roboto+Mono');
-
 $main-bg-color: #6B4367;
 $home-bg-color: #1CC89D;
 $about-bg-color: #ED5B62;
 $portfolio-bg-color: #506CBA;
 $contact-bg-color: #6B4367;
 $main-text-color: #eee;
-$nav-button-color: #FFAB24;
+$email-color: #FFAB24;
 $github-color: #333;
 $linkedin-color: #0077B5;
 $twitter-color: #1DA1F2;
-$google-color: #DB4437;
+$filled-form-item: #fff;
 
-
-@mixin transition($prop, $duration, $timing, $delay) {
+@mixin transition($prop,
+$duration,
+$timing,
+$delay) {
   -webkit-transition: $prop $duration $timing $delay;
   -moz-transition: $prop $duration $timing $delay;
   -o-transition: $prop $duration $timing $delay;
@@ -52,12 +53,10 @@ header {
   position: fixed;
   width: 100%;
   z-index: 1;
-  
   li {
     float: left;
     margin: 0 15px;
   }
-  
 }
 
 nav {
@@ -68,14 +67,21 @@ nav {
   left: 0;
   right: 0;
   width: 100%;
-  @include transition(top, .2s, ease-out, 0s);
+  @include transition(top,
+  .2s,
+  ease-out,
+  0s);
 }
 
 .nav-home {
   position: absolute;
   top: 75vh;
-  @include transition(top, .2s, ease-out, 0s);
+  @include transition(top,
+  .2s,
+  ease-out,
+  0s);
 }
+
 .nav-list li {
   width: 100px;
   height: 30px;
@@ -83,23 +89,30 @@ nav {
   cursor: pointer;
   box-shadow: 1px 2px 15px #444;
   font-size: 1.5em;
-  &.about {
+  background-color: $main-text-color;
+  @include transition(background-color, .5s, ease, 0s);
+  a{
+    -webkit-text-stroke: 1px black;
+    &:hover{-webkit-text-stroke: 0;}
+  }
+
+  &.about:hover {
     background-color: $about-bg-color;
-    &.active{
+    &.active {
       color: $about-bg-color;
       border-bottom: 2px solid $about-bg-color;
     }
   }
-  &.portfolio {
+  &.portfolio:hover {
     background-color: $portfolio-bg-color;
-    &.active{
+    &.active {
       color: $portfolio-bg-color;
       border-bottom: 2px solid $portfolio-bg-color;
     }
   }
-  &.contact {
+  &.contact:hover {
     background-color: $contact-bg-color;
-    &.active{
+    &.active {
       color: $contact-bg-color;
       border-bottom: 2px solid $contact-bg-color;
     }
@@ -107,9 +120,8 @@ nav {
   &.active {
     background-color: #eee;
   }
-
-
 }
+
 .logo {
   width: 10vw;
 }
@@ -142,34 +154,70 @@ nav {
 .social-icons {
   z-index: 2;
   text-shadow: 1px 2px 15px #444;
-
   a {
     font-size: 4em;
     -webkit-text-stroke: 1px black;
-    @include transition(color, 1s, ease-out, 0s);
+    @include transition(color,1s,ease-out,0s);
     &:hover {
       text-shadow: 0 0 15px #444;
     }
   }
-
-  
+  li {
+    list-style: none;
+    &:hover {
+      cursor: pointer;
+      .contact-anim {
+        text-decoration: underline;
+        font-size: 1.4em;
+      }
+      .fa-thumbs-o-up, .hire {
+        color: $home-bg-color;
+      }
+      .fa-envelope-o, .email {
+        color: $email-color;
+      }
+      .fa-github, .github {
+        color: $github-color;
+      }
+      .fa-linkedin, .linkedin {
+        color: $linkedin-color;
+      }
+    }
+  }
   &.contact {
-   li {
-     list-style: none;
-   } 
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    font-size: 1.2em;
+
+    ul {
+      width: 100%;
+    }
+
+    li {
+      display: flex;
+      align-items: stretch;
+      margin: 2em 0 0 0;
+      width: 100%
+    }
+    a {
+      width: 30%;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 70%;
+    }
   }
 }
 
-.fa-github:hover {
-    color: $github-color;
-}
-
-.fa-twitter:hover {
-  color: $twitter-color;
-}
-
-.fa-linkedin:hover {
-  color: $linkedin-color;
+.flex-space-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .sr-text {
@@ -177,21 +225,29 @@ nav {
   left: -200%;
 }
 
+.contact-anim {
+  @include transition(font-size, .5s, ease, 0s);
+  &::before {
+    content: ' ';
+    visibility: hidden;
+}
+}
+
 h1 {
-    font-size: calc(3vw + 6vh);
-    display: inline-block;
-    position: relative;
-    top: 6vh;
-    left: 5vw;
-    text-shadow: 1px 2px 15px #444;
-    margin: auto 0 0 0;
-    &::before {
-      content: '< ';
-    }
-    &::after {
-      content: ' />';
-    }
+  font-size: calc(3vw + 6vh);
+  display: inline-block;
+  position: relative;
+  top: 3vh;
+  left: 15vw;
+  text-shadow: 1px 2px 15px #444;
+  margin: auto 0 0 0;
+  &::before {
+    content: '< ';
   }
+  &::after {
+    content: ' />';
+  }
+}
 
 .home-section {
   background-color: $home-bg-color;
@@ -224,17 +280,17 @@ h1 {
   min-width: 300px;
 }
 
-  .img-wrapper {
-      margin: -20px 50px 0 50px;
-      vertical-align: middle;
-      width: 20vw;
-      height: auto;
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 50%;
-    }
+.img-wrapper {
+  margin: -20px 50px 0 50px;
+  vertical-align: middle;
+  width: 20vw;
+  height: auto;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
   }
+}
 
 .slider {
   width: 80vw;
@@ -252,11 +308,24 @@ h1 {
 
 .contact-content {
   justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 5em 0 0 0;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill
+{
+    &, &:hover, &:focus, &:active
+    {
+        -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    }
 }
 
 #form-container {
   width: 25vw;
   height: 100%;
+  font-size: 1.2em;
 }
 
 form {
@@ -281,7 +350,10 @@ form {
     &:hover {
       background-color: $main-text-color;
       color: $contact-bg-color;
-      @include transition(background-color, .5s, ease-out, 0s);
+      @include transition(background-color,
+      .5s,
+      ease-out,
+      0s);
     }
   }
 }
@@ -298,10 +370,8 @@ textarea {
   margin-left: 10px;
   opacity: 0;
   top: 2em;
-  -webkit-transition: top .3s ease,opacity .3s ease;
-  -moz-transition: top .3s ease,opacity .3s ease;
-  -ms-transition: top .3s ease,opacity .3s ease;
-  transition: top .3s ease,opacity .3s ease;
+  @include transition(opacity,.3s,ease,0s);
+  @include transition(top,.3s,ease,0s);
 }
 
 #form-container .label-visible {
@@ -311,38 +381,63 @@ textarea {
 
 .form-item {
   background-color: transparent;
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin: 10px;
   padding: 10px;
   border-width: 0px 0px 1px 0px;
   border-color: #eee;
+  color: $main-text-color;
   outline: none;
   z-index: 3;
+  @include transition(background-color, .5s, ease, 0s);
+  &:focus {
+    outline: 2px solid #fff;
+  }
+}
+
+textarea.form-item {
+  min-height: 150px;
+}
+
+.filled {
+  background-color: $filled-form-item;
+  color: black;
 }
 
 @media(max-width: 670px) {
+
+  h1, h2 {
+    width: 100%;
+    text-align: center;
+    left: 0;
+  }
+
   nav.nav-home {
     top: 0vh;
   }
-    .nav-list {
+  .nav-list {
     display: none;
   }
-  
   .menu-hamburger {
     display: inherit;
     margin: 5px 0 0 0;
     cursor: pointer;
   }
 
-  .content {
-    height: 100%;
+  .social-icons.contact {
+    width: 90%;
+  }
+
+  .fa-thumbs-o-up {
+    margin: 0 0.1em 0 0;
   }
 
   #form-container {
     width: 90vw;
     height: 50vh;
-      textarea {
-        max-width: 100%;
-      }
+    margin: 20px 0 0 0;
+    textarea {
+      max-width: 100%;
+    }
   }
-  }
+}
