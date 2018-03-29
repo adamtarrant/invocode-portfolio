@@ -17,6 +17,7 @@ $('#fullpage').fullpage({
     css3: true,
     scrollingSpeed: 700,
     autoScrolling: true,
+    dragAndMove: true,
     fitToSection: true,
     fitToSectionDelay: 1000,
     scrollBar: true,
@@ -26,8 +27,8 @@ $('#fullpage').fullpage({
     scrollHorizontally: false,
     easing: 'easeInOutCubic',
     fadingEffect: false,
-    responsiveWidth: 670,
-    responsiveHeight: 670,
+    responsiveWidth: 750,
+    responsiveHeight: 400,
     responsiveSlides: false,
     parallax: false,
     parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
@@ -39,7 +40,7 @@ $('#fullpage').fullpage({
         dots: true,
             infinite: false,
             speed: 300,
-            slidesToShow: 4,
+            slidesToShow: 3,
             slidesToScroll: 4,
             responsive: [{
                     breakpoint: 1024,
@@ -67,10 +68,11 @@ $('#fullpage').fullpage({
   ]
       });
       
-// makes the forms labels appear when text is present
+// makes the forms labels appear and input background change when text is present
     $(".form-item").on("input propertychange",function(){
      let formField = $(this).attr('name');
       $("label[for="+formField+"]").toggleClass("label-visible",!! $(".form-item[name="+formField+"]").val());
+      $(".form-item[name="+formField+"]").toggleClass("filled",!! $(".form-item[name="+formField+"]").val());
     });
 
 // makes hamburger button expand the nav menu
