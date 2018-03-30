@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Krona+One|Poppins|Roboto+Mono');
+
+//colours
 $main-bg-color: #6B4367;
 $home-bg-color: #1CC89D;
 $about-bg-color: #ED5B62;
@@ -10,6 +12,17 @@ $github-color: #333;
 $linkedin-color: #0077B5;
 $twitter-color: #1DA1F2;
 $filled-form-item: #fff;
+
+//background img urls
+$random-quote-img: '../img/random_quote_machine.png';
+$img-search-img: '../img/image_search_API.png';
+$wiki-search-img: '../img/wikipedia_search_engine.png';
+$twitch-viewer-img: '../img/twitch_tv_stream_list.png';
+$file-api-img: '../img/file_metadata_retriever_API.png';
+$url-short-img: '../img/url_shortener_microservice.png';
+$orig-portfolio-img: '../img/first_portfolio_site.png';
+$tribute-page-img: '../img/first_page_with_bootstrap.png';
+$weather-app-img: '../img/weather_app.png';
 
 @mixin transition($prop,
 $duration,
@@ -188,7 +201,7 @@ nav {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     height: 100%;
     font-size: 1.2em;
 
@@ -228,13 +241,13 @@ nav {
 .contact-anim {
   @include transition(font-size, .5s, ease, 0s);
   &::before {
-    content: ' ';
+    content: '1';
     visibility: hidden;
 }
 }
 
 h1 {
-  font-size: calc(3vw + 6vh);
+  font-size: calc(2vw + 6vh);
   display: inline-block;
   position: relative;
   top: 3vh;
@@ -294,12 +307,84 @@ h1 {
 
 .slider {
   width: 80vw;
-  height: 70%;
+  height: 60vh;
   margin: 5rem 0 0 0;
 }
 
 .slider-item {
   height: 50vh;
+  margin: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  &.random-quote {
+    background-image: url($random-quote-img);
+  }
+  &.img-search {
+    background-image: url($img-search-img);
+  }
+  &.wiki_search {
+    background-image: url($wiki-search-img);
+  }
+  &.twitch-viewer {
+    background-image: url($twitch-viewer-img);
+  }
+  &.file-api {
+    background-image: url($file-api-img);
+  }
+  &.url-short {
+    background-image: url($url-short-img);
+  }
+  &.original-portfolio {
+    background-image: url($orig-portfolio-img);
+  }
+  &.tribute-page {
+    background-image: url($tribute-page-img);
+  }
+  &.weather-app {
+    background-image: url($weather-app-img);
+  }
+  &:hover {
+    cursor: pointer;
+    .slider-item-overlay{
+      top: 0;
+    }
+  } 
+}
+
+.slider-item-overlay {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  top: 85%;
+  background-color: rgba(0, 0, 0, 0.8);
+  @include transition(top, .5s, ease-out, 0s);
+  font-size: 1.2em;
+
+  h3, h4 {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  h3{  
+    height: 15%;
+  }
+  
+  p, ul {
+    width: 80%
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+
+  }
 }
 
 .about-content {
@@ -307,9 +392,9 @@ h1 {
 }
 
 .contact-content {
-  justify-content: space-evenly;
   align-items: flex-start;
   padding: 5em 0 0 0;
+  height: 80%;
 }
 
 input:-webkit-autofill,
@@ -318,6 +403,7 @@ select:-webkit-autofill
 {
     &, &:hover, &:focus, &:active
     {
+        box-shadow: 0 0 0px 1000px white inset !important;
         -webkit-box-shadow: 0 0 0px 1000px white inset !important;
     }
 }
@@ -358,10 +444,6 @@ form {
   }
 }
 
-textarea {
-  resize: none;
-}
-
 #form-container label {
   color: $main-text-color;
   position: relative;
@@ -396,7 +478,8 @@ textarea {
 }
 
 textarea.form-item {
-  min-height: 150px;
+  min-height: 100px;
+  resize: none;
 }
 
 .filled {
@@ -436,8 +519,5 @@ textarea.form-item {
     width: 90vw;
     height: 50vh;
     margin: 20px 0 0 0;
-    textarea {
-      max-width: 100%;
-    }
   }
 }
