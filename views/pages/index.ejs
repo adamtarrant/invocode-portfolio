@@ -6,22 +6,7 @@
         <header>
             <div class="logo"></div>
             <nav class="nav nav-home">
-                <div class="menu-hamburger">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </div>
-                <ul class="nav-list">
-                    <li data-menuanchor="about" class="about">
-                        <a href="#about">About</a>
-                    </li>
-                    <li data-menuanchor="portfolio" class="portfolio">
-                        <a href="#portfolio">Portfolio</a>
-                    </li>
-                    <li data-menuanchor="contact" class="contact">
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
+
             </nav>
             <div class="social-icons header">
                 <ul>
@@ -41,14 +26,14 @@
             </div>
         </header>
         <div id="fullpage">
-            <section class="home-section">
+            <section class="home-section  fp-auto-height-responsive">
                 <h1>invocode</h1>
                 <div class="content home-content">
                     <p>Infinitely Inventive and Innovative</p>
                     <p>Full stack web development</p>
                 </div>
             </section>
-            <section class="about-section">
+            <section class="about-section  fp-auto-height-responsive">
                 <h1>about</h1>
                 <div class="content about-content">
                     <div class="about-desc-wrapper">
@@ -70,27 +55,154 @@
                             <div class="slider-item-overlay">
                                 <h3>Random Quote Machine</h3>
                                 <p>The Random Quote Machine uses an API to retrieve random 
-                                    quotes - which the user can then tweet. I learnt much about jQuery animations and 
-                                    implementing &lt;canvas&gt; and &lt;svg&gt; tags in HTML5. 
+                                    quotes - which the user can then tweet. Fully responsive design.
+                                    Implements the &lt;canvas&gt; and &lt;svg&gt; tags in HTML5 for the background. 
                                 </p>
                                 <h4>Technologies</h4>
                                 <ul>
-                                    <li><i class="devicon-javascript-plain colored"></i><span>Javascript</span></li>
+                                    <% include ../partials/devicons/javascript %>
+                                    <% include ../partials/devicons/jquery %>
+                                    <% include ../partials/devicons/html5 %>
+                                    <% include ../partials/devicons/css3 %>
+                                    <% include ../partials/devicons/sass %>
+                                    <% include ../partials/devicons/bootstrap %>
                                 </ul>
                             </div>
                         </div></div>
-                        <div><div class="slider-item img-search"><div class="slider-item-overlay"></div></div></div>
-                        <div><div class="slider-item wiki_search"></div></div>
-                        <div><div class="slider-item twitch-viewer"></div></div>
-                        <div><div class="slider-item file-api"></div></div>
-                        <div><div class="slider-item url-short"></div></div>
-                        <div><div class="slider-item original-portfolio"></div></div>
-                        <div><div class="slider-item tribute-page"></div></div>
-                        <div><div class="slider-item weather-app"></div></div>
+                        <div><div class="slider-item img-search">
+                            <div class="slider-item-overlay">
+                                <h3>Image Search API</h3>
+                                <p>This is an absracted image search API. The frontend acts as documentation 
+                                    allowing developers to preview responses of the API endpoints. Allows for pagination.
+                                </p>
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <% include ../partials/devicons/javascript %>
+                                    <% include ../partials/devicons/reactjs %>
+                                    <% include ../partials/devicons/nodejs %>
+                                    <% include ../partials/devicons/mongodb %>
+                                    <% include ../partials/devicons/webpack %>
+                                    <% include ../partials/devicons/sass %>
+                                </ul>
+                            </div>
+                        </div></div>
+                        <div><div class="slider-item wiki_search">
+                            <div class="slider-item-overlay">
+                                <h3>Wikipedia Search Engine</h3>
+                                <p>
+                                    Fully responsive page allowing users to search Wikipedia articles.
+                                    Uses the Wikipedia search API.
+                                </p>
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <% include ../partials/devicons/javascript %>
+                                    <% include ../partials/devicons/jquery %>
+                                    <% include ../partials/devicons/html5 %>
+                                    <% include ../partials/devicons/css3 %>
+                                </ul>
+                            </div>
+                        </div></div>
+                        <div><div class="slider-item twitch-viewer">
+                            <div class="slider-item-overlay">
+                                <h3>Twitch.tv Viewer</h3>
+                                <p>
+                                    Shows featured live streams from twitch.tv. 
+                                    Shows a list of regular streamers, live and offline. There is
+                                    also a search function to search for twitch.tv streamers. 
+                                </p>
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <% include ../partials/devicons/javascript %>
+                                    <% include ../partials/devicons/jquery %>
+                                    <% include ../partials/devicons/html5 %>
+                                    <% include ../partials/devicons/css3 %>
+                                </ul>
+                            </div>
+                        </div></div>
+                        <div><div class="slider-item file-api">
+                            <div class="slider-item-overlay">
+                                <h3>File Metadata Microservice</h3>
+                                <p>
+                                    An API that returns metadata for an uploaded file.
+                                </p>
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <% include ../partials/devicons/javascript %>
+                                    <% include ../partials/devicons/reactjs %>
+                                    <% include ../partials/devicons/nodejs %>
+                                    <% include ../partials/devicons/webpack %>
+                                    <% include ../partials/devicons/html5 %>
+                                    <% include ../partials/devicons/css3 %>
+                                </ul>
+                            </div>
+                        </div></div>
+                        <div><div class="slider-item url-short">
+                            <div class="slider-item-overlay">
+                                <h3>URL Shortener</h3>
+                                <p>
+                                    An API that accepts a url and returns a
+                                    parameter that can be used to submit to the API
+                                    in place of the original url. Stores urls in a mongoDB instance.
+                                </p>
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <% include ../partials/devicons/javascript %>
+                                    <% include ../partials/devicons/nodejs %>
+                                    <% include ../partials/devicons/express %>
+                                    <% include ../partials/devicons/mongodb %>
+                                </ul>
+                            </div>
+                        </div></div>
+                        <div><div class="slider-item original-portfolio">
+                            <div class="slider-item-overlay">
+                                <h3>Old Portfolio Site</h3>
+                                <p>
+                                    First portfolio site using the Bootstrap grid for a 
+                                    fully responsive layout.
+                                </p>
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <% include ../partials/devicons/javascript %>
+                                    <% include ../partials/devicons/jquery %>
+                                    <% include ../partials/devicons/html5 %>
+                                    <% include ../partials/devicons/css3 %>
+                                    <% include ../partials/devicons/bootstrap %>
+                                </ul>
+                            </div>
+                        </div></div>
+                        <div><div class="slider-item tribute-page">
+                            <div class="slider-item-overlay">
+                                <h3>Tribute Page</h3>
+                                <p>
+                                    Fully responsive page using Bootstrap.
+                                </p>
+                                <h4>Technologies</h4>
+                                <ul>
+                                        <% include ../partials/devicons/html5 %>
+                                        <% include ../partials/devicons/css3 %>
+                                </ul>
+                            </div>
+                        </div></div>
+                        <div><div class="slider-item weather-app">
+                            <div class="slider-item-overlay">
+                                <h3>Current Weather App</h3>
+                                <p>Uses geolocation API to obtain users location
+                                    and provide the current weather forecast for that City.
+                                    Uses the DarkSky API.
+                                </p>
+                                <h4>Technologies</h4>
+                                <ul>
+                                    <% include ../partials/devicons/javascript %>
+                                    <% include ../partials/devicons/html5 %>
+                                    <% include ../partials/devicons/css3 %>
+                                    <% include ../partials/devicons/jquery %>
+                                </ul>
+                            </div>
+                        </div></div>
                     </div>
                 </div>
             </section>
-            <section class="contact-section">
+            <section class="contact-section fp-auto-height-responsive">
                 <h1>contact</h1>
                 <div class="contact-content content">
                     <div class="social-icons contact">
@@ -144,7 +256,6 @@
                 </div>
             </section>
         </div>
-        <% include ../partials/scripts %>
     </body>
 
 </html>
