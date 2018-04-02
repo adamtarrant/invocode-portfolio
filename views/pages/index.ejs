@@ -51,15 +51,15 @@
                 <h1>portfolio</h1>
                 <div class="content">
                     <div class="slider">
-                        <div><div class="slider-item random-quote">
+                        <div><div class="slider-item bg-image random-quote">
                             <div class="slider-item-overlay">
                                 <h3>Random Quote Machine</h3>
                                 <p>The Random Quote Machine uses an API to retrieve random 
                                     quotes - which the user can then tweet. Fully responsive design.
-                                    Implements the &lt;canvas&gt; and &lt;svg&gt; tags in HTML5 for the background. 
+                                    Implements the &lt;canvas&gt; and &lt;svg&gt; tags in HTML5 for the background.
                                 </p>
                                 <h4>Technologies</h4>
-                                <ul>
+                                <ul class="tech-list">
                                     <% include ../partials/devicons/javascript %>
                                     <% include ../partials/devicons/jquery %>
                                     <% include ../partials/devicons/html5 %>
@@ -69,14 +69,14 @@
                                 </ul>
                             </div>
                         </div></div>
-                        <div><div class="slider-item img-search">
+                        <div><div class="slider-item bg-image img-search">
                             <div class="slider-item-overlay">
                                 <h3>Image Search API</h3>
                                 <p>This is an absracted image search API. The frontend acts as documentation 
                                     allowing developers to preview responses of the API endpoints. Allows for pagination.
                                 </p>
                                 <h4>Technologies</h4>
-                                <ul>
+                                <ul class="tech-list">
                                     <% include ../partials/devicons/javascript %>
                                     <% include ../partials/devicons/reactjs %>
                                     <% include ../partials/devicons/nodejs %>
@@ -86,7 +86,7 @@
                                 </ul>
                             </div>
                         </div></div>
-                        <div><div class="slider-item wiki_search">
+                        <div><div class="slider-item bg-image wiki_search">
                             <div class="slider-item-overlay">
                                 <h3>Wikipedia Search Engine</h3>
                                 <p>
@@ -94,7 +94,7 @@
                                     Uses the Wikipedia search API.
                                 </p>
                                 <h4>Technologies</h4>
-                                <ul>
+                                <ul class="tech-list">
                                     <% include ../partials/devicons/javascript %>
                                     <% include ../partials/devicons/jquery %>
                                     <% include ../partials/devicons/html5 %>
@@ -102,7 +102,7 @@
                                 </ul>
                             </div>
                         </div></div>
-                        <div><div class="slider-item twitch-viewer">
+                        <div><div class="slider-item bg-image twitch-viewer">
                             <div class="slider-item-overlay">
                                 <h3>Twitch.tv Viewer</h3>
                                 <p>
@@ -111,7 +111,7 @@
                                     also a search function to search for twitch.tv streamers. 
                                 </p>
                                 <h4>Technologies</h4>
-                                <ul>
+                                <ul class="tech-list">
                                     <% include ../partials/devicons/javascript %>
                                     <% include ../partials/devicons/jquery %>
                                     <% include ../partials/devicons/html5 %>
@@ -119,14 +119,14 @@
                                 </ul>
                             </div>
                         </div></div>
-                        <div><div class="slider-item file-api">
+                        <div><div class="slider-item bg-image file-api">
                             <div class="slider-item-overlay">
                                 <h3>File Metadata Microservice</h3>
                                 <p>
                                     An API that returns metadata for an uploaded file.
                                 </p>
                                 <h4>Technologies</h4>
-                                <ul>
+                                <ul class="tech-list">
                                     <% include ../partials/devicons/javascript %>
                                     <% include ../partials/devicons/reactjs %>
                                     <% include ../partials/devicons/nodejs %>
@@ -136,7 +136,7 @@
                                 </ul>
                             </div>
                         </div></div>
-                        <div><div class="slider-item url-short">
+                        <div><div class="slider-item bg-image url-short">
                             <div class="slider-item-overlay">
                                 <h3>URL Shortener</h3>
                                 <p>
@@ -145,7 +145,7 @@
                                     in place of the original url. Stores urls in a mongoDB instance.
                                 </p>
                                 <h4>Technologies</h4>
-                                <ul>
+                                <ul class="tech-list">
                                     <% include ../partials/devicons/javascript %>
                                     <% include ../partials/devicons/nodejs %>
                                     <% include ../partials/devicons/express %>
@@ -153,7 +153,7 @@
                                 </ul>
                             </div>
                         </div></div>
-                        <div><div class="slider-item original-portfolio">
+                        <div><div class="slider-item bg-image original-portfolio">
                             <div class="slider-item-overlay">
                                 <h3>Old Portfolio Site</h3>
                                 <p>
@@ -161,7 +161,7 @@
                                     fully responsive layout.
                                 </p>
                                 <h4>Technologies</h4>
-                                <ul>
+                                <ul class="tech-list">
                                     <% include ../partials/devicons/javascript %>
                                     <% include ../partials/devicons/jquery %>
                                     <% include ../partials/devicons/html5 %>
@@ -170,7 +170,7 @@
                                 </ul>
                             </div>
                         </div></div>
-                        <div><div class="slider-item tribute-page">
+                        <div><div class="slider-item bg-image tribute-page">
                             <div class="slider-item-overlay">
                                 <h3>Tribute Page</h3>
                                 <p>
@@ -183,7 +183,7 @@
                                 </ul>
                             </div>
                         </div></div>
-                        <div><div class="slider-item weather-app">
+                        <div><div class="slider-item bg-image weather-app">
                             <div class="slider-item-overlay">
                                 <h3>Current Weather App</h3>
                                 <p>Uses geolocation API to obtain users location
@@ -191,7 +191,7 @@
                                     Uses the DarkSky API.
                                 </p>
                                 <h4>Technologies</h4>
-                                <ul>
+                                <ul class="tech-list">
                                     <% include ../partials/devicons/javascript %>
                                     <% include ../partials/devicons/html5 %>
                                     <% include ../partials/devicons/css3 %>
@@ -200,6 +200,43 @@
                             </div>
                         </div></div>
                     </div>
+                    <div class="lightbox-container">
+                        <div class="lightbox">
+                            <div id="lightbox1">
+                                <button class="close-btn"><i class="fa fa-times"></i></button>
+                                <h3>Random Quote Machine</h3>
+                                <p>The Random Quote Machine uses an API to retrieve random 
+                                    quotes - which the user can then tweet. Fully responsive design.
+                                    Implements the &lt;canvas&gt; and &lt;svg&gt; tags in HTML5 for the background.
+                                </p>
+                                <div class="screenshot bg-image random-quote"></div>
+                                <h4>Technologies</h4>
+                                <ul class="tech-list">
+                                    <% include ../partials/devicons/javascript %>
+                                    <% include ../partials/devicons/jquery %>
+                                    <% include ../partials/devicons/html5 %>
+                                    <% include ../partials/devicons/css3 %>
+                                    <% include ../partials/devicons/sass %>
+                                    <% include ../partials/devicons/bootstrap %>
+                                </ul>
+                                <div class="proj-links">
+                                    <h4>Check it out</h4>
+                                    <ul>
+                                        <li>Placeholder</li>
+                                        <li>Placeholder</li>
+                                        <li>Placeholder</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="lightbox2"></div>
+                            <div id="lightbox3"></div>
+                            <div id="lightbox4"></div>
+                            <div id="lightbox5"></div>
+                            <div id="lightbox6"></div>
+                            <div id="lightbox7"></div>
+                            <div id="lightbox8"></div>
+                            <div id="lightbox9"></div>
+                        </div>
                 </div>
             </section>
             <section class="contact-section fp-auto-height-responsive">
@@ -255,6 +292,7 @@
                     </div>
                 </div>
             </section>
+        </div>
         </div>
     </body>
 
