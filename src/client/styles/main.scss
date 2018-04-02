@@ -279,21 +279,31 @@ h1 {
 }
 
 .slider {
-  width: 60vw;
+  width: 85vw;
   margin: 2rem 0 0 0;
 }
 
 .slider-item {
   height: 50vh;
+  width: 95%;
+  max-width: 390px;
   max-height: 250px;
   min-height: 225px;
-  margin: 15px;
+  margin: 15px auto;
+  box-shadow: 1px 1px 10px black;
+  overflow: hidden;
+  &:hover {
+    cursor: pointer;
+    .slider-item-overlay{
+      top: 0;
+    }
+  } 
+}
+
+.bg-image {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 5px;
-  box-shadow: 1px 1px 10px black;
-  overflow: hidden;
   &.random-quote {
     background-image: url($random-quote-img);
   }
@@ -321,17 +331,12 @@ h1 {
   &.weather-app {
     background-image: url($weather-app-img);
   }
-  &:hover {
-    cursor: pointer;
-    .slider-item-overlay{
-      top: 0;
-    }
-  } 
 }
 
 .slider-item-overlay {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
   position: relative;
   height: 100%;
@@ -355,20 +360,28 @@ h1 {
     width: 80%
   }
   p {
+    max-height: 25%;
     margin: 0;
+    &::after {
+      display: block;
+      content: 'Click for more details';
+      margin: 0.5em 0 0 0;
+    }
   }
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-around;
-    max-height: 25%;
-    margin: 0.2em 0;
-  }
+}
+
+.tech-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  max-height: 25%;
+  margin: 0.2em 0 0.5em 0;
   li {
     margin: 0em 0 0 1em;
   }
+  
   i {
     font-size: 1.1em;
     margin: 0 0.5em 0 0;
@@ -475,12 +488,81 @@ textarea.form-item {
   color: black;
 }
 
+.lightbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1001;
+}
+
+.lightbox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 40vw;
+  height: 70vh;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.9);
+  font-size: 1.5em;
+
+  .close-btn {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    i {
+      width: 100%;
+      height: 100%;
+      color: $main-text-color;
+    }
+  }
+
+  p, .tech-list {
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+.screenshot {
+  width: 15vw;
+  max-width: 350px;
+  height: 30vh;
+  max-height: 250px;
+  float: right;
+  margin: 0 5%;
+}
+
+.proj-links {
+  float: right;
+
+  li {  
+    float: left;
+  }
+
+}
+
+@media(max-width: 1200px){
+  .slider {
+    width: 75vw;
+  }
+}
 @media(max-width: 670px) {
 
   h1, h2 {
     width: 100%;
     text-align: center;
     left: 0;
+    top: 3vh;
   }
 
   nav.nav-home {
@@ -495,9 +577,7 @@ textarea.form-item {
   }
 
   .slider-item-overlay {
-  h4 {
-    margin: 2% 0 0 0;
-  }
+    font-size: 1em;
   }
   .social-icons.contact {
     width: 90%;
@@ -511,5 +591,11 @@ textarea.form-item {
     width: 90vw;
     height: 50vh;
     margin: 20px 0 0 0;
+  }
+}
+
+@media (min-width: 1600px) {
+  .slider {
+    width: 70vw;
   }
 }
