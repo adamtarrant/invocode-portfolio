@@ -5,6 +5,7 @@ $main-bg-color: #6B4367;
 $home-bg-color: #1CC89D;
 $about-bg-color: #ED5B62;
 $portfolio-bg-color: #2A99E1;
+$slide-overlay-color: #FF286C;
 $contact-bg-color: #6B4367;
 $main-text-color: #eee;
 $email-color: #FFAB24;
@@ -24,14 +25,40 @@ $orig-portfolio-img: '../img/first_portfolio_site.png';
 $tribute-page-img: '../img/first_page_with_bootstrap.png';
 $weather-app-img: '../img/weather_app.png';
 
+@mixin transform($type, $x, $y){
+  -ms-transform: $type($x, $y);
+  -webkit-transform: $type($x, $y);
+  transform: $type($x, $y);
+}
+
 @mixin transition($prop,
 $duration,
 $timing,
 $delay) {
   -webkit-transition: $prop $duration $timing $delay;
-  -moz-transition: $prop $duration $timing $delay;
-  -o-transition: $prop $duration $timing $delay;
   transition: $prop $duration $timing $delay;
+}
+
+@mixin animation($name, $duration, $timing, $delay, $iter, $dir) {
+  -webkit-animation: $name $duration $timing $delay $iter $dir;
+  -moz-animation: $name $duration $timing $delay $iter $dir;
+  -o-animation: $name $duration $timing $delay $iter $dir;
+  animation: $name $duration $timing $delay $iter $dir;
+}
+
+@keyframes fadein {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@keyframes zoomin {
+  from {transform: scale(0.1, 0.1)}
+  to {transform: scale(1, 1)}
+}
+
+@keyframes zoomout {
+  from {transform: scale(1, 1)}
+  to {transform: scale(0.1, 0.1)}
 }
 
 body {
@@ -284,6 +311,7 @@ h1 {
 }
 
 .slider-item {
+  position: relative;
   height: 50vh;
   width: 95%;
   max-width: 390px;
@@ -292,12 +320,21 @@ h1 {
   margin: 15px auto;
   box-shadow: 1px 1px 10px black;
   overflow: hidden;
+  z-index: -1; 
+}
+
+.open-lightbox-btn {
+  border: none;
+  background: none;
+  color: inherit;
+  width: 100%;
+  cursor: pointer;
+  z-index: 1005;
   &:hover {
-    cursor: pointer;
     .slider-item-overlay{
       top: 0;
     }
-  } 
+  }
 }
 
 .bg-image {
@@ -341,7 +378,7 @@ h1 {
   position: relative;
   height: 100%;
   top: 85%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: $slide-overlay-color;
   @include transition(top, .5s, ease-out, 0s);
   font-size: 1.2em;
   h3, h4 {
@@ -379,6 +416,7 @@ h1 {
   max-height: 25%;
   margin: 0.2em 0 0.5em 0;
   li {
+    text-align: left;
     margin: 0em 0 0 1em;
   }
   
@@ -488,17 +526,25 @@ textarea.form-item {
   color: black;
 }
 
+.blur {
+  filter: blur(5px);
+}
+
 .lightbox-container {
-  display: flex;
+  position: fixed;
   justify-content: center;
   align-items: center;
-  position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 1001;
+  display: none;
+  &.active {
+    display: flex;
+    @include animation(fadein, .3s, ease-in, 0s, 1, normal);
+  }
 }
 
 .lightbox {
@@ -507,57 +553,86 @@ textarea.form-item {
   position: relative;
   width: 40vw;
   height: 70vh;
+  min-height: 468px;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.9);
-  font-size: 1.5em;
-
-  .close-btn {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5em;
-    background: none;
-    border: none;
-    i {
-      width: 100%;
-      height: 100%;
-      color: $main-text-color;
-    }
+  font-size: calc(0.6vw + 1vh);
+  overflow: hidden;
+  &.active {
+    @include animation(zoomin, .5s, ease-in, 0s, 1, normal);
   }
-
-  p, .tech-list {
+   p, .tech-list {
     display: inline-block;
     width: 50%;
   }
+
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  width: 50px;
+  height: 50px;
+  font-size: 2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  &:hover i {
+    color: $about-bg-color;
+  }
+  &:focus {
+    outline: none;
+  }
+  i {
+    width: 100%;
+    height: 100%;
+    color: $main-text-color;
+  }
+}
+
+.lightbox-upper, .lightbox-lower {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 30vh;
+  }
+
+.lightbox-upper {
+  min-height: 175px;
 }
 
 .screenshot {
+  order: 1;
   width: 15vw;
   max-width: 350px;
-  height: 30vh;
-  max-height: 250px;
-  float: right;
+  min-width: 150px;
+  height: calc(10vw + 15vh);
+  max-height: 175px;
   margin: 0 5%;
 }
 
 .proj-links {
-  float: right;
-
   li {  
     float: left;
   }
-
 }
+
+.hide {
+  display: none;
+}
+
+
 
 @media(max-width: 1200px){
   .slider {
     width: 75vw;
   }
+  .lightbox {
+    width: 60vw;
+  }
 }
-@media(max-width: 670px) {
-
+@media(max-width: 670px), (max-height: 400px) {
   h1, h2 {
     width: 100%;
     text-align: center;
@@ -592,6 +667,32 @@ textarea.form-item {
     height: 50vh;
     margin: 20px 0 0 0;
   }
+
+  .lightbox {
+    width: 100%;
+    height: 100vh;
+    font-size: 1em;
+    text-align: center;
+    justify-content: space-evenly;
+    p, .tech-list {
+      width: 100vw;
+    }
+  }
+
+  .close-btn {
+    position: fixed;
+  }
+
+  .tech-list {
+    margin: 0 15px;
+    li {
+      float: left;
+    }
+  }
+
+.lightbox-upper, .lightbox-lower{
+  height: auto;
+}
 }
 
 @media (min-width: 1600px) {

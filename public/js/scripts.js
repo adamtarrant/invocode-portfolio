@@ -1,3 +1,5 @@
+// Coded by Adam Tarrant - 2018
+
 // func declaration for setting number of rows - awaiting fix from slick.js
 function setNoSlideRows() {
     if ($(window).width() < 840 || $(window).height() < 700) {
@@ -124,15 +126,51 @@ initSlick();
         }
     });
 
-//make lightbox appear at correct portfolio item
-    $(".slider-item").on("click", () => {
+//make lightbox appear at correct portfolio item event listener - using vanilla JS
+    superAddEventListener(".open-lightbox-btn", "click", openLightBox);
 
+ //close lightbox event listener
+    document.querySelector(".close-btn").addEventListener("click", (e) => {
+        closeLightBox();
     });
 
-
-function showLightBox(position) {
-    $(".lightbox-container, .lightbox").addClass("active");
-        $.fn.fullpage.setAllowScrolling(false);
+// add active class for lightbox elements
+function openLightBox(e) {
+    applyClassToMultipleEls(["section"], "blur", "add");
+    applyClassToMultipleEls([".lightbox-container", ".lightbox"], "active", "add");   
+    document.getElementById(e.target.getAttribute('for')).classList.remove("hide");
     }
+
+// remove active class to hide lightbox and add hide class to lightbox content
+function closeLightBox() {
+    applyClassToMultipleEls(["section"], "blur", "remove");
+    applyClassToMultipleEls([".lightbox-content"], "hide", "add");
+    document.querySelector(".lightbox-container").classList.remove("active");
+    document.querySelector(".lightbox").classList.remove("active");
+}
+
+//Utility function for adding/removing a class to multiple selectors and elements
+function applyClassToMultipleEls(selectors, className, action) {
+    if (!selectors) return;
+    let nodeListArr = [];
+    selectors.forEach(selector => {
+        nodeListArr.push(document.querySelectorAll(selector));
+    });
+    nodeListArr.forEach(nodeList => {
+        nodeList.forEach(el => {
+             el["classList"][action](className);
+            });
+        });
+}
+
+//Utility function for adding event listener to all elements in selector
+function superAddEventListener(selector, event, handler){
+    if (!selector) return;
+    let elements = document.querySelectorAll(selector);
+    if (elements.tagName) {elements =[elements];}
+    elements.forEach(el => {
+        el.addEventListener(event, handler);
+    });
+}
 
     });
