@@ -1,7 +1,6 @@
 //NPM and Node Modules
 const express = require('express');
 const path = require('path');
-const sassMiddleware = require('node-sass-middleware');
 
 //Config
 const config = process.env.NODE_ENV == 'production' ? require('./config/config_prod.js') : require('./config/config_dev.js');
@@ -13,11 +12,6 @@ const app = express();
 app.set('view engine', 'ejs');
 
 //Static middleware
-app.use(sassMiddleware({
-        src: path.join(__dirname, '../client/'), 
-        dest: path.join(__dirname, '../../public'),
-        debug: true       
-    }));
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use((err, req, res, next) => {
     console.error(err.stack);

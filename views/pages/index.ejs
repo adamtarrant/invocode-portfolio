@@ -35,12 +35,42 @@
             </section>
             <section class="about-section  fp-auto-height-responsive">
                 <h1>about</h1>
-                <div class="content about-content">
+                <div class="content about">
+                    <div class="about-left">
                     <div class="about-desc-wrapper">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nulla nisi, posuere vitae erat vitae,
                             iaculis fringilla urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse
                             in metus in mi rhoncus suscipit ut non magna. Nam aliquam neque sed nisl tincidunt, at eleifend
                             quam pellentesque.</p>
+                    </div>
+                    <div class="skills">
+                        <h2>Skills</h2>
+                        <ul class="skills-grid">
+                            <li class="skills-grid-item"><% include ../partials/devicons/atom_svg.ejs %></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                            <li class="skills-grid-item"></li>
+                        </ul>
+                    </div>
                     </div>
                     <div class="img-wrapper">
                         <img src="img/me.jpg" />
@@ -49,7 +79,7 @@
             </section>
             <section class="portfolio-section fp-auto-height-responsive">
                 <h1>portfolio</h1>
-                <div class="content">
+                <div class="content portfolio">
                     <div class="slider">
                         <div>
                             <button class="open-lightbox-btn" for="lightbox1">
@@ -58,15 +88,6 @@
                                     <h3>Random Quote Machine</h3>
                                     <p>Click the button for a quote, click the other button to tweet!
                                     </p>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                        <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/jquery %>
-                                                <% include ../partials/devicons/html5 %>
-                                                    <% include ../partials/devicons/css3 %>
-                                                        <% include ../partials/devicons/sass %>
-                                                            <% include ../partials/devicons/bootstrap %>
-                                    </ul>
                                 </div>
                             </div>
                         </button>
@@ -77,15 +98,6 @@
                                 <div class="slider-item-overlay">
                                     <h3>Image Search API</h3>
                                     <p>An absracted image search API</p>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                        <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/reactjs %>
-                                                <% include ../partials/devicons/nodejs %>
-                                                    <% include ../partials/devicons/mongodb %>
-                                                        <% include ../partials/devicons/webpack %>
-                                                            <% include ../partials/devicons/sass %>
-                                    </ul>
                                 </div>
                             </div>
                         </button>
@@ -98,13 +110,6 @@
                                     <p>
                                         A Wikiepedia Search Engine with a random article function
                                     </p>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                        <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/jquery %>
-                                                <% include ../partials/devicons/html5 %>
-                                                    <% include ../partials/devicons/css3 %>
-                                    </ul>
                                 </div>
                             </div>
                         </button>
@@ -115,16 +120,9 @@
                                 <div class="slider-item-overlay">
                                     <h3>Twitch.tv Viewer</h3>
                                     <p>
-                                        Shows featured live streams from twitch.tv. Shows a list of regular streamers, live and offline. There is also a search function
-                                        to search for twitch.tv streamers.
+                                        Shows featured live streams from twitch.tv
                                     </p>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                        <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/jquery %>
-                                                <% include ../partials/devicons/html5 %>
-                                                    <% include ../partials/devicons/css3 %>
-                                    </ul>
+
                                 </div>
                             </div>
                         </button>
@@ -137,15 +135,7 @@
                                     <p>
                                         An API that returns metadata for an uploaded file
                                     </p>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                        <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/reactjs %>
-                                                <% include ../partials/devicons/nodejs %>
-                                                    <% include ../partials/devicons/webpack %>
-                                                        <% include ../partials/devicons/html5 %>
-                                                            <% include ../partials/devicons/css3 %>
-                                    </ul>
+
                                 </div>
                             </div>
                         </button>
@@ -156,16 +146,9 @@
                                 <div class="slider-item-overlay">
                                     <h3>URL Shortener</h3>
                                     <p>
-                                        An API that accepts a url and returns a parameter that can be used to submit to the API in place of the original url. Stores
-                                        urls in a mongoDB instance.
+                                        An API that accepts a url and replaces with an alias
                                     </p>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                        <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/nodejs %>
-                                                <% include ../partials/devicons/express %>
-                                                    <% include ../partials/devicons/mongodb %>
-                                    </ul>
+
                                 </div>
                             </div>
                         </button>
@@ -178,14 +161,7 @@
                                     <p>
                                         My first portfolio site using Bootstrap
                                     </p>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                        <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/jquery %>
-                                                <% include ../partials/devicons/html5 %>
-                                                    <% include ../partials/devicons/css3 %>
-                                                        <% include ../partials/devicons/bootstrap %>
-                                    </ul>
+
                                 </div>
                             </div>
                         </button>
@@ -198,11 +174,6 @@
                                     <p>
                                         Fully responsive page using Bootstrap.
                                     </p>
-                                    <h4>Technologies</h4>
-                                    <ul>
-                                        <% include ../partials/devicons/html5 %>
-                                            <% include ../partials/devicons/css3 %>
-                                    </ul>
                                 </div>
                             </div>
                         </button>
@@ -214,13 +185,6 @@
                                     <h3>Current Weather App</h3>
                                     <p>Shows the current weather forecast the users location
                                     </p>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                        <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/html5 %>
-                                                <% include ../partials/devicons/css3 %>
-                                                    <% include ../partials/devicons/jquery %>
-                                    </ul>
                                 </div>
                             </div>
                         </button>
@@ -315,10 +279,9 @@
                             </div>
                             <div class="proj-links">
                                 <h4>Check it out</h4>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-link"></i></a></li>
-                                    <li><a href="#"></a></li>
-                                    <li><a href="#"></a></li>
+                                <ul class="link-list">
+                                    <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
+                                    <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -345,10 +308,9 @@
                                 </div>
                                 <div class="proj-links">
                                     <h4>Check it out</h4>
-                                    <ul>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
+                                    <ul class="link-list">
+                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
+                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -372,10 +334,9 @@
                                 </div>
                                 <div class="proj-links">
                                     <h4>Check it out</h4>
-                                    <ul>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
+                                    <ul class="link-list">
+                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
+                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -400,10 +361,9 @@
                                 </div>
                                 <div class="proj-links">
                                     <h4>Check it out</h4>
-                                    <ul>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
+                                    <ul class="link-list">
+                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
+                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -429,10 +389,9 @@
                                 </div>
                                 <div class="proj-links">
                                     <h4>Check it out</h4>
-                                    <ul>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
+                                    <ul class="link-list">
+                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
+                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -457,10 +416,9 @@
                                 </div>
                                 <div class="proj-links">
                                     <h4>Check it out</h4>
-                                    <ul>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
+                                    <ul class="link-list">
+                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
+                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -485,10 +443,9 @@
                                 </div>
                                 <div class="proj-links">
                                     <h4>Check it out</h4>
-                                    <ul>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
+                                    <ul class="link-list">
+                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
+                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -506,14 +463,14 @@
                                     <ul class="tech-list">
                                             <% include ../partials/devicons/html5 %>
                                             <% include ../partials/devicons/css3 %>
+                                            <% include ../partials/devicons/bootstrap %>
                                     </ul>
                                 </div>
                                 <div class="proj-links">
                                     <h4>Check it out</h4>
-                                    <ul>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
+                                    <ul class="link-list">
+                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
+                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -538,10 +495,9 @@
                                 </div>
                                 <div class="proj-links">
                                     <h4>Check it out</h4>
-                                    <ul>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
-                                        <li>Placeholder</li>
+                                    <ul class="link-list">
+                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
+                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

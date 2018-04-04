@@ -5,7 +5,7 @@ $main-bg-color: #6B4367;
 $home-bg-color: #1CC89D;
 $about-bg-color: #ED5B62;
 $portfolio-bg-color: #2A99E1;
-$slide-overlay-color: #FF286C;
+$slide-overlay-color: linear-gradient(to right, #FF286C, #DB2B63);
 $contact-bg-color: #6B4367;
 $main-text-color: #eee;
 $email-color: #FFAB24;
@@ -23,28 +23,7 @@ $file-api-img: '../img/file_metadata_retriever_API.png';
 $url-short-img: '../img/url_shortener_microservice.png';
 $orig-portfolio-img: '../img/first_portfolio_site.png';
 $tribute-page-img: '../img/first_page_with_bootstrap.png';
-$weather-app-img: '../img/weather_app.png';
-
-@mixin transform($type, $x, $y){
-  -ms-transform: $type($x, $y);
-  -webkit-transform: $type($x, $y);
-  transform: $type($x, $y);
-}
-
-@mixin transition($prop,
-$duration,
-$timing,
-$delay) {
-  -webkit-transition: $prop $duration $timing $delay;
-  transition: $prop $duration $timing $delay;
-}
-
-@mixin animation($name, $duration, $timing, $delay, $iter, $dir) {
-  -webkit-animation: $name $duration $timing $delay $iter $dir;
-  -moz-animation: $name $duration $timing $delay $iter $dir;
-  -o-animation: $name $duration $timing $delay $iter $dir;
-  animation: $name $duration $timing $delay $iter $dir;
-}
+$weather-app-img: '../img/weather_app.jpg';
 
 @keyframes fadein {
   from {opacity: 0}
@@ -56,9 +35,18 @@ $delay) {
   to {transform: scale(1, 1)}
 }
 
-@keyframes zoomout {
-  from {transform: scale(1, 1)}
-  to {transform: scale(0.1, 0.1)}
+@keyframes bounce {
+  from {transform: translate(0,10px)}
+  to {transform: translate(0,0)}
+}
+
+@keyframes pulse {
+  0% {font-size: inherit}
+  20% {font-size: 1.2em}
+  40% {font-size: 1.5em}
+  60% {font-size: 1.2em}
+  80% {font-size: 1.5em}
+  100% {font-size: inherit}
 }
 
 body {
@@ -107,19 +95,13 @@ nav {
   left: 0;
   right: 0;
   width: 100%;
-  @include transition(top,
-  .2s,
-  ease-out,
-  0s);
+  transition: top .2s ease-out 0s;
 }
 
 .nav-home {
   position: absolute;
   top: 75vh;
-  @include transition(top,
-  .2s,
-  ease-out,
-  0s);
+  transition: top .2s ease-out 0s;
 }
 
 .nav-list li {
@@ -130,7 +112,7 @@ nav {
   box-shadow: 1px 2px 15px #444;
   font-size: 1.5em;
   background-color: $main-text-color;
-  @include transition(background-color, .5s, ease, 0s);
+transition: background-color .5s ease 0s;
   &.about:hover {
     background-color: $about-bg-color;
     &.active {
@@ -175,7 +157,7 @@ nav {
   text-shadow: 1px 2px 15px #444;
   a {
     font-size: 4em;
-    @include transition(color,1s,ease-out,0s);
+    transition: color 1s ease-out 0s;
   }
   li {
     list-style: none;
@@ -240,7 +222,7 @@ nav {
 }
 
 .contact-anim {
-  @include transition(font-size, .5s, ease, 0s);
+  transition: font-size .5s ease 0s;
   &::before {
     content: '1';
     visibility: hidden;
@@ -281,16 +263,51 @@ h1 {
 .content {
   display: flex;
   justify-content: center;
-  align-items: center;
-  align-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
   height: 68%;
+  &.portfolio {
+    align-items: center;
+  }
 }
+
+
 
 .about-desc-wrapper {
   width: 40vw;
   min-width: 300px;
+}
+
+.skills {
+  h2 {
+    font-size: calc(1.2vw + 4vh);
+  }
+
+  .skills-grid {
+    display: grid;
+  }
+
+  .skills-grid-item {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5){grid-row: 1}
+    &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9) {grid-row: 2}
+    &:nth-child(10), &:nth-child(11), &:nth-child(12), &:nth-child(13), &:nth-child(14){ grid-row: 3}
+    &:nth-child(15),&:nth-child(16), &:nth-child(17), &:nth-child(18){grid-row: 4}
+    &:nth-child(19), &:nth-child(20), &:nth-child(21), &:nth-child(22), &:nth-child(23){grid-row: 5}
+    &:nth-child(1), &:nth-child(10),  &:nth-child(19) {grid-column: 1}
+    &:nth-child(6), &:nth-child(15) {grid-column: 2}
+    &:nth-child(2), &:nth-child(11), &:nth-child(20) {grid-column: 3}
+    &:nth-child(7), &:nth-child(16) {grid-column: 4}
+    &:nth-child(3), &:nth-child(12), &:nth-child(21) {grid-column: 5}
+    &:nth-child(8), &:nth-child(17) {grid-column: 6}
+    &:nth-child(4), &:nth-child(13), &:nth-child(22) {grid-column: 7}
+    &:nth-child(9), &:nth-child(18) {grid-column: 8}
+    &:nth-child(5), &:nth-child(14), &:nth-child(23) {grid-column: 9}
+  }
+
 }
 
 .img-wrapper {
@@ -373,36 +390,34 @@ h1 {
 .slider-item-overlay {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: column;
   position: relative;
   height: 100%;
   top: 85%;
-  background-color: $slide-overlay-color;
-  @include transition(top, .5s, ease-out, 0s);
+  background: $slide-overlay-color;
+  transition: top .5s ease-out 0s;
   font-size: 1.2em;
-  h3, h4 {
+  h3{
     display: flex;
     align-items: center;
-  }
-  h3{
-    min-height: 45px;  
+    min-height: 40px;  
     height: 15%;
     margin: 0;
   }
-  h4 {
-    margin: 10% 0 0 0;
-  }
-  p, ul {
-    width: 80%
-  }
   p {
+    width: 80%;
     max-height: 25%;
-    margin: 0;
+    margin: 1em auto;
     &::after {
       display: block;
-      content: 'Click for more details';
-      margin: 0.5em 0 0 0;
+      line-height: 30px;
+      width: 100px;
+      height: 30px;
+      border: 2px solid #DB2B63;
+      background-color: #FF286C;
+      content: 'Click to view';
+      margin: 2em auto 0 auto;
     }
   }
 
@@ -475,10 +490,7 @@ form {
     &:hover {
       background-color: $main-text-color;
       color: $contact-bg-color;
-      @include transition(background-color,
-      .5s,
-      ease-out,
-      0s);
+      transition: background-color .5s ease-out 0s;
     }
   }
 }
@@ -491,8 +503,8 @@ form {
   margin-left: 10px;
   opacity: 0;
   top: 2em;
-  @include transition(opacity,.3s,ease,0s);
-  @include transition(top,.3s,ease,0s);
+  transition: opacity .3s ease 0s;
+  transition: top .3s ease 0s;
 }
 
 #form-container .label-visible {
@@ -510,7 +522,7 @@ form {
   color: $main-text-color;
   outline: none;
   z-index: 3;
-  @include transition(background-color, .5s, ease, 0s);
+  transition: background-color .5s ease 0s;
   &:focus {
     outline: 2px solid #fff;
   }
@@ -543,7 +555,7 @@ textarea.form-item {
   display: none;
   &.active {
     display: flex;
-    @include animation(fadein, .3s, ease-in, 0s, 1, normal);
+    animation: fadein .3s ease-in 0s 1 normal;
   }
 }
 
@@ -558,14 +570,17 @@ textarea.form-item {
   background-color: rgba(0, 0, 0, 0.9);
   font-size: calc(0.6vw + 1vh);
   overflow: hidden;
+  transition: transform .3s ease 0s;
   &.active {
-    @include animation(zoomin, .5s, ease-in, 0s, 1, normal);
+    animation: zoomin .5s ease-in 0s 1 normal;
+  }
+  &.closing {
+    transform: scale(0.1,0.1);
   }
    p, .tech-list {
     display: inline-block;
     width: 50%;
   }
-
 }
 
 .close-btn {
@@ -585,6 +600,7 @@ textarea.form-item {
     outline: none;
   }
   i {
+    transition: color .5s ease 0s;
     width: 100%;
     height: 100%;
     color: $main-text-color;
@@ -613,16 +629,54 @@ textarea.form-item {
 }
 
 .proj-links {
-  li {  
-    float: left;
+  text-align: center;
+  h4 {
+    min-height: 25px;
+    animation: pulse .6s linear 2 12s alternate;
   }
+}
+
+.link-list {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-size: calc(3vw + 1vh);
+  width: 15vw;
+  li {
+    float: left;
+    margin: 0 0.5em;
+  }
+  .fa-link {
+    transform: rotate(135deg);
+  }
+}
+
+.project-link, .code-link {
+  &::after{
+    font-size: calc(0.6vw + 1vh);
+    position: absolute;
+    top: 95%;
+    opacity: 0;
+    transition: opacity .3s ease 0s;
+  }
+  &:hover::after{
+    opacity: 1;
+    animation: bounce .1s ease-in 3 0s alternate;
+  }
+}
+
+.project-link::after {
+    content: 'Link to project';
+    left: 5%;
+}
+.code-link::after {
+  content: 'Link to code';
+  left: 50%;
 }
 
 .hide {
   display: none;
 }
-
-
 
 @media(max-width: 1200px){
   .slider {
@@ -632,7 +686,7 @@ textarea.form-item {
     width: 60vw;
   }
 }
-@media(max-width: 670px), (max-height: 400px) {
+@media(max-width: 670px), (max-height: 500px) {
   h1, h2 {
     width: 100%;
     text-align: center;
@@ -670,24 +724,48 @@ textarea.form-item {
 
   .lightbox {
     width: 100%;
-    height: 100vh;
-    font-size: 1em;
+    height: 105vh;
+    font-size: 1.1em;
     text-align: center;
     justify-content: space-evenly;
-    p, .tech-list {
-      width: 100vw;
+    p, h4, .proj-links {
+      width: 100%;
     }
+    h4 {
+      margin-bottom: 0;
+    }
+    .tech-list, .link-list {
+      width: 100%;
+      margin: 0 5px;
+      li {
+        float: left;
+        margin-top: 0.5em;
+      }
+    }
+
+    .link-list {
+      li {
+        font-size: 3em;
+      }
+    }
+    .proj-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .project-link, .code-link {
+      &::after, &:hover::after {
+        font-size: 0.3em;
+      }
+    }
+  }
+  .project-link::after {
+    left: 20%;
   }
 
   .close-btn {
     position: fixed;
-  }
-
-  .tech-list {
-    margin: 0 15px;
-    li {
-      float: left;
-    }
   }
 
 .lightbox-upper, .lightbox-lower{
