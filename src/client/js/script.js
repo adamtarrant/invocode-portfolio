@@ -136,7 +136,7 @@ $(document).ready(function () {
         easing: 'easeInOutCubic',
         fadingEffect: false,
         responsiveWidth: 655,
-        responsiveHeight: 400,
+        responsiveHeight: 500,
         responsiveSlides: false,
         parallax: false,
         parallaxOptions: {
@@ -160,7 +160,7 @@ $(document).ready(function () {
 
 
     // makes the forms labels appear and input background change when text is present
-    $(".form-item").on("input propertychange", () => {
+    $(".form-item").on("input propertychange", function () {
         let formField = $(this).attr('name');
         $("label[for=" + formField + "]").toggleClass("label-visible", !!$(".form-item[name=" + formField + "]").val());
         $(".form-item[name=" + formField + "]").toggleClass("filled", !!$(".form-item[name=" + formField + "]").val());
@@ -172,12 +172,21 @@ $(document).ready(function () {
     });
 
 
-    //makes nav menu buttons move to header when not on home section
-    $(".home-section").bind("DOMSubtreeModified", e => {
+    //logo shrink to corner
+    $(".home-section").on("DOMSubtreeModified", e => {
         if (!$(".home-section").hasClass("active")) {
-            $("nav").removeClass("nav-home");
+            $(".logo").addClass("cornered");
         } else {
-            $("nav").addClass("nav-home");
+            $(".logo").removeClass("cornered");
+        }
+    });
+
+    //animation of skills list
+    $(".home-section").on("DOMSubtreeModified", e => {
+        if (!$(".home-section").hasClass("active")) {
+            $(".logo").addClass("cornered");
+        } else {
+            $(".logo").removeClass("cornered");
         }
     });
 
