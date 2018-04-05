@@ -235,13 +235,14 @@ h1 {
   font-size: calc(1.2vw + 4vh); }
 
 .skills .skills-grid {
-  display: grid; }
+  display: grid;
+  min-height: 200px; }
 
 .skills .skills-grid-item {
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-color: blue; }
+  width: 4vw;
+  height: 6vh;
+  margin: 1vh 0.1vw; }
   .skills .skills-grid-item:nth-child(1), .skills .skills-grid-item:nth-child(2), .skills .skills-grid-item:nth-child(3), .skills .skills-grid-item:nth-child(4), .skills .skills-grid-item:nth-child(5) {
     grid-row: 1; }
   .skills .skills-grid-item:nth-child(6), .skills .skills-grid-item:nth-child(7), .skills .skills-grid-item:nth-child(8), .skills .skills-grid-item:nth-child(9) {
