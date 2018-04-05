@@ -285,13 +285,14 @@ h1 {
 
   .skills-grid {
     display: grid;
+    min-height: 200px;
   }
 
   .skills-grid-item {
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: blue;
+    width: 4vw;
+    height: 6vh;
+    margin: 1vh 0.1vw;
     &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5){grid-row: 1}
     &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9) {grid-row: 2}
     &:nth-child(10), &:nth-child(11), &:nth-child(12), &:nth-child(13), &:nth-child(14){ grid-row: 3}
