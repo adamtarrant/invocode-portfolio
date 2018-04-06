@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Krona+One|Poppins|Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Poppins|Raleway');
 
 //colours
 $main-bg-color: #6B4367;
@@ -94,54 +94,55 @@ header {
 }
 
 nav {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.menu-list {
   display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 1rem;
-  left: 0;
-  right: 0;
-  width: 100%;
-  transition: top .2s ease-out 0s;
+  flex-direction: column;
 }
 
-.nav-home {
-  position: absolute;
-  top: 75vh;
-  transition: top .2s ease-out 0s;
-}
-
-.nav-list li {
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 1px 2px 15px #444;
-  font-size: 1.5em;
+.menu-list-item {
+  width: 60px;
+  height: 60px;
   background-color: $main-text-color;
-transition: background-color .5s ease 0s;
-  &.about:hover {
-    background-color: $about-bg-color;
-    &.active {
-      color: $about-bg-color;
-      border-bottom: 2px solid $about-bg-color;
-    }
+  border-radius: 50%;
+  transition: transform 1s ease 0s;
+  opacity: 0;
+  &.show {
+    opacity: 1;
   }
-  &.portfolio:hover {
-    background-color: $portfolio-bg-color;
-    &.active {
-      color: $portfolio-bg-color;
-      border-bottom: 2px solid $portfolio-bg-color;
-    }
+  &.open {
+    transform: matrix(1, 0, 0, 1, 0, 0);
   }
-  &.contact:hover {
-    background-color: $contact-bg-color;
-    &.active {
-      color: $contact-bg-color;
-      border-bottom: 2px solid $contact-bg-color;
-    }
+  &.about {
+    transform: matrix(1, 0, 0, 1, 0, 20);
   }
-  &.active {
-    background-color: #eee;
+  &.portfolio {
+    transform: matrix(1, 0, 0, 1, 0, 40);
+  }
+  &.contact {
+    transform: matrix(1, 0, 0, 1, 0, 60);
+  }
+}
+
+.menu-btn {
+  width: 100%;
+  font-size: 3em;
+  color: black;
+  &.open {
+
+  }
+  &.about {
+
+  }
+  &.portfolio {
+
+  }
+  &.contact {
+
   }
 }
 
@@ -307,13 +308,36 @@ h1 {
 .about-upper {
   justify-content: center;
   flex-wrap: wrap-reverse;
+  position: relative;
+  top: 5vh;
+  opacity: 0;
+  transition: opacity 1.3s ease-out .5s, top 1.3s ease-out .5s;
+  &.show {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 .about-desc-wrapper {
   width: 40vw;
   min-width: 200px;
-  max-width: 400px;
-  font-size: 1.3em;
+  max-width: 500px;
+  font-size: 1.6em;
+  font-family: 'Raleway', sans-serif;
+}
+
+.img-wrapper {
+  display: flex;
+  align-items: center;
+  margin: -20px 50px 0 50px;
+  width: 10vw;
+  min-width: 100px;
+  height: auto;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
 }
 
 .skills {
@@ -336,7 +360,10 @@ h1 {
     min-width: 30px;
     height: 3vh;
     margin: 1vh 0.1vw;
-    &:nth-child(-n + 5){grid-row: 1; animation: rise .5s ease-in 2s 1 normal;}
+    opacity: 0;
+    top: 50vh;
+    transition: opacity .3s ease-in 0s, top .3s ease-in 0s;
+    &:nth-child(-n + 5){grid-row: 1;}
     &:nth-child(n+6):nth-child(-n+9) {grid-row: 2;}
     &:nth-child(n+10):nth-child(-n+14){ grid-row: 3;}
     &:nth-child(n+15):nth-child(-n+18){grid-row: 4;}
@@ -350,22 +377,12 @@ h1 {
     &:nth-child(9n + 4) {grid-column: 7;}
     &:nth-child(9n + 9) {grid-column: 8;}
     &:nth-child(9n + 5) {grid-column: 9;}
+    &.show {
+      opacity: 1;
+      top: 0;
+    }
   }
 
-}
-
-.img-wrapper {
-  display: flex;
-  align-items: flex-start;
-  margin: -20px 50px 0 50px;
-  width: 10vw;
-  min-width: 100px;
-  height: auto;
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-  }
 }
 
 .slider {
@@ -732,6 +749,17 @@ textarea.form-item {
     width: 60vw;
   }
 }
+
+@media(max-height: 800px){
+  .about-desc-wrapper {
+    font-size: 1.3em;
+    max-width: 400px;
+  }
+  .img-wrapper {
+    width: calc(3vw + 6vh);
+  }
+}
+
 @media(max-width: 670px), (max-height: 500px) {
   h1, h2 {
     width: 100%;

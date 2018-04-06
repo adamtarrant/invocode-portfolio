@@ -171,24 +171,38 @@ $(document).ready(function () {
         $(".nav-list").toggleClass("visible");
     });
 
-
-    //logo shrink to corner
-    $(".home-section").on("DOMSubtreeModified", e => {
-        if (!$(".home-section").hasClass("active")) {
-            $(".logo").addClass("cornered");
-        } else {
-            $(".logo").removeClass("cornered");
-        }
+    //initialise mutation observer - callback includes animatons for logo and skills list
+    const observer = new MutationObserver(function (mutations) {
+        mutations.forEach(mutationRecord => {
+            let targetClass = mutationRecord.target.classList[0];
+            if (!$("." + targetClass).hasClass("active")) {
+                if (targetClass == "home-section") {
+                    $(".logo").addClass("cornered");
+                }
+            } else {
+                if (targetClass == "home-section") {
+                    $(".logo").removeClass("cornered");
+                } else if (targetClass == "about-section") {
+                    $(".about-upper").addClass("show");
+                    for (let i = 0; i < $(".skills-grid-item").length; i++) {
+                        let delay = i * 50;
+                        setTimeout(() => {
+                            $(".skills-grid-item:nth-child(" + (i + 1) + ")").addClass("show");
+                        }, delay);
+                    }
+                }
+            }
+        });
     });
 
+    const observerConfig = { attributes: true, attributeFilter: ['class'], childList: false, characterData: false };
+    //logo shrink to corner - listening to changes on home sectoin
+    observer.observe($(".home-section")[0], observerConfig);
     //animation of skills list
-    $(".home-section").on("DOMSubtreeModified", e => {
-        if (!$(".home-section").hasClass("active")) {
-            $(".logo").addClass("cornered");
-        } else {
-            $(".logo").removeClass("cornered");
-        }
-    });
+    observer.observe($(".about-section")[0], observerConfig);
+
+    //animation of menu opening
+    
 
     //make lightbox appear at correct portfolio item event listener - using vanilla JS
     superAddEventListener(".open-lightbox-btn", "click", openLightBox);
