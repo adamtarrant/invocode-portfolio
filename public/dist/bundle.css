@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Krona+One|Poppins|Roboto+Mono);@keyframes fadein {
+@import url(https://fonts.googleapis.com/css?family=Poppins|Raleway);@keyframes fadein {
   from {
     opacity: 0; }
   to {
@@ -77,48 +77,38 @@ header {
     margin: 0 15px; }
 
 nav {
+  position: fixed;
+  top: 10px;
+  right: 10px; }
+
+.menu-list {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  position: absolute;
-  top: 1rem;
-  left: 0;
-  right: 0;
-  width: 100%;
-  transition: top .2s ease-out 0s; }
+  -ms-flex-direction: column;
+      flex-direction: column; }
 
-.nav-home {
-  position: absolute;
-  top: 75vh;
-  transition: top .2s ease-out 0s; }
-
-.nav-list li {
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 1px 2px 15px #444;
-  font-size: 1.5em;
+.menu-list-item {
+  width: 60px;
+  height: 60px;
   background-color: #fff;
-  transition: background-color .5s ease 0s; }
-  .nav-list li.about:hover {
-    background-color: #ED5B62; }
-    .nav-list li.about:hover.active {
-      color: #ED5B62;
-      border-bottom: 2px solid #ED5B62; }
-  .nav-list li.portfolio:hover {
-    background-color: #2A99E1; }
-    .nav-list li.portfolio:hover.active {
-      color: #2A99E1;
-      border-bottom: 2px solid #2A99E1; }
-  .nav-list li.contact:hover {
-    background-color: #6B4367; }
-    .nav-list li.contact:hover.active {
-      color: #6B4367;
-      border-bottom: 2px solid #6B4367; }
-  .nav-list li.active {
-    background-color: #eee; }
+  border-radius: 50%;
+  transition: transform 1s ease 0s;
+  opacity: 0; }
+  .menu-list-item.show {
+    opacity: 1; }
+  .menu-list-item.open {
+    transform: matrix(1, 0, 0, 1, 0, 0); }
+  .menu-list-item.about {
+    transform: matrix(1, 0, 0, 1, 0, 20); }
+  .menu-list-item.portfolio {
+    transform: matrix(1, 0, 0, 1, 0, 40); }
+  .menu-list-item.contact {
+    transform: matrix(1, 0, 0, 1, 0, 60); }
+
+.menu-btn {
+  width: 100%;
+  font-size: 3em;
+  color: black; }
 
 .logo {
   position: relative;
@@ -263,13 +253,35 @@ h1 {
   -ms-flex-pack: center;
       justify-content: center;
   -ms-flex-wrap: wrap-reverse;
-      flex-wrap: wrap-reverse; }
+      flex-wrap: wrap-reverse;
+  position: relative;
+  top: 5vh;
+  opacity: 0;
+  transition: opacity 1.3s ease-out .5s, top 1.3s ease-out .5s; }
+  .about-upper.show {
+    top: 0;
+    opacity: 1; }
 
 .about-desc-wrapper {
   width: 40vw;
   min-width: 200px;
-  max-width: 400px;
-  font-size: 1.3em; }
+  max-width: 500px;
+  font-size: 1.6em;
+  font-family: 'Raleway', sans-serif; }
+
+.img-wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: -20px 50px 0 50px;
+  width: 10vw;
+  min-width: 100px;
+  height: auto; }
+  .img-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; }
 
 .skills {
   width: 100%;
@@ -286,10 +298,12 @@ h1 {
     width: 4vw;
     min-width: 30px;
     height: 3vh;
-    margin: 1vh 0.1vw; }
+    margin: 1vh 0.1vw;
+    opacity: 0;
+    top: 50vh;
+    transition: opacity .3s ease-in 0s, top .3s ease-in 0s; }
     .skills .skills-grid-item:nth-child(-n + 5) {
-      grid-row: 1;
-      animation: rise .5s ease-in 2s 1 normal; }
+      grid-row: 1; }
     .skills .skills-grid-item:nth-child(n+6):nth-child(-n+9) {
       grid-row: 2; }
     .skills .skills-grid-item:nth-child(n+10):nth-child(-n+14) {
@@ -316,20 +330,9 @@ h1 {
       grid-column: 8; }
     .skills .skills-grid-item:nth-child(9n + 5) {
       grid-column: 9; }
-
-.img-wrapper {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: start;
-      align-items: flex-start;
-  margin: -20px 50px 0 50px;
-  width: 10vw;
-  min-width: 100px;
-  height: auto; }
-  .img-wrapper img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%; }
+    .skills .skills-grid-item.show {
+      opacity: 1;
+      top: 0; }
 
 .slider {
   width: 85vw;
@@ -656,6 +659,13 @@ textarea.form-item {
     width: 75vw; }
   .lightbox {
     width: 60vw; } }
+
+@media (max-height: 800px) {
+  .about-desc-wrapper {
+    font-size: 1.3em;
+    max-width: 400px; }
+  .img-wrapper {
+    width: calc(3vw + 6vh); } }
 
 @media (max-width: 670px), (max-height: 500px) {
   h1, h2 {

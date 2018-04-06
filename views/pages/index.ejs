@@ -7,10 +7,34 @@
             <div class="logo">
                 <% include ../partials/logo %>
             </div>
-            <nav class="nav nav-home">
+            <nav>
+                <div class="menu-wrapper">
+                    <ul class="menu-list">
+                        <li class="menu-list-item open">
+                            <a class="menu-btn open">
+                                <i class="fa fa-list-ul"></i>
+                            </a>
+                        </li>
+                        <li class="menu-list-item about">
+                            <a class="menu-btn about">
+                                <i class="fa fa-user"></i>
+                            </a>
+                        </li>
+                        <li class="menu-list-item portfolio">
+                            <a class="menu-btn portfolio">
+                                <i class="fa fa-code"></i>
+                            </a>
+                        </li>
+                        <li class="menu-list-item contact">
+                            <a class="menu-btn contact">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </li>
+                    </ul>
 
+                </div>
             </nav>
-            <div class="social-icons header">
+            <!-- <div class="social-icons header">
                 <ul>
                     <li>
                         <a class="fa fa-fw fa-github" href="https://github.com/adamtarrant" target="_blank"></a>
@@ -25,7 +49,7 @@
                         <span class="sr-text">Link to my email</span>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </header>
         <div id="fullpage">
             <section class="home-section  fp-auto-height-responsive">
@@ -38,49 +62,93 @@
                 <h1>about</h1>
                 <div class="content about">
                     <div class="about-upper">
-                    <div class="about-desc-wrapper">
-                        <p>Hello! My name is Adam Tarrant and 
-                            I'm a web developer based in London. I'm currently focused on full stack 
-                            javascript and loving it! My previous experience 
-                            includes a wide variety of roles within the technology sector, 
-                            including Project Management and Solution Architecture. 
-                            However, my passion for technology has led me to a role where I can work on the front line
-                            of making cool stuff more directly!
+                        <div class="about-desc-wrapper">
+                            <p>Hello! My name is Adam Tarrant and I'm a web developer based in London. I'm currently focused
+                                on full stack javascript and loving it! My previous experience includes a wide variety of
+                                roles within the technology sector, including Project Management and Solution Architecture.
+                                However, my passion for technology has led me to a role where I can work on the front line
+                                of making cool stuff more directly!
                             </p>
-                    </div>
-                    <div class="img-wrapper">
+                        </div>
+                        <div class="img-wrapper">
                             <img src="img/me.png" />
                         </div>
-                </div>
-                <div class="about-lower">
-                    <div class="skills">
-                        <h2>Skills</h2>
-                        <ul class="skills-grid">
-                            <li class="skills-grid-item"><% include ../partials/devicons/atom_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/aws_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/babel_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/bootstrap_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/csharp_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/css3_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/dotnet_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/express_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/heroku_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/html5_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/java_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/javascript_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/jquery_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/less_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/mongodb_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/mysql_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/nginx_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/nodejs_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/react_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/sass_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/vs_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/webpack_svg %></li>
-                            <li class="skills-grid-item"><% include ../partials/devicons/inkscape_svg %></li>
-                        </ul>
                     </div>
+                    <div class="about-lower">
+                        <div class="skills">
+                            <h2>Skills</h2>
+                            <ul class="skills-grid">
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/atom_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/aws_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/babel_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/bootstrap_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/csharp_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/css3_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/dotnet_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/express_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/heroku_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/html5_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/java_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/javascript_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/jquery_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/less_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/mongodb_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/mysql_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/nginx_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/nodejs_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/react_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/sass_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/vs_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/webpack_svg %>
+                                </li>
+                                <li class="skills-grid-item">
+                                    <% include ../partials/devicons/inkscape_svg %>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -90,111 +158,111 @@
                     <div class="slider">
                         <div>
                             <button class="open-lightbox-btn" for="lightbox1">
-                            <div class="slider-item bg-image random-quote">
-                                <div class="slider-item-overlay">
-                                    <h3>Random Quote Machine</h3>
-                                    <p>Click the button for a quote, click the other button to tweet!
-                                    </p>
+                                <div class="slider-item bg-image random-quote">
+                                    <div class="slider-item-overlay">
+                                        <h3>Random Quote Machine</h3>
+                                        <p>Click the button for a quote, click the other button to tweet!
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
                         </div>
                         <div>
-                                <button class="open-lightbox-btn" for="lightbox2">
-                            <div class="slider-item bg-image img-search">
-                                <div class="slider-item-overlay">
-                                    <h3>Image Search API</h3>
-                                    <p>An absracted image search API</p>
+                            <button class="open-lightbox-btn" for="lightbox2">
+                                <div class="slider-item bg-image img-search">
+                                    <div class="slider-item-overlay">
+                                        <h3>Image Search API</h3>
+                                        <p>An absracted image search API</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
                         </div>
                         <div>
-                                <button class="open-lightbox-btn" for="lightbox3">
-                            <div class="slider-item bg-image wiki_search">
-                                <div class="slider-item-overlay">
-                                    <h3>Wikipedia Search Engine</h3>
-                                    <p>
-                                        A Wikiepedia Search Engine with a random article function
-                                    </p>
+                            <button class="open-lightbox-btn" for="lightbox3">
+                                <div class="slider-item bg-image wiki_search">
+                                    <div class="slider-item-overlay">
+                                        <h3>Wikipedia Search Engine</h3>
+                                        <p>
+                                            A Wikiepedia Search Engine with a random article function
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
                         </div>
                         <div>
-                                <button class="open-lightbox-btn" for="lightbox4">
-                            <div class="slider-item bg-image twitch-viewer">
-                                <div class="slider-item-overlay">
-                                    <h3>Twitch.tv Viewer</h3>
-                                    <p>
-                                        Shows featured live streams from twitch.tv
-                                    </p>
+                            <button class="open-lightbox-btn" for="lightbox4">
+                                <div class="slider-item bg-image twitch-viewer">
+                                    <div class="slider-item-overlay">
+                                        <h3>Twitch.tv Viewer</h3>
+                                        <p>
+                                            Shows featured live streams from twitch.tv
+                                        </p>
 
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
                         </div>
                         <div>
-                                <button class="open-lightbox-btn" for="lightbox5">
-                            <div class="slider-item bg-image file-api">
-                                <div class="slider-item-overlay">
-                                    <h3>File Metadata Microservice</h3>
-                                    <p>
-                                        An API that returns metadata for an uploaded file
-                                    </p>
+                            <button class="open-lightbox-btn" for="lightbox5">
+                                <div class="slider-item bg-image file-api">
+                                    <div class="slider-item-overlay">
+                                        <h3>File Metadata Microservice</h3>
+                                        <p>
+                                            An API that returns metadata for an uploaded file
+                                        </p>
 
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
                         </div>
                         <div>
-                                <button class="open-lightbox-btn" for="lightbox6">
-                            <div class="slider-item bg-image url-short">
-                                <div class="slider-item-overlay">
-                                    <h3>URL Shortener</h3>
-                                    <p>
-                                        An API that accepts a url and replaces with an alias
-                                    </p>
+                            <button class="open-lightbox-btn" for="lightbox6">
+                                <div class="slider-item bg-image url-short">
+                                    <div class="slider-item-overlay">
+                                        <h3>URL Shortener</h3>
+                                        <p>
+                                            An API that accepts a url and replaces with an alias
+                                        </p>
 
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
                         </div>
                         <div>
-                                <button class="open-lightbox-btn" for="lightbox7">
-                            <div class="slider-item bg-image original-portfolio">
-                                <div class="slider-item-overlay">
-                                    <h3>Old Portfolio Site</h3>
-                                    <p>
-                                        My first portfolio site using Bootstrap
-                                    </p>
+                            <button class="open-lightbox-btn" for="lightbox7">
+                                <div class="slider-item bg-image original-portfolio">
+                                    <div class="slider-item-overlay">
+                                        <h3>Old Portfolio Site</h3>
+                                        <p>
+                                            My first portfolio site using Bootstrap
+                                        </p>
 
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
                         </div>
                         <div>
-                                <button class="open-lightbox-btn" for="lightbox8">
-                            <div class="slider-item bg-image tribute-page">
-                                <div class="slider-item-overlay">
-                                    <h3>Tribute Page</h3>
-                                    <p>
-                                        Fully responsive page using Bootstrap.
-                                    </p>
+                            <button class="open-lightbox-btn" for="lightbox8">
+                                <div class="slider-item bg-image tribute-page">
+                                    <div class="slider-item-overlay">
+                                        <h3>Tribute Page</h3>
+                                        <p>
+                                            Fully responsive page using Bootstrap.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
                         </div>
                         <div>
-                                <button class="open-lightbox-btn" for="lightbox9">
-                            <div class="slider-item bg-image weather-app">
-                                <div class="slider-item-overlay">
-                                    <h3>Current Weather App</h3>
-                                    <p>Shows the current weather forecast the users location
-                                    </p>
+                            <button class="open-lightbox-btn" for="lightbox9">
+                                <div class="slider-item bg-image weather-app">
+                                    <div class="slider-item-overlay">
+                                        <h3>Current Weather App</h3>
+                                        <p>Shows the current weather forecast the users location
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
                         </div>
                     </div>
             </section>
@@ -260,9 +328,9 @@
             </div>
             <div class="lightbox-container">
                 <div class="lightbox">
-                        <button class="close-btn">
-                                <i class="fa fa-times"></i>
-                            </button>
+                    <button class="close-btn">
+                        <i class="fa fa-times"></i>
+                    </button>
                     <div class="lightbox-content hide" id="lightbox1">
                         <h3>Random Quote Machine</h3>
                         <div class="lightbox-upper">
@@ -277,237 +345,310 @@
                                 <h4>Technologies</h4>
                                 <ul class="tech-list">
                                     <% include ../partials/devicons/javascript %>
-                                    <% include ../partials/devicons/jquery %>
-                                    <% include ../partials/devicons/html5 %>
-                                    <% include ../partials/devicons/css3 %>
-                                    <% include ../partials/devicons/sass %>
-                                    <% include ../partials/devicons/bootstrap %>
+                                        <% include ../partials/devicons/jquery %>
+                                            <% include ../partials/devicons/html5 %>
+                                                <% include ../partials/devicons/css3 %>
+                                                    <% include ../partials/devicons/sass %>
+                                                        <% include ../partials/devicons/bootstrap %>
                                 </ul>
                             </div>
                             <div class="proj-links">
                                 <h4>Check it out</h4>
                                 <ul class="link-list">
-                                    <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
-                                    <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
+                                    <li class="project-link">
+                                        <a href="#">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li class="code-link">
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="lightbox-content hide" id="lightbox2">
-                            <h3>Image Search API</h3>
-                            <div class="lightbox-upper">
-                                <p>This is an absracted image search API. The frontend acts as documentation allowing developers
-                                        to preview responses of the API endpoints. Allows for pagination.
-                                </p>
-                                <div class="screenshot bg-image img-search"></div>
+                        <h3>Image Search API</h3>
+                        <div class="lightbox-upper">
+                            <p>This is an absracted image search API. The frontend acts as documentation allowing developers
+                                to preview responses of the API endpoints. Allows for pagination.
+                            </p>
+                            <div class="screenshot bg-image img-search"></div>
+                        </div>
+                        <div class="lightbox-lower">
+                            <div>
+                                <h4>Technologies</h4>
+                                <ul class="tech-list">
+                                    <% include ../partials/devicons/javascript %>
+                                        <% include ../partials/devicons/reactjs %>
+                                            <% include ../partials/devicons/nodejs %>
+                                                <% include ../partials/devicons/mongodb %>
+                                                    <% include ../partials/devicons/webpack %>
+                                                        <% include ../partials/devicons/sass %>
+                                </ul>
                             </div>
-                            <div class="lightbox-lower">
-                                <div>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                            <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/reactjs %>
-                                                <% include ../partials/devicons/nodejs %>
-                                                    <% include ../partials/devicons/mongodb %>
-                                                        <% include ../partials/devicons/webpack %>
-                                                            <% include ../partials/devicons/sass %>
-                                    </ul>
-                                </div>
-                                <div class="proj-links">
-                                    <h4>Check it out</h4>
-                                    <ul class="link-list">
-                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
-                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
+                            <div class="proj-links">
+                                <h4>Check it out</h4>
+                                <ul class="link-list">
+                                    <li class="project-link">
+                                        <a href="#">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li class="code-link">
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
+                        </div>
                     </div>
                     <div class="lightbox-content hide" id="lightbox3">
-                            <h3>Wikipedia Search Engine</h3>
-                            <div class="lightbox-upper">
-                                <p>Fully responsive page allowing users to search Wikipedia articles. Uses the Wikipedia search API.
-                                </p>
-                                <div class="screenshot bg-image wiki_search"></div>
-                            </div>
-                            <div class="lightbox-lower">
-                                <div>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                            <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/jquery %>
-                                                <% include ../partials/devicons/html5 %>
-                                                    <% include ../partials/devicons/css3 %>
-                                    </ul>
-                                </div>
-                                <div class="proj-links">
-                                    <h4>Check it out</h4>
-                                    <ul class="link-list">
-                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
-                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="lightbox-content hide" id="lightbox4">
-                            <h3>Twitch.tv Viewer</h3>
-                            <div class="lightbox-upper">
-                                <p>Shows featured live streams from twitch.tv. Shows a list of regular streamers, live and offline. There is also a search function
-                                        to search for twitch.tv streamers.
-                                </p>
-                                <div class="screenshot bg-image twitch-viewer"></div>
-                            </div>
-                            <div class="lightbox-lower">
-                                <div>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                            <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/jquery %>
-                                                <% include ../partials/devicons/html5 %>
-                                                    <% include ../partials/devicons/css3 %>
-                                    </ul>
-                                </div>
-                                <div class="proj-links">
-                                    <h4>Check it out</h4>
-                                    <ul class="link-list">
-                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
-                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="lightbox-content hide" id="lightbox5">
-                            <h3>File Metadata Microservice</h3>
-                            <div class="lightbox-upper">
-                                <p>An API that returns metadata for an uploaded file. 
-                                </p>
-                                <div class="screenshot bg-image file-api"></div>
-                            </div>
-                            <div class="lightbox-lower">
-                                <div>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                            <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/reactjs %>
-                                                <% include ../partials/devicons/nodejs %>
-                                                    <% include ../partials/devicons/webpack %>
-                                                        <% include ../partials/devicons/html5 %>
-                                                            <% include ../partials/devicons/css3 %>
-                                    </ul>
-                                </div>
-                                <div class="proj-links">
-                                    <h4>Check it out</h4>
-                                    <ul class="link-list">
-                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
-                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="lightbox-content hide" id="lightbox6">
-                            <h3>URL Shortener</h3>
-                            <div class="lightbox-upper">
-                                <p>An API that accepts a url and returns a parameter that can be used to submit to the API in place of the original url. Stores
-                                        urls in a mongoDB instance.
-                                </p>
-                                <div class="screenshot bg-image url-short"></div>
-                            </div>
-                            <div class="lightbox-lower">
-                                <div>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                            <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/nodejs %>
-                                                <% include ../partials/devicons/express %>
-                                                    <% include ../partials/devicons/mongodb %>
-                                    </ul>
-                                </div>
-                                <div class="proj-links">
-                                    <h4>Check it out</h4>
-                                    <ul class="link-list">
-                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
-                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="lightbox-content hide" id="lightbox7">
-                            <h3>Old Portfolio Site</h3>
-                            <div class="lightbox-upper">
-                                <p>First portfolio site using the Bootstrap grid for a fully responsive layout
-                                </p>
-                                <div class="screenshot bg-image original-portfolio"></div>
-                            </div>
-                            <div class="lightbox-lower">
-                                <div>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                            <% include ../partials/devicons/javascript %>
-                                            <% include ../partials/devicons/jquery %>
-                                                <% include ../partials/devicons/html5 %>
-                                                    <% include ../partials/devicons/css3 %>
-                                                        <% include ../partials/devicons/bootstrap %>
-                                    </ul>
-                                </div>
-                                <div class="proj-links">
-                                    <h4>Check it out</h4>
-                                    <ul class="link-list">
-                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
-                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="lightbox-content hide" id="lightbox8">
-                            <h3>Tribute Page</h3>
-                            <div class="lightbox-upper">
-                                <p> An example of a fully responsive page using the Bootstrap grid.
-                                </p>
-                                <div class="screenshot bg-image tribute-page"></div>
-                            </div>
-                            <div class="lightbox-lower">
-                                <div>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                            <% include ../partials/devicons/html5 %>
-                                            <% include ../partials/devicons/css3 %>
-                                            <% include ../partials/devicons/bootstrap %>
-                                    </ul>
-                                </div>
-                                <div class="proj-links">
-                                    <h4>Check it out</h4>
-                                    <ul class="link-list">
-                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
-                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="lightbox-content hide" id="lightbox9">
-                            <h3>Current Weather App</h3>
-                            <div class="lightbox-upper">
-                                <p>Uses geolocation API to obtain users location and provide the current weather forecast
-                                        for that City. Also uses the DarkSky API.
-                                </p>
-                                <div class="screenshot bg-image weather-app"></div>
-                            </div>
-                            <div class="lightbox-lower">
-                                <div>
-                                    <h4>Technologies</h4>
-                                    <ul class="tech-list">
-                                            <% include ../partials/devicons/javascript %>
+                        <h3>Wikipedia Search Engine</h3>
+                        <div class="lightbox-upper">
+                            <p>Fully responsive page allowing users to search Wikipedia articles. Uses the Wikipedia search
+                                API.
+                            </p>
+                            <div class="screenshot bg-image wiki_search"></div>
+                        </div>
+                        <div class="lightbox-lower">
+                            <div>
+                                <h4>Technologies</h4>
+                                <ul class="tech-list">
+                                    <% include ../partials/devicons/javascript %>
+                                        <% include ../partials/devicons/jquery %>
                                             <% include ../partials/devicons/html5 %>
                                                 <% include ../partials/devicons/css3 %>
-                                                    <% include ../partials/devicons/jquery %>
-                                    </ul>
-                                </div>
-                                <div class="proj-links">
-                                    <h4>Check it out</h4>
-                                    <ul class="link-list">
-                                        <li class="project-link"><a href="#"><i class="fa fa-link"></i></a></li>
-                                        <li class="code-link"><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
+                                </ul>
                             </div>
+                            <div class="proj-links">
+                                <h4>Check it out</h4>
+                                <ul class="link-list">
+                                    <li class="project-link">
+                                        <a href="#">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li class="code-link">
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lightbox-content hide" id="lightbox4">
+                        <h3>Twitch.tv Viewer</h3>
+                        <div class="lightbox-upper">
+                            <p>Shows featured live streams from twitch.tv. Shows a list of regular streamers, live and offline.
+                                There is also a search function to search for twitch.tv streamers.
+                            </p>
+                            <div class="screenshot bg-image twitch-viewer"></div>
+                        </div>
+                        <div class="lightbox-lower">
+                            <div>
+                                <h4>Technologies</h4>
+                                <ul class="tech-list">
+                                    <% include ../partials/devicons/javascript %>
+                                        <% include ../partials/devicons/jquery %>
+                                            <% include ../partials/devicons/html5 %>
+                                                <% include ../partials/devicons/css3 %>
+                                </ul>
+                            </div>
+                            <div class="proj-links">
+                                <h4>Check it out</h4>
+                                <ul class="link-list">
+                                    <li class="project-link">
+                                        <a href="#">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li class="code-link">
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lightbox-content hide" id="lightbox5">
+                        <h3>File Metadata Microservice</h3>
+                        <div class="lightbox-upper">
+                            <p>An API that returns metadata for an uploaded file.
+                            </p>
+                            <div class="screenshot bg-image file-api"></div>
+                        </div>
+                        <div class="lightbox-lower">
+                            <div>
+                                <h4>Technologies</h4>
+                                <ul class="tech-list">
+                                    <% include ../partials/devicons/javascript %>
+                                        <% include ../partials/devicons/reactjs %>
+                                            <% include ../partials/devicons/nodejs %>
+                                                <% include ../partials/devicons/webpack %>
+                                                    <% include ../partials/devicons/html5 %>
+                                                        <% include ../partials/devicons/css3 %>
+                                </ul>
+                            </div>
+                            <div class="proj-links">
+                                <h4>Check it out</h4>
+                                <ul class="link-list">
+                                    <li class="project-link">
+                                        <a href="#">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li class="code-link">
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lightbox-content hide" id="lightbox6">
+                        <h3>URL Shortener Microservice</h3>
+                        <div class="lightbox-upper">
+                            <p>An API that accepts a url and returns a parameter that can be used to submit to the API in place
+                                of the original url. Stores urls in a mongoDB instance.
+                            </p>
+                            <div class="screenshot bg-image url-short"></div>
+                        </div>
+                        <div class="lightbox-lower">
+                            <div>
+                                <h4>Technologies</h4>
+                                <ul class="tech-list">
+                                    <% include ../partials/devicons/javascript %>
+                                        <% include ../partials/devicons/nodejs %>
+                                            <% include ../partials/devicons/express %>
+                                                <% include ../partials/devicons/mongodb %>
+                                </ul>
+                            </div>
+                            <div class="proj-links">
+                                <h4>Check it out</h4>
+                                <ul class="link-list">
+                                    <li class="project-link">
+                                        <a href="#">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li class="code-link">
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lightbox-content hide" id="lightbox7">
+                        <h3>Old Portfolio Site</h3>
+                        <div class="lightbox-upper">
+                            <p>First portfolio site using the Bootstrap grid for a fully responsive layout
+                            </p>
+                            <div class="screenshot bg-image original-portfolio"></div>
+                        </div>
+                        <div class="lightbox-lower">
+                            <div>
+                                <h4>Technologies</h4>
+                                <ul class="tech-list">
+                                    <% include ../partials/devicons/javascript %>
+                                        <% include ../partials/devicons/jquery %>
+                                            <% include ../partials/devicons/html5 %>
+                                                <% include ../partials/devicons/css3 %>
+                                                    <% include ../partials/devicons/bootstrap %>
+                                </ul>
+                            </div>
+                            <div class="proj-links">
+                                <h4>Check it out</h4>
+                                <ul class="link-list">
+                                    <li class="project-link">
+                                        <a href="#">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li class="code-link">
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lightbox-content hide" id="lightbox8">
+                        <h3>Tribute Page</h3>
+                        <div class="lightbox-upper">
+                            <p> An example of a fully responsive page using the Bootstrap grid.
+                            </p>
+                            <div class="screenshot bg-image tribute-page"></div>
+                        </div>
+                        <div class="lightbox-lower">
+                            <div>
+                                <h4>Technologies</h4>
+                                <ul class="tech-list">
+                                    <% include ../partials/devicons/html5 %>
+                                        <% include ../partials/devicons/css3 %>
+                                            <% include ../partials/devicons/bootstrap %>
+                                </ul>
+                            </div>
+                            <div class="proj-links">
+                                <h4>Check it out</h4>
+                                <ul class="link-list">
+                                    <li class="project-link">
+                                        <a href="#">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li class="code-link">
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lightbox-content hide" id="lightbox9">
+                        <h3>Current Weather App</h3>
+                        <div class="lightbox-upper">
+                            <p>Uses geolocation API to obtain users location and provide the current weather forecast for that
+                                City. Also uses the DarkSky API.
+                            </p>
+                            <div class="screenshot bg-image weather-app"></div>
+                        </div>
+                        <div class="lightbox-lower">
+                            <div>
+                                <h4>Technologies</h4>
+                                <ul class="tech-list">
+                                    <% include ../partials/devicons/javascript %>
+                                        <% include ../partials/devicons/html5 %>
+                                            <% include ../partials/devicons/css3 %>
+                                                <% include ../partials/devicons/jquery %>
+                                </ul>
+                            </div>
+                            <div class="proj-links">
+                                <h4>Check it out</h4>
+                                <ul class="link-list">
+                                    <li class="project-link">
+                                        <a href="#">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                    </li>
+                                    <li class="code-link">
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
