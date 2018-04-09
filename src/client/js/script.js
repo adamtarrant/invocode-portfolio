@@ -138,7 +138,7 @@ $(document).ready(function () {
         scrollHorizontally: false,
         easingcss3: 'ease-in',
         fadingEffect: false,
-        responsiveWidth: 655,
+        responsiveWidth: 670,
         responsiveHeight: 500,
         responsiveSlides: false,
         parallax: false,
