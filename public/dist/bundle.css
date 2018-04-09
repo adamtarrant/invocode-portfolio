@@ -441,12 +441,10 @@ h1 {
     font-size: 1.1em;
     margin: 0 0.5em 0 0; }
 
-.about-content {
-  overflow: visible; }
-
 .contact-content {
   -ms-flex-align: start;
-      align-items: flex-start; }
+   align-items: flex-start;
+  min-height: 700px; }
 
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active,
 textarea:-webkit-autofill,
@@ -464,7 +462,8 @@ select:-webkit-autofill:active {
   width: 25vw;
   max-width: 500px;
   height: 100%;
-  font-size: 1.2em; }
+  font-size: 1.2em;
+  padding-bottom: 40px; }
 
 form {
   display: -ms-flexbox;
@@ -660,9 +659,10 @@ textarea.form-item {
   .slider {
     width: 75vw; }
   .lightbox {
-    width: 60vw; } }
-
-@media (max-height: 800px) {
+    width: 60vw; }
+  .content.about {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap; }
   .about-desc-wrapper {
     font-size: 1.3em;
     max-width: 400px; }
@@ -670,6 +670,8 @@ textarea.form-item {
     width: calc(3vw + 6vh); } }
 
 @media (max-width: 670px), (max-height: 500px) {
+  .fp-scrollable {
+    height: auto !important; }
   h1, h2 {
     width: 100%;
     text-align: center;

@@ -496,12 +496,9 @@ h1 {
   }
 }
 
-.about-content {
-  overflow: visible;
-}
-
 .contact-content {
   align-items: flex-start;
+  min-height: 700px;
 }
 
 input:-webkit-autofill,
@@ -520,6 +517,7 @@ select:-webkit-autofill
   max-width: 500px;
   height: 100%;
   font-size: 1.2em;
+  padding-bottom: 40px;
 }
 
 form {
@@ -739,9 +737,11 @@ textarea.form-item {
   .lightbox {
     width: 60vw;
   }
-}
 
-@media(max-height: 800px){
+  .content.about {
+    flex-wrap: nowrap;
+  }
+
   .about-desc-wrapper {
     font-size: 1.3em;
     max-width: 400px;
@@ -749,9 +749,14 @@ textarea.form-item {
   .img-wrapper {
     width: calc(3vw + 6vh);
   }
+
 }
 
 @media(max-width: 670px), (max-height: 500px) {
+  .fp-scrollable {
+    height: auto !important;
+  }
+
   h1, h2 {
     width: 100%;
     text-align: center;

@@ -1,6 +1,9 @@
 // Developed by Adam Tarrant - 2018
-import $ from 'jquery';
-import 'fullpage.js';
+
+window.$ = window.jQuery = require('jquery');
+window.IScroll = require('iscroll/build/iscroll.js');
+require('fullpage.js/vendors/scrolloverflow.js');
+require('fullpage.js/dist/jquery.fullpage.js');
 import 'slick-carousel';
 import TweenLite from 'gsap/TweenLite';
 import 'gsap/CSSPlugin';
@@ -113,7 +116,7 @@ $(document).ready(function () {
         menu: '.nav-list',
         anchors: ['home', 'about', 'portfolio', 'contact'],
         recordHistory: false,
-        lockAnchors: false,
+        lockAnchors: true,
         navigation: true,
         navigationPosition: 'right',
         navigationTooltips: ['Home', 'About', 'Portfolio', 'Contact'],
@@ -125,11 +128,10 @@ $(document).ready(function () {
         scrollingSpeed: 700,
         autoScrolling: true,
         dragAndMove: false,
-        fitToSection: false,
+        fitToSection: true,
         fitToSectionDelay: 500,
-        normalScrollElements: '.contact-content',
-        scrollBar: true,
-        scrollOverflow: false,
+        scrollBar: false,
+        scrollOverflow: true,
         scrollOverflowOptions: {
             scrollX: false,
             scrollY: true
@@ -137,7 +139,7 @@ $(document).ready(function () {
         scrollHorizontally: false,
         easingcss3: 'ease-in',
         fadingEffect: false,
-        responsiveWidth: 655,
+        responsiveWidth: 670,
         responsiveHeight: 500,
         responsiveSlides: false,
         sectionSelector: 'section',
