@@ -10,7 +10,7 @@ import styles from '../scss/main.scss';
 
 // func declaration for setting number of rows - awaiting fix from slick.js
 function setNoSlideRows() {
-    if ($(window).width() < 840 || $(window).height() < 700) {
+    if ($(window).width() < 840 || $(window).height() < 750) {
         return 1;
     } else {
         return 2;
@@ -125,7 +125,7 @@ $(document).ready(function () {
         scrollingSpeed: 700,
         autoScrolling: true,
         dragAndMove: false,
-        fitToSection: true,
+        fitToSection: false,
         fitToSectionDelay: 500,
         scrollBar: true,
         scrollOverflow: false,
@@ -139,12 +139,6 @@ $(document).ready(function () {
         responsiveWidth: 655,
         responsiveHeight: 500,
         responsiveSlides: false,
-        parallax: false,
-        parallaxOptions: {
-            type: 'reveal',
-            percentage: 62,
-            property: 'translate'
-        },
         sectionSelector: 'section',
         verticalCentered: true
     });
