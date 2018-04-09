@@ -2,7 +2,7 @@
 window.$ = window.jQuery = require('jquery');
 window.IScroll = require('iscroll/build/iscroll.js');
 require('fullpage.js/vendors/scrolloverflow.js');
-import 'fullpage.js/dist/jquery.fullpage.js';
+require('fullpage.js/dist/jquery.fullpage.js');
 import 'slick-carousel';
 import TweenLite from 'gsap/TweenLite';
 import 'gsap/CSSPlugin';

@@ -447,7 +447,7 @@ h1 {
 .contact-content {
   -ms-flex-align: start;
       align-items: flex-start;
-  height: 80%; }
+  min-height: 600px; }
 
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active,
 textarea:-webkit-autofill,
