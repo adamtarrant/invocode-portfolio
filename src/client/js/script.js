@@ -3,9 +3,9 @@
 window.$ = window.jQuery = require('jquery');
 window.IScroll = require('iscroll/build/iscroll.js');
 require('fullpage.js/vendors/scrolloverflow.js');
-require('fullpage.js/dist/jquery.fullpage.js');
+import 'fullpage.js/dist/jquery.fullpage.js';
 import 'slick-carousel';
-import TweenLite from 'gsap/TweenLite';
+import TweenLite from 'gsap/TweenMax';
 import 'gsap/CSSPlugin';
 import 'gsap/EasePack';
 
@@ -83,6 +83,30 @@ function closeLightBox() {
     }, 300);
 }
 
+    //animation of menu opening and closing functions
+function openNavMenu(){
+        applyClassToMultipleEls(['.menu-list-item'], 'closed', 'remove');
+        applyClassToMultipleEls(['.fa-list-ul'], 'x', 'add');
+        applyClassToMultipleEls(['.fa-list-ul'], 'fa-list-ul', 'remove');
+        applyClassToMultipleEls(['.menu-list-item'], 'opened', 'add');
+        TweenLite.fromTo(".menu-list-item.open", 1, {rotation:0}, {rotation:1080});
+        TweenLite.to(".menu-list-item.home", 1, {y:30, ease: Elastic.easeOut.config(1.3, 1)});
+        TweenLite.to(".menu-list-item.about", 1, {y:60, ease: Elastic.easeOut.config(1.3, 1)});
+        TweenLite.to(".menu-list-item.portfolio", 1.5, {y:90, ease: Elastic.easeOut.config(1.3, 0.7)});
+        TweenLite.to(".menu-list-item.contact", 2, {y:120, ease: Elastic.easeOut.config(1.3, 0.6)});
+}
+function closeNavMenu() {
+        applyClassToMultipleEls(['.menu-list-item'], 'closed', 'add');
+        applyClassToMultipleEls(['.x'], 'fa-list-ul', 'add');
+        applyClassToMultipleEls(['.fa-list-ul'], 'x', 'remove');
+        applyClassToMultipleEls(['.menu-list-item'], 'opened', 'remove');
+        TweenLite.fromTo(".menu-list-item.open", 1, {rotation: 0}, {rotation:720});
+        TweenLite.to(".menu-list-item.home", 1, {y:-60, ease: Power4.easeOut});
+        TweenLite.to(".menu-list-item.about", 1, {y:-120, ease: Power4.easeOut});
+        TweenLite.to(".menu-list-item.portfolio", 1, {y:-180, ease: Power4.easeOut});
+        TweenLite.to(".menu-list-item.contact", 1, {y:-240, ease: Power4.easeOut});
+}
+
 //Utility function for adding/removing a class to multiple selectors and elements
 function applyClassToMultipleEls(selectors, className, action) {
     if (!selectors) return;
@@ -113,12 +137,12 @@ $(document).ready(function () {
 
     //initialises scroll snapping with options using fullpage.js
     $('#fullpage').fullpage({
-        menu: '.nav-list',
+        menu: '.menu-list',
         anchors: ['home', 'about', 'portfolio', 'contact'],
         recordHistory: false,
         lockAnchors: true,
         navigation: true,
-        navigationPosition: 'right',
+        navigationPosition: 'left',
         navigationTooltips: ['Home', 'About', 'Portfolio', 'Contact'],
         showActiveTooltip: false,
         slidesNavigation: false,
@@ -164,11 +188,6 @@ $(document).ready(function () {
         $(".form-item[name=" + formField + "]").toggleClass("filled", !!$(".form-item[name=" + formField + "]").val());
     });
 
-    // makes hamburger button expand the nav menu
-    $(".menu-hamburger").on("click", () => {
-        $(".nav-list").toggleClass("visible");
-    });
-
     //initialise mutation observer - callback includes animatons for logo and skills list
     const observer = new MutationObserver(function (mutations) {
         mutations.forEach(mutationRecord => {
@@ -179,11 +198,13 @@ $(document).ready(function () {
                 }
             } else {
                 if (targetClass == "home-section") {
-                    $(".logo").removeClass("cornered");
+                    setTimeout(() => {
+                        $(".logo").removeClass("cornered");
+                    }, 500);
                 } else if (targetClass == "about-section") {
                     $(".about-upper").addClass("show");
                     for (let i = 0; i < $(".skills-grid-item").length; i++) {
-                        let delay = i * 50;
+                        let delay = i * 100;
                         setTimeout(() => {
                             $(".skills-grid-item:nth-child(" + (i + 1) + ")").addClass("show");
                         }, delay);
@@ -199,24 +220,26 @@ $(document).ready(function () {
     //animation of skills list
     observer.observe($(".about-section")[0], observerConfig);
 
-    //animation of menu opening
+
+    //home down button event listener and handler
+    document.querySelector(".down-btn").addEventListener("click", () => {
+        $.fn.fullpage.moveSectionDown();
+    });
+
     document.querySelector("a.menu-btn.open").addEventListener("click", () => {
         if (/\bopened\b/.test(document.querySelector(".menu-list-item").className)) {
-            applyClassToMultipleEls(['.menu-list-item'], 'opened', 'remove');
-            TweenLite.to(".menu-list-item.about", 1, {y:-60, ease: Power4.easeOut});
-            TweenLite.to(".menu-list-item.portfolio", 1, {y:-120, ease: Power4.easeOut});
-            TweenLite.to(".menu-list-item.contact", 1, {y:-180, ease: Power4.easeOut});
+            closeNavMenu();
             } else {
-            applyClassToMultipleEls(['.menu-list-item'], 'opened', 'add');
-        TweenLite.to(".menu-list-item.about", 1, {y:30, ease: Elastic.easeOut.config(1.5, 1)});
-        TweenLite.to(".menu-list-item.portfolio", 1.5, {y:60, ease: Elastic.easeOut.config(3, 0.6)});
-        TweenLite.to(".menu-list-item.contact", 2, {y:90, ease: Elastic.easeOut.config(3, 0.6)});
+            openNavMenu();
             }
     });
 
-/*     $(".menu-list-item .open").on("click", () => {
-        $(".menu-list-item").toggleClass("show");
-    }); */
+    //menu anchor scrolls
+    superAddEventListener(".nav-btn", "click", function (e) {
+        let targetSection = e.target.attributes.dataanchor.value;
+            $.fn.fullpage.moveTo(targetSection);
+        closeNavMenu();
+   });
 
     //make lightbox appear at correct portfolio item event listener - using vanilla JS
     superAddEventListener(".open-lightbox-btn", "click", openLightBox);

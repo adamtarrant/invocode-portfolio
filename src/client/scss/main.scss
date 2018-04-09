@@ -54,6 +54,14 @@ $weather-app-img: '../img/weather_app.jpg';
   to {opacity: 1; top: 0;}
 }
 
+@keyframes downprompt {
+  0% {transform: translate(0,0)}
+  2% {transform: translate(0,10px)}
+  4% {transform: translate(0,0)}
+  6% {transform: translate(0,10px)}
+  8% {transform: translate(0,0)}
+}
+
 body {
   background: $main-bg-color;
   font-size: 12px;
@@ -101,30 +109,45 @@ nav {
 .menu-list {
   display: flex;
   flex-direction: column;
+  height: 60px;
 }
 
 .menu-list-item {
   width: 60px;
   height: 60px;
-  background-color: $main-text-color;
   border-radius: 50%;
+  border: 2px solid;
+  cursor: pointer;
   opacity: 0;
-  transition: opacity .5s ease 0s;
   &.open {
-    cursor: pointer;
+    position: relative;
     opacity: 1;
+    background-color: $main-text-color;
+    color: $home-bg-color;
+    z-index: 1007;
+    }
+  &.home {
+    transform: matrix(1,0,0,1,0,-60);
+    background-color: $home-bg-color;
   }
   &.about {
-    transform: matrix(1,0,0,1,0,-60);
+    transform: matrix(1,0,0,1,0,-120);
+    background-color: $about-bg-color;
   }
   &.portfolio {
-    transform: matrix(1,0,0,1,0,-120);
+    transform: matrix(1,0,0,1,0,-180);
+    background-color: $portfolio-bg-color;
   }
   &.contact {
-    transform: matrix(1,0,0,1,0,-180);
+    transform: matrix(1,0,0,1,0,-240);
+    background-color: $contact-bg-color;
   }
   &.opened {
     opacity: 1;
+    transition: opacity .5s ease 0s;
+  }
+  &.closed {
+    transition: opacity .5s ease 0s;
   }
 }
 
@@ -133,9 +156,17 @@ nav {
 .menu-btn {
   width: 100%;
   font-size: 3em;
-  color: black;
   position: relative;
-  z-index: 1011;
+  i{
+    &.x {
+      &::after {
+        content:'X';
+        font-family: 'Raleway', sans-serif;
+        width: 60px;
+        height: 60px;
+      }
+  }
+}
 }
 
 .logo {
@@ -209,7 +240,6 @@ nav {
       display: flex;
       align-items: stretch;
       margin: 2em 0 0 0;
-      width: 100%
     }
     a {
       width: 30%;
@@ -218,9 +248,14 @@ nav {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      width: 70%;
     }
   }
+}
+
+.flex-center-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .flex-space-start {
@@ -271,6 +306,9 @@ h1 {
 
 .contact-section {
   background-color: $contact-bg-color;
+  h1 {
+    top: 2vh;
+  }
 }
 
 .content {
@@ -278,7 +316,7 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  height: 68%;
+  height: 75%;
   &.portfolio {
     align-items: center;
   }
@@ -290,6 +328,26 @@ h1 {
   }
   &.home {
     min-height: 100vh;
+  }
+}
+
+.down-btn-wrapper {
+  position: relative;
+  top: 75vh;
+}
+
+.down-btn {
+  cursor: pointer;
+  background-color: $main-text-color;
+  animation: downprompt 5s ease-in 1s infinite normal;
+  color: $home-bg-color;
+  border: none;
+  font-size: 2em;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  &:focus {
+    outline: none;
   }
 }
 
@@ -321,7 +379,7 @@ h1 {
 .img-wrapper {
   display: flex;
   align-items: center;
-  margin: -20px 50px 0 50px;
+  margin: 0 50px;
   width: 10vw;
   min-width: 100px;
   height: auto;
@@ -336,8 +394,21 @@ h1 {
   width: 100%;
   min-height: 320px;
   h2 {
+    text-align: center;
     margin: 0 0 0 0;
     font-size: calc(1.2vw + 4vh);
+    &::before {
+      content: '<'; text-align: right;
+    }
+    &::after {
+      content: '/>'; text-align: left;
+    }
+    &::before, &::after {
+      display: inline-block;
+      border-bottom: 1px solid $main-text-color;
+      width: 40%;
+    }
+
   }
 
   .skills-grid {
@@ -499,6 +570,7 @@ h1 {
 .contact-content {
   align-items: flex-start;
   min-height: 700px;
+  padding-top: 10vh;
 }
 
 input:-webkit-autofill,
@@ -730,6 +802,10 @@ textarea.form-item {
   display: none;
 }
 
+#fp-nav ul li a span {
+  background-color: $main-text-color !important;
+}
+
 @media(max-width: 1200px){
   .slider {
     width: 75vw;
@@ -863,8 +939,14 @@ textarea.form-item {
   }
   .social-icons.contact {
     width: 90%;
+    div {
+      width: 70%;
+    }
   }
+
 }
+
+
 
 
 @media (min-width: 1600px) {

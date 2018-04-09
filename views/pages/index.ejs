@@ -10,55 +10,43 @@
             <nav>
                 <div class="menu-wrapper">
                     <ul class="menu-list">
-                        <li class="menu-list-item open">
-                            <a class="menu-btn open">
-                                <i class="fa fa-list-ul"></i>
+                            <li class="menu-list-item open">
+                                    <a class="menu-btn open">
+                                        <i class="fa fa-list-ul"></i>
+                                    </a>
+                                </li>
+                        <li class="menu-list-item home">
+                            <a class="menu-btn home nav-btn" dataanchor="home">
+                                <i class="fa fa-home" dataanchor="home"></i>
                             </a>
                         </li>
                         <li class="menu-list-item about">
-                            <a class="menu-btn about">
-                                <i class="fa fa-user"></i>
+                            <a class="menu-btn about nav-btn" dataanchor="about">
+                                <i class="fa fa-user" dataanchor="about"></i>
                             </a>
                         </li>
                         <li class="menu-list-item portfolio">
-                            <a class="menu-btn portfolio">
-                                <i class="fa fa-code"></i>
+                            <a class="menu-btn portfolio nav-btn" dataanchor="portfolio">
+                                <i class="fa fa-code" dataanchor="portfolio"></i>
                             </a>
                         </li>
                         <li class="menu-list-item contact">
-                            <a class="menu-btn contact">
-                                <i class="fa fa-envelope"></i>
+                            <a class="menu-btn contact nav-btn" dataanchor="contact">
+                                <i class="fa fa-envelope" dataanchor="contact"></i>
                             </a>
                         </li>
                     </ul>
 
                 </div>
             </nav>
-            <!-- <div class="social-icons header">
-                <ul>
-                    <li>
-                        <a class="fa fa-fw fa-github" href="https://github.com/adamtarrant" target="_blank"></a>
-                        <span class="sr-text">Link to Github</span>
-                    </li>
-                    <li>
-                        <a class="fa fa-fw fa-linkedin" href="#"></a>
-                        <span class="sr-text">Link to LinkedIn</span>
-                    </li>
-                    <li>
-                        <a class="fa fa-fw fa-envelope-o" href="#"></a>
-                        <span class="sr-text">Link to my email</span>
-                    </li>
-                </ul>
-            </div> -->
         </header>
         <div id="fullpage">
-            <section class="home-section fp-auto-height-responsive fp-noscroll">
+            <section class="home-section fp-auto-height-responsive fp-noscroll" data-anchor="home">
                 <div class="content home">
-                    <p>Infinitely Inventive and Innovative</p>
-                    <p>Full stack web development</p>
+                    <div class="down-btn-wrapper flex-center-col"><p>Click to scroll down</p><button class="down-btn"><i class="fa fa-chevron-down"></i></button></div>
                 </div>
             </section>
-            <section class="about-section fp-auto-height-responsive fp-noscroll">
+            <section class="about-section fp-auto-height-responsive fp-noscroll" data-anchor="about">
                 <h1>about</h1>
                 <div class="content about">
                     <div class="about-upper">
@@ -152,7 +140,7 @@
                     </div>
                 </div>
             </section>
-            <section class="portfolio-section fp-auto-height-responsive fp-noscroll">
+            <section class="portfolio-section fp-auto-height-responsive fp-noscroll" data-anchor="portfolio">
                 <h1>portfolio</h1>
                 <div class="content portfolio">
                     <div class="slider">
@@ -258,7 +246,7 @@
                                 <div class="slider-item bg-image weather-app">
                                     <div class="slider-item-overlay">
                                         <h3>Current Weather App</h3>
-                                        <p>Shows the current weather forecast the users location
+                                        <p>Shows the current weather forecast at the users location
                                         </p>
                                     </div>
                                 </div>
@@ -266,7 +254,7 @@
                         </div>
                     </div>
             </section>
-            <section class="contact-section fp-auto-height-responsive">
+            <section class="contact-section fp-auto-height-responsive" data-anchor="contact">
                 <h1>contact</h1>
                 <div class="contact-content content">
                     <div class="social-icons contact">
