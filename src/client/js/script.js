@@ -1,7 +1,10 @@
-// Coded by Adam Tarrant - 2018
-import $ from "jquery";
+// Developed by Adam Tarrant - 2018
+import $ from 'jquery';
 import 'fullpage.js';
 import 'slick-carousel';
+import TweenLite from 'gsap/TweenLite';
+import 'gsap/CSSPlugin';
+import 'gsap/EasePack';
 
 import styles from '../scss/main.scss';
 
@@ -66,7 +69,6 @@ function openLightBox(e) {
     document.getElementById(e.target.getAttribute('for')).classList.remove("hide");
 }
 
-
 // remove active class to hide lightbox and add hide class to lightbox content
 function closeLightBox() {
     document.querySelector(".lightbox").classList.add("closing");
@@ -124,16 +126,15 @@ $(document).ready(function () {
         autoScrolling: true,
         dragAndMove: false,
         fitToSection: true,
-        fitToSectionDelay: 1000,
+        fitToSectionDelay: 500,
         scrollBar: true,
         scrollOverflow: false,
-        scrollOverflowReset: false,
         scrollOverflowOptions: {
             scrollX: false,
             scrollY: true
         },
         scrollHorizontally: false,
-        easing: 'easeInOutCubic',
+        easingcss3: 'ease-in',
         fadingEffect: false,
         responsiveWidth: 655,
         responsiveHeight: 500,
@@ -202,7 +203,23 @@ $(document).ready(function () {
     observer.observe($(".about-section")[0], observerConfig);
 
     //animation of menu opening
-    
+    document.querySelector("a.menu-btn.open").addEventListener("click", () => {
+        if (/\bopened\b/.test(document.querySelector(".menu-list-item").className)) {
+            applyClassToMultipleEls(['.menu-list-item'], 'opened', 'remove');
+            TweenLite.to(".menu-list-item.about", 1, {y:-60, ease: Power4.easeOut});
+            TweenLite.to(".menu-list-item.portfolio", 1, {y:-120, ease: Power4.easeOut});
+            TweenLite.to(".menu-list-item.contact", 1, {y:-180, ease: Power4.easeOut});
+            } else {
+            applyClassToMultipleEls(['.menu-list-item'], 'opened', 'add');
+        TweenLite.to(".menu-list-item.about", 1, {y:30, ease: Elastic.easeOut.config(1.5, 1)});
+        TweenLite.to(".menu-list-item.portfolio", 1.5, {y:60, ease: Elastic.easeOut.config(3, 0.6)});
+        TweenLite.to(".menu-list-item.contact", 2, {y:90, ease: Elastic.easeOut.config(3, 0.6)});
+            }
+    });
+
+/*     $(".menu-list-item .open").on("click", () => {
+        $(".menu-list-item").toggleClass("show");
+    }); */
 
     //make lightbox appear at correct portfolio item event listener - using vanilla JS
     superAddEventListener(".open-lightbox-btn", "click", openLightBox);
