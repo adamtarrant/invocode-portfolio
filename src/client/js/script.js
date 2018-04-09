@@ -127,6 +127,7 @@ $(document).ready(function () {
         dragAndMove: false,
         fitToSection: false,
         fitToSectionDelay: 500,
+        normalScrollElements: '.contact-content',
         scrollBar: true,
         scrollOverflow: false,
         scrollOverflowOptions: {
