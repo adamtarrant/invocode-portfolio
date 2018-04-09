@@ -115,7 +115,7 @@ $(document).ready(function () {
         menu: '.nav-list',
         anchors: ['home', 'about', 'portfolio', 'contact'],
         recordHistory: false,
-        lockAnchors: false,
+        lockAnchors: true,
         navigation: true,
         navigationPosition: 'right',
         navigationTooltips: ['Home', 'About', 'Portfolio', 'Contact'],
