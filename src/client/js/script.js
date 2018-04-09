@@ -1,4 +1,5 @@
 // Developed by Adam Tarrant - 2018
+
 window.$ = window.jQuery = require('jquery');
 window.IScroll = require('iscroll/build/iscroll.js');
 require('fullpage.js/vendors/scrolloverflow.js');
@@ -12,7 +13,7 @@ import styles from '../scss/main.scss';
 
 // func declaration for setting number of rows - awaiting fix from slick.js
 function setNoSlideRows() {
-    if ($(window).width() < 840 || $(window).height() < 700) {
+    if ($(window).width() < 840 || $(window).height() < 750) {
         return 1;
     } else {
         return 2;
@@ -141,12 +142,6 @@ $(document).ready(function () {
         responsiveWidth: 670,
         responsiveHeight: 500,
         responsiveSlides: false,
-        parallax: false,
-        parallaxOptions: {
-            type: 'reveal',
-            percentage: 62,
-            property: 'translate'
-        },
         sectionSelector: 'section',
         verticalCentered: true
     });

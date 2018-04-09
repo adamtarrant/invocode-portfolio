@@ -443,7 +443,7 @@ h1 {
 
 .contact-content {
   -ms-flex-align: start;
-      align-items: flex-start;
+   align-items: flex-start;
   min-height: 700px; }
 
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active,
