@@ -441,9 +441,6 @@ h1 {
     font-size: 1.1em;
     margin: 0 0.5em 0 0; }
 
-.about-content {
-  overflow: visible; }
-
 .contact-content {
   -ms-flex-align: start;
       align-items: flex-start;
