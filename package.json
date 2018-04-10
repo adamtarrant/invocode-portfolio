@@ -26,6 +26,8 @@
   "dependencies": {
     "ejs": "^2.5.7",
     "express": "4.16.2",
+    "express-validator": "^5.1.2",
+    "nodemailer": "^4.6.4",
     "nodemon": "^1.17.2"
   },
   "engines": {

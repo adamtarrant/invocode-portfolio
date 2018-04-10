@@ -101,8 +101,6 @@ nav {
   height: 60px; }
 
 .menu-list-item {
-  width: 60px;
-  height: 60px;
   border-radius: 50%;
   border: 2px solid;
   cursor: pointer;
@@ -132,7 +130,8 @@ nav {
     transition: opacity .5s ease 0s; }
 
 .menu-btn {
-  width: 100%;
+  width: 60px;
+  height: 60px;
   font-size: 3em;
   position: relative; }
   .menu-btn i.x::after {
@@ -155,21 +154,23 @@ nav {
     margin: 3vh 0 0 2vw;
     transform: scale(1, 1); }
 
-.icon-bar {
-  border-bottom: 2px solid;
-  border-color: inherit; }
-
-.visible {
-  visibility: visible; }
-
 .social-icons {
   z-index: 2;
-  text-shadow: 1px 2px 15px #444; }
+  text-shadow: 1px 2px 15px #444;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  width: 40%;
+  font-size: 1.2em; }
   .social-icons a {
+    -ms-flex-pack: start;
+        justify-content: flex-start; }
+  .social-icons i {
     font-size: 4em;
-    transition: color 1s ease-out 0s; }
+    transition: color .5s ease-out 0s; }
   .social-icons li {
-    list-style: none; }
+    margin: 2em 0 0 0; }
     .social-icons li:hover {
       cursor: pointer; }
       .social-icons li:hover .contact-anim {
@@ -183,32 +184,6 @@ nav {
         color: #333; }
       .social-icons li:hover .fa-linkedin, .social-icons li:hover .linkedin {
         color: #0077B5; }
-  .social-icons.contact {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: start;
-        align-items: flex-start;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    width: 40%;
-    font-size: 1.2em; }
-    .social-icons.contact ul {
-      width: 100%; }
-    .social-icons.contact li {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-      margin: 2em 0 0 0; }
-    .social-icons.contact a {
-      width: 30%; }
-    .social-icons.contact div {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-          align-items: center;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
 
 .flex-center-col {
   display: -ms-flexbox;
@@ -346,16 +321,6 @@ h1 {
     text-align: center;
     margin: 0 0 0 0;
     font-size: calc(1.2vw + 4vh); }
-    .skills h2::before {
-      content: '<';
-      text-align: right; }
-    .skills h2::after {
-      content: '/>';
-      text-align: left; }
-    .skills h2::before, .skills h2::after {
-      display: inline-block;
-      border-bottom: 1px solid #fff;
-      width: 40%; }
   .skills .skills-grid {
     display: grid;
     min-height: 200px; }
@@ -538,22 +503,25 @@ form {
   height: 100%; }
 
 .contact-button {
-  height: 3em;
+  width: 160px;
+  height: 50px;
   background: none;
   border: none;
-  margin: 20px 0 0 0;
+  margin: 20px auto 0 auto;
   outline: none; }
+  .contact-button:hover span {
+    background-color: #fff;
+    color: #6B4367;
+    transition: background-color .5s ease-out 0s;
+    cursor: pointer; }
   .contact-button span {
-    cursor: pointer;
+    position: relative;
     font-size: 3em;
     color: #fff;
     margin: auto;
     padding: 0.1em 0.5em;
-    border: 2px solid #fff; }
-    .contact-button span:hover {
-      background-color: #fff;
-      color: #6B4367;
-      transition: background-color .5s ease-out 0s; }
+    border: 2px solid #fff;
+    z-index: 10; }
 
 #form-container label {
   color: #fff;
@@ -591,6 +559,43 @@ textarea.form-item {
 .filled {
   background-color: #fff;
   color: black; }
+
+.submit-confirm {
+  position: fixed;
+  width: 200px;
+  height: 50px;
+  bottom: -60px;
+  right: 20px;
+  padding: 15px 15px 0 15px;
+  box-shadow: 2px 2px 2px #000;
+  border: 2px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity .5s ease-out 0s, bottom .5s ease-out 0s;
+  pointer-events: none; }
+  .submit-confirm::after {
+    content: 'X';
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    pointer-events: all; }
+  .submit-confirm.show {
+    opacity: 1;
+    bottom: 20px; }
+  .submit-confirm.success {
+    background: linear-gradient(to right, #1CC89D, #0AAD84);
+    border-color: #0AAD84; }
+    .submit-confirm.success::before {
+      content: 'Message sent. Please note it may take up to 48 hours to get receive a response.';
+      display: inline-block; }
+  .submit-confirm.failure {
+    background: linear-gradient(to right, #FF286C, #DB2B63);
+    border-color: #DB2B63; }
+    .submit-confirm.failure::before {
+      content: 'There was an error sending the message. Please use one of the other contact methods.';
+      display: inline-block; }
 
 .blur {
   -webkit-filter: blur(5px);
@@ -759,8 +764,6 @@ textarea.form-item {
     font-size: 1em; }
   .fa-thumbs-o-up {
     margin: 0 0.1em 0 0; }
-  .social-icons h2 {
-    margin-top: 38px; }
   #form-container {
     width: 90vw;
     height: auto;
@@ -805,9 +808,12 @@ textarea.form-item {
     opacity: 1; }
     .logo.cornered {
       opacity: 0; }
-  .social-icons.contact {
+  .social-icons {
     width: 90%; }
-    .social-icons.contact div {
+    .social-icons a {
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+    .social-icons div {
       width: 70%; } }
 
 @media (min-width: 1600px) {

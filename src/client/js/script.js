@@ -180,14 +180,6 @@ $(document).ready(function () {
         scrollTimer = setTimeout(reCalcSlideRows, 1000);
     });
 
-
-    // makes the forms labels appear and input background change when text is present
-    $(".form-item").on("input propertychange", function () {
-        let formField = $(this).attr('name');
-        $("label[for=" + formField + "]").toggleClass("label-visible", !!$(".form-item[name=" + formField + "]").val());
-        $(".form-item[name=" + formField + "]").toggleClass("filled", !!$(".form-item[name=" + formField + "]").val());
-    });
-
     //initialise mutation observer - callback includes animatons for logo and skills list
     const observer = new MutationObserver(function (mutations) {
         mutations.forEach(mutationRecord => {
@@ -249,4 +241,60 @@ $(document).ready(function () {
         closeLightBox();
     });
 
+    //focus on form to hire me click event listener and handler
+    document.querySelector(".hire-btn").addEventListener("click", (e) => {
+        document.querySelector('input[name="name"]').focus();
+    });
+
+    //add event listener on submit confirmation notification so that it closes on clicking of cross
+    document.querySelector(".submit-confirm").addEventListener("click", () => {
+        document.querySelector(".submit-confirm").classList.remove("show","success","failure");
+    });
+
+    //send message to API and display confirmation to user
+    document.querySelector("#contact-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        let formObj = {
+            name: e.target[0].value,
+            email: e.target[1].value,
+            phone: e.target[2].value,
+            message: e.target[3].value
+        };
+        console.log(formObj);
+        
+        fetch('/form_post', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(formObj)
+        }).then((response) => {
+                return response.text();
+            }).then((data) => {
+                console.log(data == 'message received');
+                let result;
+                if (data == 'message received') {
+                    result = 'success';
+                } else {
+                    result = 'failure';
+                }
+
+                    document.querySelector(".submit-confirm").classList.add("show", result);
+                    setTimeout(() => {
+                        document.querySelector(".submit-confirm").classList.remove("show", result); 
+                    }, 10000);
+                
+            }).catch(err => {
+                console.log(err.stack);
+                
+            });
+        });
+
+    // makes the forms labels appear and input background change when text is present
+    $(".form-item").on("input propertychange", function () {
+        let formField = $(this).attr('name');
+        $("label[for=" + formField + "]").toggleClass("label-visible", !!$(".form-item[name=" + formField + "]").val());
+        $(".form-item[name=" + formField + "]").toggleClass("filled", !!$(".form-item[name=" + formField + "]").val());
+    });
 });
