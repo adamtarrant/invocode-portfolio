@@ -121,7 +121,7 @@ function applyClassToMultipleEls(selectors, className, action) {
     });
 }
 
-//Utility function for adding event listener to all elements in selector
+//Utility function for adding event listener to all elements in the one selector
 function superAddEventListener(selector, event, handler) {
     if (!selector) return;
     let elements = document.querySelectorAll(selector);
@@ -158,7 +158,8 @@ $(document).ready(function () {
         scrollOverflow: true,
         scrollOverflowOptions: {
             scrollX: false,
-            scrollY: true
+            scrollY: true,
+            disablePointer: true,
         },
         scrollHorizontally: false,
         easingcss3: 'ease-in',
@@ -233,6 +234,11 @@ $(document).ready(function () {
         closeNavMenu();
    });
 
+   //Logo link to home
+   document.querySelector(".logo").addEventListener("click", (e) => {
+    $.fn.fullpage.moveTo("home");
+});
+
     //make lightbox appear at correct portfolio item event listener - using vanilla JS
     superAddEventListener(".open-lightbox-btn", "click", openLightBox);
 
@@ -257,8 +263,7 @@ $(document).ready(function () {
         let formObj = {
             name: e.target[0].value,
             email: e.target[1].value,
-            phone: e.target[2].value,
-            message: e.target[3].value
+            message: e.target[2].value
         };
         console.log(formObj);
         
@@ -272,7 +277,7 @@ $(document).ready(function () {
         }).then((response) => {
                 return response.text();
             }).then((data) => {
-                console.log(data == 'message received');
+                console.log(data);
                 let result;
                 if (data == 'message received') {
                     result = 'success';

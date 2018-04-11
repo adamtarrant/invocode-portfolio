@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Wikipedia Search Engine - InvoCode</title>
+    <link rel="stylesheet" type="text/css" href="/dist/css/wikiSearch.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="dist/js/wikiSearch.bundle.js"></script>
+</head>
+
+
+
+<body>
+  <div class="wrapper">
+    <h1>Wikipedia Search Engine</h1>
+    <div class="search-container">
+      <div class="search-box focus-overlay">
+        <form id="queryForm" autocomplete="off">
+          <input class="search-input" type="text" name="query" placeholder="Please enter your query">
+          <label class="search-label"></label>
+          <button class="" type="reset"></button>
+          <button type="submit"><i class="fa fa-search text-shadow"></i></button>
+        </form>
+        <h2 class="prompt">or click<a class="text-shadow" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">?</a>to see random article</h2>
+      </div>
+    </div>
+    <div id="spinner"></div>
+    <ul class="results-container">
+    </ul>
+  </div>
+</body>
+
+</html>

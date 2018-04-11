@@ -3,15 +3,20 @@ const path = require('path');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const BUILD_DIR = path.resolve(__dirname, './public/dist');
+const BUILD_DIR = path.resolve(__dirname, './public/dist/js');
 const APP_DIR = path.resolve(__dirname, './src/client/js');
 
 const config = {
    entry: {
-     main: APP_DIR + '/script.js'
+     main: APP_DIR + '/index.js',
+     randomQuote: APP_DIR + '/randomquote.js',
+     wikiSearch: APP_DIR + '/wikisearch.js',
+     twitchTv: APP_DIR + '/twitchtv.js',
+     tribute: APP_DIR + '/tribute.js',
+     oldPortfolio: APP_DIR + '/oldportfolio.js',
    },
    output: {
-     filename: 'bundle.js',
+     filename: '[name].bundle.js',
      path: BUILD_DIR,
    },
    module: {
@@ -43,15 +48,26 @@ const config = {
                 use:[
                 {loader: 'css-loader', options: {url: false}},
                 'postcss-loader',
-                'sass-loader'
+                'sass-loader',
             ],
             })
-    }
+    },
+    {
+      test:/\.less$/, 
+      use: extractTextPlugin.extract({ 
+              fallback:'style-loader',
+              use:[
+              {loader: 'css-loader', options: {url: false}},
+              'postcss-loader',
+              'less-loader'
+          ],
+          })
+  }
     ],
 
   },
   plugins: [
-    new extractTextPlugin({filename:'bundle.css'}),
+    new extractTextPlugin({filename:'../css/[name].bundle.css'}),
 /*     new UglifyJsPlugin( {uglifyOptions:
       {
         comments: false, // remove comments

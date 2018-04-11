@@ -1,0 +1,64 @@
+
+body{
+    background-color: #000000;
+    background-image: url("http://www.transparenttextures.com/patterns/hexellence.png");
+    color: white;
+    }
+    
+    h1{
+      font-family: impact;
+      font-size: 8vw;
+      color: red;
+    }
+    
+    #mainContainer{
+    max-width: 800px;
+    background: rgba(0,0,0,0.5);
+    }
+    
+    .gutter-top{
+      margin-top: 2%;
+    }
+    
+    .thumb-container{
+      display: table-cell;
+      vertical-align: bottom;
+      height: 300px;
+      padding-top: 10px;
+      position: relative;
+    }
+    
+    .thumb-border{
+      border-style:solid;
+      border-radius: 10px;
+    }
+    
+    @media only screen and (max-width: 768px) {
+    .col-centered {
+        display:inline-block;
+        float: none;
+        margin-right: -4px;
+    }
+    }
+    
+    img{
+      margin: auto;
+    }
+    
+    
+    #mainPara {
+      margin-top: 15px;
+    }
+    
+    #proPic{
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    
+    #link{
+      background-color: white;
+      border-radius: 5px;
+      padding: 1px 1px 1px 1px;
+    }
+    
+    

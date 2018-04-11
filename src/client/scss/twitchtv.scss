@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+:root {
+  --scrollbar_color: #6335A8;
+}
+
+$header-bg-color: #fff;
+$text-color: #000;
+$tv-color: #6335A8;
+$logo-color: #6335A8;
+$bg-color: #fff;
+$featured-color: #FFC300;
+$all-color: #2ABCE0;
+$online-color: #94E661;
+$offline-color: #C65B7C;
+
+@mixin rotate ($deg) {
+  -ms-transform: rotate($deg);
+  -moz-transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+  transform: rotate($deg);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100px;
+  width: 100%;
+  background: $header-bg-color;
+  color: $logo-color;
+  .logo {
+    left: 6vw;
+    bottom: 15px;
+    width: 35vw;
+    margin: 3vh 3vw 5px 4vw;
+    font-size: 2.5em;
+    font-family: 'Bungee Inline', cursive;
+  }
+  .aerial-wrapper {
+    position: relative;
+    top: 25px;
+    overflow: visible;
+    width: 140px;
+    height: 50px;
+    background: $logo-color;
+    border-radius: 50%;
+  }
+  .aerial {
+    &:nth-child(1)::after {
+      position: absolute;
+      left: 100%;
+      bottom: 50%;
+      display: inline-block;
+      content: '';
+      width: 5px;
+      max-height: 75px;
+      height: 15vw;
+      background: $logo-color;
+      @include rotate(35deg);
+    }
+    &:nth-child(1)::before {
+      position: absolute;
+      right: 100%;
+      bottom: 50%;
+      display: inline-block;
+      content: '';
+      width: 5px;
+      max-height: 75px;
+      height: 15vw;
+      background: $logo-color;
+      @include rotate(145deg);
+    }
+    &:nth-child(2)::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      right: 115%;
+      top: -110%;
+      width: 15px;
+      max-height: 100px;
+      height: 15px;
+      border-radius: 50%;
+      background: $logo-color;
+    }
+    &:nth-child(2)::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: 115%;
+      top: -110%;
+      width: 15px;
+      max-height: 100px;
+      height: 15px;
+      border-radius: 50%;
+      background: $logo-color;
+    }
+  }
+}
+.tv-wrapper {
+  display: block;
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  height: 80%;
+  max-height: 640px;
+  margin: 0 auto 10px auto;
+  border-radius: 20px;
+  background: $tv-color;
+}
+.search-box {
+  float: right;
+  margin: -40px 15px 5px 5px;
+  input {
+    width: 20vw;
+    max-width: 330px;
+    border: 2px solid $tv-color;
+    border-radius: 5px;
+    &.input-hidden {
+      width: 0;
+    }
+  }
+  button {
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: $tv-color;
+    cursor: pointer;
+  }
+}
+.screenmenu-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.tv-screen {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 80%;
+  height: 85%;
+  margin: 20px 0 0 40px;
+  border: 5px solid transparent;
+  border-radius: 20px;
+  background: $bg-color;
+  //scroll bar customisation
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 5px solid transparent;
+    border-radius: 20px;
+    background: var(--scrollbar_color);
+    background-clip: padding-box;
+  }
+
+  h2 {
+    font-size: 1.8em;
+    margin: 10px;
+  }
+}
+.channel-list {
+  margin: 0 10px 0 10px;
+  width: 90%;
+  .channel-item {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid;
+    font-size: 0.9em;
+    a h3 {
+      color: $tv-color;
+      &:hover {
+      text-decoration: underline;
+      }
+
+    }
+    h3, span, p {
+      color: $text-color;
+    }  
+    h3, span {
+      display: inline-block;
+      margin: 5px 0 0 0;
+    }
+    span {
+      font-size: 0.8em;
+      float: right;
+    }
+    
+    p {
+      margin: 15px 0 5px 0;
+    }
+    
+    div {
+      align-self: flex-start;
+      width: 75%;
+      margin: 0 0 0 10px;
+      overflow: hidden;
+    }
+    img {
+      margin: 5px;
+    }
+    .channel-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    .preview {
+      margin-left: auto;
+      img{
+      width: 100px;
+      height: 80px;
+      }
+    }
+    &.hide {
+      display: none;
+    }
+  }
+  .online-channel .status, .offline-channel .status {
+       &::before {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        margin: 0 5px 2px 0;
+        border-radius: 50%;
+      }
+    }
+.online-channel .status::before {
+        background: green;
+        box-shadow: 1px 1px 5px 2px green;
+      }
+.offline-channel .status::before {
+        background: red;
+        box-shadow: 1px 1px 5px 1px red;
+      }
+}
+.menu-wrapper {
+  position: relative;
+  width: 25%;
+  max-width: 160px;
+  height: 90%;
+  margin: 20px 0 0 0;
+  border-radius: 20px;
+  background: $tv-color;
+  // psuedo elements for styling of tv buttons
+  &::before {
+    content: '';
+    display: block;
+    position: relative;
+    top: 70%;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: $bg-color;
+  }
+  &::after {
+    content: '';
+    display: block;
+    position: relative;
+    top: 55%;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: $bg-color;
+  }
+}
+.menu {
+    display: block;
+    margin: -50px 0 0 0;
+    .menu-item {
+      width: 70%;
+      height: 30px;
+      line-height: 35px;
+      margin: 10px auto;
+      text-align: center;
+      border: 4px solid;
+      border-radius: 5px;
+      cursor: pointer;
+      background: $bg-color;
+      font-weight: bold;
+      &:hover {
+        color: $bg-color;
+        border-color: transparent;
+      }
+      &.featured:hover {
+          background: $featured-color;
+        }
+      &.all:hover {
+          background: $all-color;
+        }
+      &.online:hover {
+          background: $online-color;
+      }
+      &.offline:hover {
+          background: $offline-color;
+        }
+    }
+  }
+.tv-logo {
+  position: absolute;
+  left: 42%;
+  width: 15%;
+  height: calc(4vh + 1vw);
+  margin: -6.5vh auto 0 auto;
+  background: url('http://blog.maniaplanet.com/wp-content/uploads/2013/03/new-twitchtv-logo.png') no-repeat center;
+  background-size: contain;
+}
+
+//classes for different modes - featured all live offline etc
+.featured {
+  color: $featured-color;
+  border-color: $featured-color;
+}
+
+.all {
+        color: $all-color;
+        border-color: $all-color;
+}
+
+.online {
+        color: $online-color;
+        border-color: $online-color;
+}
+
+.offline {
+        color: $offline-color;
+        border-color: $offline-color;
+}
+
+@media (max-width: 600px) {
+  header {
+    .logo {
+      position: relative;
+      top: 5px;
+      margin: auto auto 40px auto;
+      text-align: center;
+      width: 100vw;
+      font-size: 2em;
+    }
+    .aerial-wrapper {
+      width: 50px;
+      visibility: hidden;
+    }
+    /*.aerial {
+      &:nth-child(1)::after {
+        left: 80%;
+        height: 40px;
+      }
+      &:nth-child(1)::before {
+        right: 80%;
+        height: 40px;
+      }
+      &:nth-child(2)::before {
+        right: 100%;
+        top: -40%;
+        width: 10px;
+        height: 10px;
+      }
+      &:nth-child(2)::after {
+        left: 100%;
+        top: -40%;
+        width: 10px;
+        height: 10px;
+      }
+    }
+    */
+  }
+      .search-box {
+      position: relative;
+    }
+    .search-box input {
+        width: 60vw;
+        max-width: auto;
+    }
+  .tv-wrapper {
+    flex-wrap: wrap;
+    .tv-screen {
+      order: 2;
+      margin: 0 auto 0 auto;
+      height: 75%;
+      font-size: 0.8em;
+      .channel-item img {
+        width: 40px;
+        height: 30px;
+      }
+    }
+    .screenmenu-wrapper {
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+    .menu-wrapper {
+      display: table;
+      order: 1;
+      width: 70%;
+      max-width: 300px;
+      height: auto;
+      margin: 5px auto 0 auto;
+      background: $tv-color;
+      // removing pseudo elements from here and moving to tv-wrapper as these should not appear at bottom of tv on smaller screens
+      &::before {
+        display: none;
+      }
+      &::after {
+        display: none;
+      }
+      .menu {
+        display: table-row;
+        margin: 0 auto;
+        height: 30px;
+        .menu-item {
+          display: table-cell;
+          padding: 0 5px;
+          width: 20%;
+          border-radius: 20px 20px 0 0;
+          font-size: 0.7em;
+        }
+      }
+    }
+  }
+}

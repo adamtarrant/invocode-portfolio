@@ -59,16 +59,15 @@ body {
   font-family: 'Poppins', sans-serif; }
 
 a {
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -ms-flex-pack: center;
       justify-content: center;
   -ms-flex-align: center;
       align-items: center;
   text-decoration: none;
   color: inherit;
-  height: 100%;
-  width: 100%; }
+  height: 100%; }
 
 ul {
   list-style: none;
@@ -83,7 +82,8 @@ header {
       justify-content: space-between;
   position: fixed;
   width: 100%;
-  z-index: 1; }
+  z-index: 1;
+  pointer-events: none; }
   header li {
     float: left;
     margin: 0 15px; }
@@ -133,7 +133,8 @@ nav {
   width: 60px;
   height: 60px;
   font-size: 3em;
-  position: relative; }
+  position: relative;
+  pointer-events: auto; }
   .menu-btn i.x::after {
     content: 'X';
     font-family: 'Raleway', sans-serif;
@@ -145,10 +146,12 @@ nav {
   top: 35vh;
   left: 45vw;
   width: calc(5vw + 10vh);
+  pointer-events: auto;
   transform: scale(4, 4);
   height: auto;
   transition: top .5s ease 0s, left .5s ease 0s, transform .5s ease 0s, opacity .5s ease 0s; }
   .logo.cornered {
+    cursor: pointer;
     top: 0;
     left: 0;
     margin: 3vh 0 0 2vw;
@@ -166,24 +169,29 @@ nav {
   .social-icons a {
     -ms-flex-pack: start;
         justify-content: flex-start; }
+    .social-icons a:hover {
+      cursor: pointer; }
+      .social-icons a:hover .contact-anim {
+        text-decoration: underline;
+        font-size: 1.4em; }
+      .social-icons a:hover .fa-thumbs-o-up, .social-icons a:hover .hire {
+        color: #1CC89D; }
+      .social-icons a:hover .fa-envelope-o, .social-icons a:hover .email {
+        color: #FFAB24; }
+      .social-icons a:hover .fa-github, .social-icons a:hover .github {
+        color: #333; }
+      .social-icons a:hover .fa-linkedin, .social-icons a:hover .linkedin {
+        color: #0077B5; }
   .social-icons i {
     font-size: 4em;
     transition: color .5s ease-out 0s; }
   .social-icons li {
     margin: 2em 0 0 0; }
-    .social-icons li:hover {
-      cursor: pointer; }
-      .social-icons li:hover .contact-anim {
-        text-decoration: underline;
-        font-size: 1.4em; }
-      .social-icons li:hover .fa-thumbs-o-up, .social-icons li:hover .hire {
-        color: #1CC89D; }
-      .social-icons li:hover .fa-envelope-o, .social-icons li:hover .email {
-        color: #FFAB24; }
-      .social-icons li:hover .fa-github, .social-icons li:hover .github {
-        color: #333; }
-      .social-icons li:hover .fa-linkedin, .social-icons li:hover .linkedin {
-        color: #0077B5; }
+  .social-icons div {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center; }
 
 .flex-center-col {
   display: -ms-flexbox;
@@ -397,23 +405,23 @@ h1 {
   background-repeat: no-repeat;
   background-position: center; }
   .bg-image.random-quote {
-    background-image: url("../img/random_quote_machine.png"); }
+    background-image: url("../../img/random_quote_machine.png"); }
   .bg-image.img-search {
-    background-image: url("../img/image_search_API.png"); }
+    background-image: url("../../img/image_search_API.png"); }
   .bg-image.wiki_search {
-    background-image: url("../img/wikipedia_search_engine.png"); }
+    background-image: url("../../img/wikipedia_search_engine.png"); }
   .bg-image.twitch-viewer {
-    background-image: url("../img/twitch_tv_stream_list.png"); }
+    background-image: url("../../img/twitch_tv_stream_list.png"); }
   .bg-image.file-api {
-    background-image: url("../img/file_metadata_retriever_API.png"); }
+    background-image: url("../../img/file_metadata_retriever_API.png"); }
   .bg-image.url-short {
-    background-image: url("../img/url_shortener_microservice.png"); }
+    background-image: url("../../img/url_shortener_microservice.png"); }
   .bg-image.original-portfolio {
-    background-image: url("../img/first_portfolio_site.png"); }
+    background-image: url("../../img/first_portfolio_site.png"); }
   .bg-image.tribute-page {
-    background-image: url("../img/first_page_with_bootstrap.png"); }
+    background-image: url("../../img/first_page_with_bootstrap.png"); }
   .bg-image.weather-app {
-    background-image: url("../img/weather_app.jpg"); }
+    background-image: url("../../img/weather_app.jpg"); }
 
 .slider-item-overlay {
   display: -ms-flexbox;

@@ -15,15 +15,15 @@ $twitter-color: #1DA1F2;
 $filled-form-item: #fff;
 
 //background img urls
-$random-quote-img: '../img/random_quote_machine.png';
-$img-search-img: '../img/image_search_API.png';
-$wiki-search-img: '../img/wikipedia_search_engine.png';
-$twitch-viewer-img: '../img/twitch_tv_stream_list.png';
-$file-api-img: '../img/file_metadata_retriever_API.png';
-$url-short-img: '../img/url_shortener_microservice.png';
-$orig-portfolio-img: '../img/first_portfolio_site.png';
-$tribute-page-img: '../img/first_page_with_bootstrap.png';
-$weather-app-img: '../img/weather_app.jpg';
+$random-quote-img: '../../img/random_quote_machine.png';
+$img-search-img: '../../img/image_search_API.png';
+$wiki-search-img: '../../img/wikipedia_search_engine.png';
+$twitch-viewer-img: '../../img/twitch_tv_stream_list.png';
+$file-api-img: '../../img/file_metadata_retriever_API.png';
+$url-short-img: '../../img/url_shortener_microservice.png';
+$orig-portfolio-img: '../../img/first_portfolio_site.png';
+$tribute-page-img: '../../img/first_page_with_bootstrap.png';
+$weather-app-img: '../../img/weather_app.jpg';
 
 @keyframes fadein {
   from {opacity: 0}
@@ -72,13 +72,12 @@ body {
 }
 
 a {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   color: inherit;
   height: 100%;
-  width: 100%;
 }
 
 ul {
@@ -94,6 +93,7 @@ header {
   position: fixed;
   width: 100%;
   z-index: 1;
+  pointer-events: none;
   li {
     float: left;
     margin: 0 15px;
@@ -156,6 +156,7 @@ nav {
   height: 60px;
   font-size: 3em;
   position: relative;
+  pointer-events: auto;
   i{
     &.x {
       &::after {
@@ -173,10 +174,12 @@ nav {
   top: 35vh;
   left: 45vw;
   width: calc(5vw + 10vh);
+  pointer-events: auto;
   transform: scale(4,4);
   height: auto;
   transition: top .5s ease 0s, left .5s ease 0s, transform .5s ease 0s, opacity .5s ease 0s;
   &.cornered {
+    cursor: pointer;
     top: 0;
     left: 0;
     margin: 3vh 0 0 2vw;
@@ -193,13 +196,6 @@ nav {
   font-size: 1.2em;
   a {
     justify-content: flex-start;
-  }
-  i {
-    font-size: 4em;
-    transition: color .5s ease-out 0s;
-  }
-  li {
-    margin: 2em 0 0 0;
     &:hover {
       cursor: pointer;
       .contact-anim {
@@ -219,6 +215,18 @@ nav {
         color: $linkedin-color;
       }
     }
+  }
+  i {
+    font-size: 4em;
+    transition: color .5s ease-out 0s;
+  }
+  li {
+    margin: 2em 0 0 0;
+  }
+
+  div{
+    display: flex;
+    align-items: center;
   }
 }
 
