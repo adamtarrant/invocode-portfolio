@@ -165,7 +165,7 @@ ul.nav-pills {
   display: flex;
   -ms-flex-align: center;
       align-items: center;
-  background: -o-linear-gradient(141deg, #438FB8, #09C5F1 75%, #438FB8 99%);
+  background: linear-gradient(141deg, #438FB8, #09C5F1 75%, #438FB8 99%);
   /*-webkit-transform: skewY(160deg);
   z-index: -10;
   position: relative;

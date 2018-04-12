@@ -215,7 +215,10 @@ h1.results-show-h1 {
   max-width: 1200px;
   margin: auto;
   font-size: 0.9em;
-  list-style: none; }
+  list-style: none;
+  -webkit-padding-start: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0; }
   .results-container h3 {
     margin-top: 5px;
     font-size: 1.6em; }

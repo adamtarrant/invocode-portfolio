@@ -27,14 +27,8 @@ app.use((err, req, res, next) => {
 
 //Create mail server
 const smtpTransport = nodemailer.createTransport({    
-    service: 'Godaddy',
-    host: "smtpout.secureserver.net",  
-    secure: true,
-    port: 465,
-    auth: {
-        user: "username",
-        pass: "password" 
-    }
+    service: 'Outlook365',  
+    auth: config.emailAuth
 });
 
 //Define form input validation tests
@@ -70,21 +64,21 @@ app.post('/form_post', validator, (req,res) => {
         res.send(errors.array());
         return;
       } else {
-        res.writeHead(200, { "Content-Type": "text/plain" });
-        res.end('message received');
-        
-        /* let mailOptions = {
-            from: 'youremail@gmail.com',
-            to: 'myfriend@yahoo.com',
-            subject: 'Sending Email using Node.js',
-            text: 'That was easy!'
+         let mailOptions = {
+            from: 'web.form@invocode.io',
+            to: 'contact@invocode.io',
+            subject: 'Webform message from ' + req.body.name + ' - email: ' + req.body.email,
+            text: req.body.message
           };
 
           smtpTransport.sendMail(mailOptions, (err, info) => {
-            if (err) throw err;
+            if (err) {
+                res.status(500).send('There was an error with the email service')
+                throw err;
+            }
             res.writeHead(200, { "Content-Type": "text/plain" });
             res.end('message received');
-          }); */
+          });
         
       }
     } catch(err) {
@@ -187,6 +181,23 @@ app.get('/tribute', (req, res) => {
 app.get('/oldportfolio', (req, res) => {
     try {
         res.render('pages/oldportfolio', {}, (err, html) => {
+            if(err) {
+                console.error(err.stack);
+                res.status(500).send('There was an error on the server');
+            } else {
+                res.send(html);
+            }
+        });
+    } catch (err) {
+        console.error(err.stack);
+        res.status(500).send('There was an error on the server');
+    }
+});
+
+//Weatherapp route handler
+app.get('/weatherapp', (req, res) => {
+    try {
+        res.render('pages/weatherapp', {}, (err, html) => {
             if(err) {
                 console.error(err.stack);
                 res.status(500).send('There was an error on the server');

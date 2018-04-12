@@ -64,7 +64,7 @@
                             </p>
                         </div>
                         <div class="img-wrapper">
-                            <img src="img/me.png" />
+                            <img src="img/me.png" alt="Picture of me" />
                         </div>
                     </div>
                     <div class="about-lower">
@@ -310,7 +310,7 @@
                             <label for="name">Name</label>
                             <input class="form-item" type="text" name="name" placeholder="Name" required="required">
                             <label for="email">Email</label>
-                            <input class="form-item" type="email" name="email" placeholder="Email Address"  required="required">
+                            <input class="form-item" type="email" name="email" placeholder="Email Address"  required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$">
                             <label for="message">Message</label>
                             <textarea class="form-item" type="text" rows="5" name="message" placeholder="Message"  required="required"></textarea>
                             <button class="contact-button" type="submit">
@@ -417,6 +417,7 @@
                                         <% include ../partials/devicons/jquery %>
                                             <% include ../partials/devicons/html5 %>
                                                 <% include ../partials/devicons/css3 %>
+                                                <% include ../partials/devicons/sass %>
                                 </ul>
                             </div>
                             <div class="proj-links">
@@ -452,6 +453,7 @@
                                         <% include ../partials/devicons/jquery %>
                                             <% include ../partials/devicons/html5 %>
                                                 <% include ../partials/devicons/css3 %>
+                                                <% include ../partials/devicons/sass %>
                                 </ul>
                             </div>
                             <div class="proj-links">
@@ -488,6 +490,7 @@
                                                 <% include ../partials/devicons/webpack %>
                                                     <% include ../partials/devicons/html5 %>
                                                         <% include ../partials/devicons/css3 %>
+                                                        <% include ../partials/devicons/sass %>
                                 </ul>
                             </div>
                             <div class="proj-links">
@@ -558,6 +561,8 @@
                                             <% include ../partials/devicons/html5 %>
                                                 <% include ../partials/devicons/css3 %>
                                                     <% include ../partials/devicons/bootstrap %>
+                                                    <% include ../partials/devicons/less %>
+
                                 </ul>
                             </div>
                             <div class="proj-links">
@@ -626,18 +631,19 @@
                                         <% include ../partials/devicons/html5 %>
                                             <% include ../partials/devicons/css3 %>
                                                 <% include ../partials/devicons/jquery %>
+                                                <% include ../partials/devicons/sass %>
                                 </ul>
                             </div>
                             <div class="proj-links">
                                 <h4>Check it out</h4>
                                 <ul class="link-list">
                                     <li class="project-link">
-                                        <a href="#" target="_blank">
+                                        <a href="/weatherapp" target="_blank">
                                             <i class="fa fa-link"></i>
                                         </a>
                                     </li>
                                     <li class="code-link">
-                                        <a href="#" target="_blank">
+                                        <a href="https://gist.github.com/adamtarrant/6a29496cac85887c44d813b06491af05" target="_blank">
                                             <i class="fa fa-github"></i>
                                         </a>
                                     </li>

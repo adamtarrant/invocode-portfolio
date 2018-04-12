@@ -102,9 +102,9 @@ function closeNavMenu() {
         applyClassToMultipleEls(['.menu-list-item'], 'opened', 'remove');
         TweenLite.fromTo(".menu-list-item.open", 1, {rotation: 0}, {rotation:720});
         TweenLite.to(".menu-list-item.home", 1, {y:-60, ease: Power4.easeOut});
-        TweenLite.to(".menu-list-item.about", 1, {y:-120, ease: Power4.easeOut});
-        TweenLite.to(".menu-list-item.portfolio", 1, {y:-180, ease: Power4.easeOut});
-        TweenLite.to(".menu-list-item.contact", 1, {y:-240, ease: Power4.easeOut});
+        TweenLite.to(".menu-list-item.about", 1, {y:-128, ease: Power4.easeOut});
+        TweenLite.to(".menu-list-item.portfolio", 1, {y:-192, ease: Power4.easeOut});
+        TweenLite.to(".menu-list-item.contact", 1, {y:-256, ease: Power4.easeOut});
 }
 
 //Utility function for adding/removing a class to multiple selectors and elements
@@ -257,9 +257,25 @@ $(document).ready(function () {
         document.querySelector(".submit-confirm").classList.remove("show","success","failure");
     });
 
+    //Set custom validation on email field
+
+    document.querySelector('input[name="email"]').addEventListener('input', e => {
+        let email = document.querySelector('input[name="email"]');
+
+        if (email.validity.patternMismatch) {
+            email.setCustomValidity("Please provide a valid email address");
+            } else {
+                email.setCustomValidity("");
+            }
+            
+    });
+
+
+
     //send message to API and display confirmation to user
     document.querySelector("#contact-form").addEventListener("submit", (e) => {
         e.preventDefault();
+
         let formObj = {
             name: e.target[0].value,
             email: e.target[1].value,
@@ -277,7 +293,7 @@ $(document).ready(function () {
         }).then((response) => {
                 return response.text();
             }).then((data) => {
-                console.log(data);
+                //console.log(data);
                 let result;
                 if (data == 'message received') {
                     result = 'success';
@@ -288,10 +304,10 @@ $(document).ready(function () {
                     document.querySelector(".submit-confirm").classList.add("show", result);
                     setTimeout(() => {
                         document.querySelector(".submit-confirm").classList.remove("show", result); 
-                    }, 10000);
+                    }, 15000);
                 
             }).catch(err => {
-                console.log(err.stack);
+                //console.log(err.stack);
                 
             });
         });

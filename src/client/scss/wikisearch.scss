@@ -256,6 +256,9 @@ h1.results-show-h1 {
   margin: auto;
   font-size: 0.9em;
   list-style: none;
+  -webkit-padding-start: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
   h3 {
     margin-top: 5px;
     font-size: 1.6em;

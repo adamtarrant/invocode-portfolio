@@ -112,16 +112,16 @@ nav {
     color: #1CC89D;
     z-index: 1007; }
   .menu-list-item.home {
-    transform: matrix(1, 0, 0, 1, 0, -60);
+    transform: matrix(1, 0, 0, 1, 0, -64);
     background-color: #1CC89D; }
   .menu-list-item.about {
-    transform: matrix(1, 0, 0, 1, 0, -120);
+    transform: matrix(1, 0, 0, 1, 0, -128);
     background-color: #ED5B62; }
   .menu-list-item.portfolio {
-    transform: matrix(1, 0, 0, 1, 0, -180);
+    transform: matrix(1, 0, 0, 1, 0, -192);
     background-color: #2A99E1; }
   .menu-list-item.contact {
-    transform: matrix(1, 0, 0, 1, 0, -240);
+    transform: matrix(1, 0, 0, 1, 0, -256);
     background-color: #6B4367; }
   .menu-list-item.opened {
     opacity: 1;
@@ -570,28 +570,29 @@ textarea.form-item {
 
 .submit-confirm {
   position: fixed;
-  width: 200px;
+  width: 250px;
   height: 50px;
   bottom: -60px;
   right: 20px;
-  padding: 15px 15px 0 15px;
-  box-shadow: 2px 2px 2px #000;
-  border: 2px solid;
+  padding: 30px;
+  font-size: 1.2em;
   border-radius: 5px;
   opacity: 0;
-  transition: opacity .5s ease-out 0s, bottom .5s ease-out 0s;
+  transition: opacity 0.5s ease-out 0s, bottom 0.5s cubic-bezier(0.175, 0.365, 0.16, 1.65) 0s;
   pointer-events: none; }
-  .submit-confirm::after {
-    content: 'X';
-    display: inline-block;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-    pointer-events: all; }
   .submit-confirm.show {
     opacity: 1;
-    bottom: 20px; }
+    bottom: 40px;
+    border: 2px solid;
+    box-shadow: 2px 2px 2px #000; }
+    .submit-confirm.show::after {
+      content: 'X';
+      display: inline-block;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+      pointer-events: all; }
   .submit-confirm.success {
     background: linear-gradient(to right, #1CC89D, #0AAD84);
     border-color: #0AAD84; }
@@ -602,7 +603,7 @@ textarea.form-item {
     background: linear-gradient(to right, #FF286C, #DB2B63);
     border-color: #DB2B63; }
     .submit-confirm.failure::before {
-      content: 'There was an error sending the message. Please use one of the other contact methods.';
+      content: 'There was an error sending the message to the mail server. Please use one of the other contact methods.';
       display: inline-block; }
 
 .blur {
@@ -694,8 +695,7 @@ textarea.form-item {
 .proj-links {
   text-align: center; }
   .proj-links h4 {
-    min-height: 25px;
-    animation: pulse .6s linear 2 12s alternate; }
+    min-height: 25px; }
 
 .link-list {
   display: -ms-flexbox;

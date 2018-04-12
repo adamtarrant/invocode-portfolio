@@ -14,6 +14,7 @@ const config = {
      twitchTv: APP_DIR + '/twitchtv.js',
      tribute: APP_DIR + '/tribute.js',
      oldPortfolio: APP_DIR + '/oldportfolio.js',
+     weatherApp: APP_DIR + '/weatherapp.js',
    },
    output: {
      filename: '[name].bundle.js',
