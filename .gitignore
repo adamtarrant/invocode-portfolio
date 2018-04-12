@@ -68,3 +68,6 @@ data
 
 # key and certs
 *.pem
+
+#configuration
+config_dev.js
