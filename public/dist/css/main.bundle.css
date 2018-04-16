@@ -519,10 +519,8 @@ form {
     position: relative;
     font-size: 3em;
     color: #fff;
-    margin: auto;
     padding: 0.1em 0.5em;
-    border: 2px solid #fff;
-    z-index: 10; }
+    border: 2px solid #fff; }
 
 #form-container label {
   color: #fff;
@@ -590,7 +588,7 @@ textarea.form-item {
     background: linear-gradient(to right, #1CC89D, #0AAD84);
     border-color: #0AAD84; }
     .submit-confirm.success::before {
-      content: 'Message sent. Please note it may take up to 48 hours to get receive a response.';
+      content: 'Message sent. Please note it may take up to 48 hours to receive a response.';
       display: inline-block; }
   .submit-confirm.failure {
     background: linear-gradient(to right, #FF286C, #DB2B63);

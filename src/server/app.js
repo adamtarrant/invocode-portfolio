@@ -213,8 +213,7 @@ app.get('/weatherapp', (req, res) => {
 
 //Catch all for unhandled routes
 app.all('/*', (req, res) => {
-    console.log("entered route");
-    
+   
     res.writeHead(404, { "Content-Type": "text/plain" });
     res.end("Page not found.");
 });

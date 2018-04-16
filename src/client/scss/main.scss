@@ -580,10 +580,8 @@ form {
     position: relative;
     font-size: 3em;
     color: $main-text-color;
-    margin: auto;
     padding: 0.1em 0.5em;
     border: 2px solid $main-text-color;
-    z-index: 10;
   }
 }
 
@@ -661,7 +659,7 @@ textarea.form-item {
     background: linear-gradient(to right, $home-bg-color, #0AAD84);
     border-color: #0AAD84;
     &::before {
-      content: 'Message sent. Please note it may take up to 48 hours to get receive a response.';
+      content: 'Message sent. Please note it may take up to 48 hours to receive a response.';
       display: inline-block;
     }
   }

@@ -18,7 +18,7 @@ document.onreadystatechange = function () {
             TweenLite.to(".loader", 1, {y: -1000, opacity: 0, onComplete: ()=> {
                 document.querySelector(".loader").style.display = "none";
             }});
-        }, 3000);
+        }, 2500);
         }
     }
 
@@ -282,12 +282,28 @@ $(document).ready(function () {
             
     });
 
-
+    //Listen for touch devices trying to submit form - requires long term fix
+/*     let subHandled = false;
+    document.querySelector(".contact-button").addEventListener("touchstart", (e) => {
+        console.log(subHandled);
+        
+        if (subHandled === false) {
+            subHandled = true;
+            setTimeout(()=>{document.querySelector(".contact-button").click();}, 50);
+            
+        }
+        
+        setTimeout(() => {
+            subHandled = false;
+        }, 6000);
+        
+    }); */
 
     //send message to API and display confirmation to user
     document.querySelector("#contact-form").addEventListener("submit", (e) => {
         e.preventDefault();
-
+        console.log(e);
+        
         let formObj = {
             name: e.target[0].value,
             email: e.target[1].value,
@@ -322,7 +338,7 @@ $(document).ready(function () {
                 //console.log(err.stack);
                 
             });
-        });
+        },);
 
     // makes the forms labels appear and input background change when text is present
     $(".form-item").on("input propertychange", function () {
