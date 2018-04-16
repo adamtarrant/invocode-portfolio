@@ -69,6 +69,7 @@ body {
   color: $main-text-color;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  overflow: hidden;
 }
 
 a {
@@ -516,10 +517,6 @@ h1 {
 }
 
 .tech-list {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: space-around;
   max-height: 25%;
   margin: 0.2em 0 0.5em 0;
   li {
@@ -717,7 +714,7 @@ textarea.form-item {
   &.closing {
     transform: scale(0.1,0.1);
   }
-   p, .tech-list {
+   p {
     display: inline-block;
     width: 50%;
   }
@@ -785,6 +782,7 @@ textarea.form-item {
   li {
     float: left;
     margin: 0 0.5em;
+    position: relative;
   }
   .fa-link {
     transform: rotate(135deg);
@@ -795,7 +793,9 @@ textarea.form-item {
   &::after{
     font-size: calc(0.6vw + 1vh);
     position: absolute;
+    min-width: 120px;
     top: 95%;
+    left: -30px;
     opacity: 0;
     transition: opacity .3s ease 0s;
   }
@@ -807,11 +807,9 @@ textarea.form-item {
 
 .project-link::after {
     content: 'Link to project';
-    left: 5%;
 }
 .code-link::after {
   content: 'Link to code';
-  left: 50%;
 }
 
 .hide {
@@ -941,8 +939,7 @@ textarea.form-item {
 
 @media(max-width: 670px){
   .logo {
-    opacity: 1;
-    
+    left: 40vw;
     &.cornered {
       opacity: 0;
     }

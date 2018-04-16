@@ -56,7 +56,8 @@ body {
   margin: 0;
   color: #fff;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif; }
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden; }
 
 a {
   display: -ms-inline-flexbox;
@@ -461,14 +462,6 @@ h1 {
       margin: 2em auto 0 auto; }
 
 .tech-list {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -ms-flex-line-pack: distribute;
-      align-content: space-around;
   max-height: 25%;
   margin: 0.2em 0 0.5em 0; }
   .tech-list li {
@@ -646,7 +639,7 @@ textarea.form-item {
     animation: zoomin .5s ease-in 0s 1 normal; }
   .lightbox.closing {
     transform: scale(0.1, 0.1); }
-  .lightbox p, .lightbox .tech-list {
+  .lightbox p {
     display: inline-block;
     width: 50%; }
 
@@ -707,14 +700,17 @@ textarea.form-item {
   width: 15vw; }
   .link-list li {
     float: left;
-    margin: 0 0.5em; }
+    margin: 0 0.5em;
+    position: relative; }
   .link-list .fa-link {
     transform: rotate(135deg); }
 
 .project-link::after, .code-link::after {
   font-size: calc(0.6vw + 1vh);
   position: absolute;
+  min-width: 120px;
   top: 95%;
+  left: -30px;
   opacity: 0;
   transition: opacity .3s ease 0s; }
 
@@ -723,12 +719,10 @@ textarea.form-item {
   animation: bounce .1s ease-in 3 0s alternate; }
 
 .project-link::after {
-  content: 'Link to project';
-  left: 5%; }
+  content: 'Link to project'; }
 
 .code-link::after {
-  content: 'Link to code';
-  left: 50%; }
+  content: 'Link to code'; }
 
 .hide {
   display: none; }
@@ -813,7 +807,7 @@ textarea.form-item {
 
 @media (max-width: 670px) {
   .logo {
-    opacity: 1; }
+    left: 40vw; }
     .logo.cornered {
       opacity: 0; }
   .social-icons {

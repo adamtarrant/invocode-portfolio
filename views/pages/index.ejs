@@ -1,8 +1,53 @@
 <!DOCTYPE html>
 <html>
-<% include ../partials/head %>
+        <% include ../partials/head %>
 
+        <style>
+                .loader {
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: #1CC89D;
+                    z-index: 100;
+                }
+            
+                .loading-text {
+                    color: hsla(0, 50%, 100%, .3);
+                    font-size: 3em;
+                }
+            
+                @keyframes loading {
+                    from {
+                        max-width: 0;
+                    }
+                }
+            
+                .loading-text:before {
+                    content: attr(data-content);
+                    position: absolute;
+                    overflow: hidden;
+                    max-width: 4.5em;
+                    color: #fff;
+                    animation: loading 3s linear infinite alternate;
+                    min-height: 100px;
+                }
+                .svg-logo {
+                    width: 150px;
+                }
+            </style>
+            
+            <div class="loader">
+                <div class="svg-logo"><% include ../partials/logo %></div>
+
+                <div class="loading-text" data-content="Loading...">Loading...</div>
+            </div>
+            
     <body>
+        
         <header>
             <div class="logo">
                 <% include ../partials/logo %>
@@ -84,13 +129,13 @@
                                     <% include ../partials/devicons/bootstrap_svg %>
                                 </li>
                                 <li class="skills-grid-item">
-                                    <% include ../partials/devicons/csharp_svg %>
+                                    <% include ../partials/devicons/linux_svg %>
                                 </li>
                                 <li class="skills-grid-item">
                                     <% include ../partials/devicons/css3_svg %>
                                 </li>
                                 <li class="skills-grid-item">
-                                    <% include ../partials/devicons/dotnet_svg %>
+                                    <% include ../partials/devicons/apache_svg %>
                                 </li>
                                 <li class="skills-grid-item">
                                     <% include ../partials/devicons/express_svg %>
