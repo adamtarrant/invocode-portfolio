@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
 
 const BUILD_DIR = path.resolve(__dirname, './public/dist/js');
 const APP_DIR = path.resolve(__dirname, './src/client/js');
@@ -68,8 +69,12 @@ const config = {
 
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"'
+}),
     new extractTextPlugin({filename:'../css/[name].bundle.css'}),
-/*     new UglifyJsPlugin( {uglifyOptions:
+    new UglifyJsPlugin( {uglifyOptions:
       {
         comments: false, // remove comments
         compress: {
@@ -84,7 +89,7 @@ const config = {
           booleans: true,
         }
       }
-    }) */
+    })
     ]
 };
 

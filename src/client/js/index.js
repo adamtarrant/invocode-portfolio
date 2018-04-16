@@ -5,7 +5,7 @@ window.IScroll = require('iscroll/build/iscroll.js');
 require('fullpage.js/vendors/scrolloverflow.js');
 import 'fullpage.js/dist/jquery.fullpage.js';
 import 'slick-carousel';
-import TweenLite from 'gsap/TweenMax';
+import 'gsap/TweenLite';
 import 'gsap/CSSPlugin';
 import 'gsap/EasePack';
 
@@ -282,27 +282,9 @@ $(document).ready(function () {
             
     });
 
-    //Listen for touch devices trying to submit form - requires long term fix
-/*     let subHandled = false;
-    document.querySelector(".contact-button").addEventListener("touchstart", (e) => {
-        console.log(subHandled);
-        
-        if (subHandled === false) {
-            subHandled = true;
-            setTimeout(()=>{document.querySelector(".contact-button").click();}, 50);
-            
-        }
-        
-        setTimeout(() => {
-            subHandled = false;
-        }, 6000);
-        
-    }); */
-
     //send message to API and display confirmation to user
     document.querySelector("#contact-form").addEventListener("submit", (e) => {
         e.preventDefault();
-        console.log(e);
         
         let formObj = {
             name: e.target[0].value,
