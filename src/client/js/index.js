@@ -11,6 +11,18 @@ import 'gsap/EasePack';
 
 import styles from '../scss/main.scss';
 
+//preloader
+document.onreadystatechange = function () {
+    if (document.readyState === "complete") {
+        setTimeout(() => {
+            TweenLite.to(".loader", 1, {y: -1000, opacity: 0, onComplete: ()=> {
+                document.querySelector(".loader").style.display = "none";
+            }});
+        }, 3000);
+        }
+    }
+
+
 // func declaration for setting number of rows - awaiting fix from slick.js
 function setNoSlideRows() {
     if ($(window).width() < 840 || $(window).height() < 750) {

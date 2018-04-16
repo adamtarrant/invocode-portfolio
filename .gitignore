@@ -70,4 +70,4 @@ data
 *.pem
 
 #configuration
-config_dev.js
+src/server/config/config_dev.js
