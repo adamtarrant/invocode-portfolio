@@ -28,7 +28,9 @@ app.use((err, req, res, next) => {
 //Create mail server
 const smtpTransport = nodemailer.createTransport({    
     service: 'Outlook365',  
-    auth: config.emailAuth
+    auth: config.emailAuth,
+    secure: true,
+    requireTLS: true
 });
 
 //Define form input validation tests
@@ -55,8 +57,6 @@ app.get('/', (req,res) => {
 
 app.post('/form_post', validator, (req,res) => {
     try {
-    console.log(req.body);
-
     let errors = validationResult(req);
     console.log(errors.array());
     
