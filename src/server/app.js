@@ -6,7 +6,7 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
-
+const compression = require('compression');
 
 //Config
 const config = process.env.NODE_ENV == 'production' ? require('./config/config_prod.js') : require('./config/config_dev.js');
@@ -18,11 +18,13 @@ const app = express();
 app.set('view engine', 'ejs');
 
 //Static middleware
+app.use(compression());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('There was an error on the server');
+    next();
 });
 
 //Create mail server
