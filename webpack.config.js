@@ -1,13 +1,14 @@
 const webpack = require('webpack');
 const path = require('path');
 const extractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const BUILD_DIR = path.resolve(__dirname, './public/dist/js');
 const APP_DIR = path.resolve(__dirname, './src/client/js');
 
 const config = {
+   mode: process.env.NODE_ENV || 'development',
    entry: {
      main: APP_DIR + '/index.js',
      randomQuote: APP_DIR + '/randomquote.js',
@@ -48,7 +49,7 @@ const config = {
         use: extractTextPlugin.extract({ 
                 fallback:'style-loader',
                 use:[
-                {loader: 'css-loader', options: {url: false}},
+                {loader: 'css-loader', options: {url: false, minimize: true}},
                 'postcss-loader',
                 'sass-loader',
             ],
@@ -59,7 +60,7 @@ const config = {
       use: extractTextPlugin.extract({ 
               fallback:'style-loader',
               use:[
-              {loader: 'css-loader', options: {url: false}},
+              {loader: 'css-loader', options: {url: false, minimize: true}},
               'postcss-loader',
               'less-loader'
           ],
@@ -89,7 +90,7 @@ const config = {
           booleans: true,
         }
       }
-    })
+    }),
     ]
 };
 
