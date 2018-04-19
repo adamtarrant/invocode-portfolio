@@ -25,21 +25,25 @@ $orig-portfolio-img: '../../img/first_portfolio_site.png';
 $tribute-page-img: '../../img/first_page_with_bootstrap.png';
 $weather-app-img: '../../img/weather_app.png';
 
+//for lightbox
 @keyframes fadein {
   from {opacity: 0}
   to {opacity: 1}
 }
 
+//for lightbox
 @keyframes zoomin {
   from {transform: scale(0.1, 0.1)}
   to {transform: scale(1, 1)}
 }
 
+//for hover of project lightbox links
 @keyframes bounce {
   from {transform: translate(0,10px)}
   to {transform: translate(0,0)}
 }
 
+//not used - for check it out links in project lightbox
 @keyframes pulse {
   0% {font-size: inherit}
   20% {font-size: 1.2em}
@@ -48,18 +52,53 @@ $weather-app-img: '../../img/weather_app.png';
   80% {font-size: 1.5em}
   100% {font-size: inherit}
 }
-
+//for about desc
 @keyframes rise {
   from {opacity: 0; top: 50vh;}
   to {opacity: 1; top: 0;}
 }
-
+//down button on home section
 @keyframes downprompt {
   0% {transform: translate(0,0)}
   2% {transform: translate(0,10px)}
   4% {transform: translate(0,0)}
   6% {transform: translate(0,10px)}
   8% {transform: translate(0,0)}
+}
+
+//for pending sent message spinner
+@keyframes loadspin {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+//for pending sent message spinner
+@keyframes round {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 body {
@@ -562,12 +601,16 @@ form {
 }
 
 .contact-button {
+  position: relative;
   width: 160px;
   height: 50px;
   background: none;
   border: none;
   margin: 20px auto 0 auto;
   outline: none;
+  &:focus {
+    outline: none;
+  }
   &:hover {
     span {
       background-color: $main-text-color;
@@ -577,12 +620,30 @@ form {
     }
   }
   span {
-    position: relative;
     font-size: 3em;
     color: $main-text-color;
     padding: 0.1em 0.5em;
     border: 2px solid $main-text-color;
   }
+  &.sending{
+    &::after{
+      content: '';
+      color: #ffffff;
+      top: -30px;
+      right: -60px;
+      font-size: 2em;
+      overflow: hidden;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      outline: none;
+      margin: 40px auto;
+      position: absolute;
+      transform: translateZ(0);
+      animation: loadspin .7s infinite ease, round .7s infinite ease;
+    }
+  }
+
 }
 
 #form-container label {
@@ -954,11 +1015,16 @@ textarea.form-item {
 
 }
 
-
-
-
 @media (min-width: 1600px) {
   .slider {
     width: 70vw;
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .skills-grid-item{
+    svg {
+      height: 15vh;
+    }
   }
 }

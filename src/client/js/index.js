@@ -1,5 +1,6 @@
 // Developed by Adam Tarrant - 2018
 
+require('core-js/fn/array/from');
 window.$ = window.jQuery = require('jquery');
 window.IScroll = require('iscroll/build/iscroll.js');
 require('fullpage.js/vendors/scrolloverflow.js');
@@ -10,18 +11,6 @@ import 'gsap/CSSPlugin';
 import 'gsap/EasePack';
 
 import styles from '../scss/main.scss';
-
-//preloader
-document.onreadystatechange = function () {
-    if (document.readyState === "complete") {
-        setTimeout(() => {
-            TweenLite.to(".loader", 1, {y: -1000, opacity: 0, onComplete: ()=> {
-                document.querySelector(".loader").style.display = "none";
-            }});
-        }, 2500);
-        }
-    }
-
 
 // func declaration for setting number of rows - awaiting fix from slick.js
 function setNoSlideRows() {
@@ -79,6 +68,7 @@ function initSlick() {
 
 // add active class for lightbox elements
 function openLightBox(e) {
+    $.fn.fullpage.setAllowScrolling(false);
     applyClassToMultipleEls(["section"], "blur", "add");
     applyClassToMultipleEls([".lightbox-container", ".lightbox"], "active", "add");
     document.getElementById(e.target.getAttribute('for')).classList.remove("hide");
@@ -86,6 +76,7 @@ function openLightBox(e) {
 
 // remove active class to hide lightbox and add hide class to lightbox content
 function closeLightBox() {
+    $.fn.fullpage.setAllowScrolling(true);
     document.querySelector(".lightbox").classList.add("closing");
     setTimeout(() => {
         applyClassToMultipleEls(["section"], "blur", "remove");
@@ -127,7 +118,7 @@ function applyClassToMultipleEls(selectors, className, action) {
         nodeListArr.push(document.querySelectorAll(selector));
     });
     nodeListArr.forEach(nodeList => {
-        nodeList.forEach(el => {
+        Array.from(nodeList).forEach(el => {
             el["classList"][action](className);
         });
     });
@@ -136,18 +127,17 @@ function applyClassToMultipleEls(selectors, className, action) {
 //Utility function for adding event listener to all elements in the one selector
 function superAddEventListener(selector, event, handler) {
     if (!selector) return;
-    let elements = document.querySelectorAll(selector);
-    if (elements.tagName) {
-        elements = [elements];
-    }
+    let elements = Array.from(document.querySelectorAll(selector));
     elements.forEach(el => {
         el.addEventListener(event, handler);
     });
 }
 
-$(document).ready(function () {
-
-    //initialises scroll snapping with options using fullpage.js
+document.onreadystatechange = function () {
+    if (document.readyState === "complete") {
+        setTimeout(() => {
+                     //initialises scroll snapping with options using fullpage.js
+         //inside the document onreadstatechange complete timeout so that users cannot scroll before page is fully loaded
     $('#fullpage').fullpage({
         menu: '.menu-list',
         anchors: ['home', 'about', 'portfolio', 'contact'],
@@ -172,6 +162,7 @@ $(document).ready(function () {
             scrollX: false,
             scrollY: true,
             disablePointer: true,
+            click: false,
         },
         scrollHorizontally: false,
         easingcss3: 'ease-in',
@@ -182,7 +173,14 @@ $(document).ready(function () {
         sectionSelector: 'section',
         verticalCentered: true
     });
+            TweenLite.to(".loader", 1, {y: -1000, opacity: 0, onComplete: ()=> {
+          document.querySelector(".loader").style.display = "none";
+            }});
+        }, 2000);
+        }
+    }
 
+$(document).ready(function () {
     // initialise Slick
     initSlick();
 
@@ -204,8 +202,10 @@ $(document).ready(function () {
             } else {
                 if (targetClass == "home-section") {
                     setTimeout(() => {
-                        $(".logo").removeClass("cornered");
-                    }, 500);
+                        if (document.querySelector('.home-section').classList.contains('active')) {
+                            $(".logo").removeClass("cornered");
+                        }
+                    }, 400);
                 } else if (targetClass == "about-section") {
                     $(".about-upper").addClass("show");
                     for (let i = 0; i < $(".skills-grid-item").length; i++) {
@@ -261,6 +261,7 @@ $(document).ready(function () {
 
     //focus on form to hire me click event listener and handler
     document.querySelector(".hire-btn").addEventListener("click", (e) => {
+        e.preventDefault();
         document.querySelector('input[name="name"]').focus();
     });
 
@@ -282,10 +283,10 @@ $(document).ready(function () {
             
     });
 
-    //send message to API and display confirmation to user
+    //send message to API and display pending spinner and confirmation/failure message to user
     document.querySelector("#contact-form").addEventListener("submit", (e) => {
         e.preventDefault();
-        
+        document.querySelector(".contact-button").classList.add("sending");
         let formObj = {
             name: e.target[0].value,
             email: e.target[1].value,
@@ -310,7 +311,7 @@ $(document).ready(function () {
                 } else {
                     result = 'failure';
                 }
-
+                    document.querySelector(".contact-button").classList.remove("sending");
                     document.querySelector(".submit-confirm").classList.add("show", result);
                     setTimeout(() => {
                         document.querySelector(".submit-confirm").classList.remove("show", result); 

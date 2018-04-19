@@ -10,7 +10,7 @@ const APP_DIR = path.resolve(__dirname, './src/client/js');
 const config = {
    mode: process.env.NODE_ENV || 'development',
    entry: {
-     main: APP_DIR + '/index.js',
+     main: [APP_DIR + '/index.js'],
      randomQuote: APP_DIR + '/randomquote.js',
      wikiSearch: APP_DIR + '/wikisearch.js',
      twitchTv: APP_DIR + '/twitchtv.js',
