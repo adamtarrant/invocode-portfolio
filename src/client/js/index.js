@@ -157,7 +157,7 @@ document.onreadystatechange = function () {
         fitToSection: true,
         fitToSectionDelay: 500,
         scrollBar: false,
-        scrollOverflow: true,
+        scrollOverflow: $(window).width() > 670,
         scrollOverflowOptions: {
             scrollX: false,
             scrollY: true,
