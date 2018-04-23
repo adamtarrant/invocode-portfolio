@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 const compression = require('compression');
-//const enforce = require('express-sslify');
+const enforce = require('express-sslify');
 
 //Config
 const config = process.env.NODE_ENV == 'production' ? require('./config/config_prod.js') : require('./config/config_dev.js');
@@ -19,7 +19,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 //Static middleware
-//app.use(enforce.HTTPS({ trustProtoHeader: true }));
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(compression());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../public')));
