@@ -884,6 +884,11 @@ textarea.form-item {
   background-color: $main-text-color !important;
 }
 
+footer {
+text-align: center;
+margin: 10px 0;
+}
+
 @media(max-width: 1200px){
   .slider {
     width: 75vw;
