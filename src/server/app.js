@@ -22,6 +22,7 @@ app.set('view engine', 'ejs');
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(compression());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use((err, req, res, next) => {
     console.error(err.stack);
@@ -132,6 +133,8 @@ app.get('/wikisearch', (req, res) => {
 });
 
 app.get('/wikisearch/search', (req, res) => {
+    console.log(req.url);
+    
     try {
     wikiSearchReq(req.query.q)
         .then(apiRes => {
@@ -255,6 +258,8 @@ function randomQuoteReq () {
 }
 
 function wikiSearchReq (searchTerm) {
+    searchTerm = searchTerm.replace(/\s+/g, "+");
+    console.log(searchTerm);
     return new Promise((resolve, reject) => {
         let reqParams = {
             method: 'GET',

@@ -38,7 +38,7 @@ function toggleOverlay() {
       $(".search-input").addClass("invalid-q").attr("placeholder", "Please enter a query!");
     } else {
     $("#spinner").addClass("loader");
-    var queryString = formInput.replace(/\s+/g, "+");
+    var queryString = encodeURIComponent(formInput);
 fetch('/wikisearch/search?q=' + queryString)
     .then(response => response.json())
     .then((searchResults) => {

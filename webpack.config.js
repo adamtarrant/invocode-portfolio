@@ -9,6 +9,7 @@ const APP_DIR = path.resolve(__dirname, './src/client/js');
 
 const config = {
    mode: process.env.NODE_ENV || 'development',
+   devtool: 'nosources-source-map',
    entry: {
      main: [APP_DIR + '/index.js'],
      randomQuote: APP_DIR + '/randomquote.js',
@@ -85,7 +86,7 @@ const config = {
           drop_debugger: true,
           conditionals: true,
           evaluate: true,
-          drop_console: true, // strips console statements
+          drop_console: false, // strips console statements
           sequences: true,
           booleans: true,
         }
