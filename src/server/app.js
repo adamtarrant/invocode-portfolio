@@ -108,7 +108,7 @@ app.get('/randomquote/newquote', (req, res) => {
     try {
     randomQuoteReq()
         .then(quoteRes => {
-            res.send(quoteRes);
+            res.send(quoteRes[0]);
         })
         .catch(err => {
             console.error(err.stack);
@@ -244,7 +244,7 @@ function randomQuoteReq () {
             if (res) {
                 let quoteRes = '';
                 res.on('data', d => quoteRes += d);
-                res.on('end', () => resolve(quoteRes));
+                res.on('end', () => resolve(JSON.parse(quoteRes)));
             } else {
                 reject('https request failed');
             }
