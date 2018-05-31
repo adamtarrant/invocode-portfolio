@@ -1,5 +1,6 @@
 // Developed by Adam Tarrant - 2018
 
+//Node module imports
 require('core-js/fn/array/from');
 window.$ = window.jQuery = require('jquery');
 window.IScroll = require('iscroll/build/iscroll.js');
@@ -10,185 +11,76 @@ import 'gsap/TweenLite';
 import 'gsap/CSSPlugin';
 import 'gsap/EasePack';
 
+//Custom JS module imports
+const slickInit = require('./js_client_modules/slickInit.js');
+const lightBox = require('./js_client_modules/lightBox.js');
+const util = require('./js_client_modules/utilityFunctions.js');
+const navMenu = require('./js_client_modules/navMenu.js');
+
 import styles from '../scss/main.scss';
 
-// func declaration for setting number of rows - awaiting fix from slick.js
-function setNoSlideRows() {
-    if ($(window).width() < 840 || $(window).height() < 750) {
-        return 1;
-    } else {
-        return 2;
-    }
-}
 
-//func declaration for reinitializing slide carousel with new options - awaiting fix from slick.js
-function reCalcSlideRows() {
-    let newNoRows = setNoSlideRows();
-    if (newNoRows == $('.slider').slick('slickGetOption', 'rows')) {
-        return;
-    } else {
-        $('.slider').slick('unslick');
-        $('.slider').slick(setupSlideOptions(newNoRows));
-    }
-}
-
-//setup slick options
-function setupSlideOptions(rows) {
-    let slideOptions = {
-        rows: rows,
-        dots: true,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        responsive: [{
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 840,
-                settings: {
-                    infinite: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                }
-            },
-        ]
-    };
-    return slideOptions;
-}
-
-//func declaration for init of the slider carousel using the slick library
-function initSlick() {
-    $('.slider').slick(setupSlideOptions(setNoSlideRows()));
-}
-
-// add active class for lightbox elements
-function openLightBox(e) {
-    $.fn.fullpage.setAllowScrolling(false);
-    applyClassToMultipleEls(["section"], "blur", "add");
-    applyClassToMultipleEls([".lightbox-container", ".lightbox"], "active", "add");
-    document.getElementById(e.target.getAttribute('for')).classList.remove("hide");
-}
-
-// remove active class to hide lightbox and add hide class to lightbox content
-function closeLightBox() {
-    $.fn.fullpage.setAllowScrolling(true);
-    document.querySelector(".lightbox").classList.add("closing");
-    setTimeout(() => {
-        applyClassToMultipleEls(["section"], "blur", "remove");
-        applyClassToMultipleEls([".lightbox-content"], "hide", "add");
-        applyClassToMultipleEls([".lightbox-container", ".lightbox"], "active", "remove");
-        document.querySelector(".lightbox").classList.remove("closing");
-    }, 300);
-}
-
-    //animation of menu opening and closing functions
-function openNavMenu(){
-        applyClassToMultipleEls(['.menu-list-item'], 'closed', 'remove');
-        applyClassToMultipleEls(['.fa-list-ul'], 'x', 'add');
-        applyClassToMultipleEls(['.fa-list-ul'], 'fa-list-ul', 'remove');
-        applyClassToMultipleEls(['.menu-list-item'], 'opened', 'add');
-        TweenLite.fromTo(".menu-list-item.open", 1, {rotation:0}, {rotation:1080});
-        TweenLite.to(".menu-list-item.home", 1, {y:30, ease: Elastic.easeOut.config(1.3, 1)});
-        TweenLite.to(".menu-list-item.about", 1, {y:60, ease: Elastic.easeOut.config(1.3, 1)});
-        TweenLite.to(".menu-list-item.portfolio", 1.5, {y:90, ease: Elastic.easeOut.config(1.3, 0.7)});
-        TweenLite.to(".menu-list-item.contact", 2, {y:120, ease: Elastic.easeOut.config(1.3, 0.6)});
-}
-function closeNavMenu() {
-        applyClassToMultipleEls(['.menu-list-item'], 'closed', 'add');
-        applyClassToMultipleEls(['.x'], 'fa-list-ul', 'add');
-        applyClassToMultipleEls(['.fa-list-ul'], 'x', 'remove');
-        applyClassToMultipleEls(['.menu-list-item'], 'opened', 'remove');
-        TweenLite.fromTo(".menu-list-item.open", 1, {rotation: 0}, {rotation:720});
-        TweenLite.to(".menu-list-item.home", 1, {y:-60, ease: Power4.easeOut});
-        TweenLite.to(".menu-list-item.about", 1, {y:-128, ease: Power4.easeOut});
-        TweenLite.to(".menu-list-item.portfolio", 1, {y:-192, ease: Power4.easeOut});
-        TweenLite.to(".menu-list-item.contact", 1, {y:-256, ease: Power4.easeOut});
-}
-
-//Utility function for adding/removing a class to multiple selectors and elements
-function applyClassToMultipleEls(selectors, className, action) {
-    if (!selectors) return;
-    let nodeListArr = [];
-    selectors.forEach(selector => {
-        nodeListArr.push(document.querySelectorAll(selector));
-    });
-    nodeListArr.forEach(nodeList => {
-        Array.from(nodeList).forEach(el => {
-            el["classList"][action](className);
-        });
-    });
-}
-
-//Utility function for adding event listener to all elements in the one selector
-function superAddEventListener(selector, event, handler) {
-    if (!selector) return;
-    let elements = Array.from(document.querySelectorAll(selector));
-    elements.forEach(el => {
-        el.addEventListener(event, handler);
-    });
-}
 
 document.onreadystatechange = function () {
     if (document.readyState === "complete") {
         setTimeout(() => {
-                     //initialises scroll snapping with options using fullpage.js
-         //inside the document onreadstatechange complete timeout so that users cannot scroll before page is fully loaded
-    $('#fullpage').fullpage({
-        menu: '.menu-list',
-        anchors: ['home', 'about', 'portfolio', 'contact'],
-        recordHistory: false,
-        lockAnchors: true,
-        navigation: true,
-        navigationPosition: 'left',
-        navigationTooltips: ['Home', 'About', 'Portfolio', 'Contact'],
-        showActiveTooltip: false,
-        slidesNavigation: false,
-        slidesNavPosition: 'bottom',
-        bigSectionsDestination: 'top',
-        css3: true,
-        scrollingSpeed: 700,
-        autoScrolling: true,
-        dragAndMove: false,
-        fitToSection: true,
-        fitToSectionDelay: 500,
-        scrollBar: false,
-        scrollOverflow: $(window).width() > 670,
-        scrollOverflowOptions: {
-            scrollX: false,
-            scrollY: true,
-            disablePointer: true,
-            click: false,
-        },
-        scrollHorizontally: false,
-        easingcss3: 'ease-in',
-        fadingEffect: false,
-        responsiveWidth: 670,
-        responsiveHeight: 500,
-        responsiveSlides: false,
-        sectionSelector: 'section',
-        verticalCentered: true
-    });
-            TweenLite.to(".loader", 1, {y: -1000, opacity: 0, onComplete: ()=> {
-          document.querySelector(".loader").style.display = "none";
-            }});
+            //initialises scroll snapping with options using fullpage.js
+            //inside the document onreadstatechange complete timeout so that users cannot scroll before page is fully loaded
+            $('#fullpage').fullpage({
+                menu: '.menu-list',
+                anchors: ['home', 'about', 'portfolio', 'contact'],
+                recordHistory: false,
+                lockAnchors: true,
+                navigation: true,
+                navigationPosition: 'left',
+                navigationTooltips: ['Home', 'About', 'Portfolio', 'Contact'],
+                showActiveTooltip: false,
+                slidesNavigation: false,
+                slidesNavPosition: 'bottom',
+                bigSectionsDestination: 'top',
+                css3: true,
+                scrollingSpeed: 700,
+                autoScrolling: true,
+                dragAndMove: false,
+                fitToSection: true,
+                fitToSectionDelay: 500,
+                scrollBar: false,
+                scrollOverflow: $(window).width() > 670,
+                scrollOverflowOptions: {
+                    scrollX: false,
+                    scrollY: true,
+                    disablePointer: true,
+                    click: false,
+                },
+                scrollHorizontally: false,
+                easingcss3: 'ease-in',
+                fadingEffect: false,
+                responsiveWidth: 670,
+                responsiveHeight: 500,
+                responsiveSlides: false,
+                sectionSelector: 'section',
+                verticalCentered: true
+            });
+            TweenLite.to(".loader", 1, {
+                y: -1000,
+                opacity: 0,
+                onComplete: () => {
+                    document.querySelector(".loader").style.display = "none";
+                }
+            });
         }, 2000);
-        }
     }
+}
 
 $(document).ready(function () {
     // initialise Slick
-    initSlick();
+    slickInit.initSlick();
 
     //change rows and other options in slide carousel on window resize
     let scrollTimer;
     $(window).resize(() => {
         clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(reCalcSlideRows, 1000);
+        scrollTimer = setTimeout(slickInit.reCalcSlideRows.call(slickInit), 1000);
     });
 
     //initialise mutation observer - callback includes animatons for logo and skills list
@@ -219,7 +111,12 @@ $(document).ready(function () {
         });
     });
 
-    const observerConfig = { attributes: true, attributeFilter: ['class'], childList: false, characterData: false };
+    const observerConfig = {
+        attributes: true,
+        attributeFilter: ['class'],
+        childList: false,
+        characterData: false
+    };
     //logo shrink to corner - listening to changes on home sectoin
     observer.observe($(".home-section")[0], observerConfig);
     //animation of skills list
@@ -233,30 +130,30 @@ $(document).ready(function () {
 
     document.querySelector("a.menu-btn.open").addEventListener("click", () => {
         if (/\bopened\b/.test(document.querySelector(".menu-list-item").className)) {
-            closeNavMenu();
-            } else {
-            openNavMenu();
-            }
+            navMenu.closeNavMenu();
+        } else {
+            navMenu.openNavMenu();
+        }
     });
 
     //menu anchor scrolls
-    superAddEventListener(".nav-btn", "click", function (e) {
+    util.superAddEventListener(".nav-btn", "click", function (e) {
         let targetSection = e.target.attributes.dataanchor.value;
-            $.fn.fullpage.moveTo(targetSection);
-        closeNavMenu();
-   });
+        $.fn.fullpage.moveTo(targetSection);
+        navMenu.closeNavMenu();
+    });
 
-   //Logo link to home
-   document.querySelector(".logo").addEventListener("click", (e) => {
-    $.fn.fullpage.moveTo("home");
-});
+    //Logo link to home
+    document.querySelector(".logo").addEventListener("click", (e) => {
+        $.fn.fullpage.moveTo("home");
+    });
 
     //make lightbox appear at correct portfolio item event listener - using vanilla JS
-    superAddEventListener(".open-lightbox-btn", "click", openLightBox);
+    util.superAddEventListener(".open-lightbox-btn", "click", lightBox.openLightBox);
 
     //close lightbox event listener
     document.querySelector(".close-btn").addEventListener("click", (e) => {
-        closeLightBox();
+        lightBox.closeLightBox();
     });
 
     //focus on form to hire me click event listener and handler
@@ -267,7 +164,7 @@ $(document).ready(function () {
 
     //add event listener on submit confirmation notification so that it closes on clicking of cross
     document.querySelector(".submit-confirm").addEventListener("click", () => {
-        document.querySelector(".submit-confirm").classList.remove("show","success","failure");
+        document.querySelector(".submit-confirm").classList.remove("show", "success", "failure");
     });
 
     //Set custom validation on email field
@@ -277,10 +174,10 @@ $(document).ready(function () {
 
         if (email.validity.patternMismatch) {
             email.setCustomValidity("Please provide a valid email address");
-            } else {
-                email.setCustomValidity("");
-            }
-            
+        } else {
+            email.setCustomValidity("");
+        }
+
     });
 
     //send message to API and display pending spinner and confirmation/failure message to user
@@ -293,35 +190,35 @@ $(document).ready(function () {
             message: e.target[2].value
         };
         console.log(formObj);
-        
+
         fetch('/form_post', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-              },
+            },
             body: JSON.stringify(formObj)
         }).then((response) => {
-                return response.text();
-            }).then((data) => {
-                //console.log(data);
-                let result;
-                if (data == 'message received') {
-                    result = 'success';
-                } else {
-                    result = 'failure';
-                }
-                    document.querySelector(".contact-button").classList.remove("sending");
-                    document.querySelector(".submit-confirm").classList.add("show", result);
-                    setTimeout(() => {
-                        document.querySelector(".submit-confirm").classList.remove("show", result); 
-                    }, 15000);
-                
-            }).catch(err => {
-                //console.log(err.stack);
-                
-            });
-        },);
+            return response.text();
+        }).then((data) => {
+            //console.log(data);
+            let result;
+            if (data == 'message received') {
+                result = 'success';
+            } else {
+                result = 'failure';
+            }
+            document.querySelector(".contact-button").classList.remove("sending");
+            document.querySelector(".submit-confirm").classList.add("show", result);
+            setTimeout(() => {
+                document.querySelector(".submit-confirm").classList.remove("show", result);
+            }, 15000);
+
+        }).catch(err => {
+            //console.log(err.stack);
+
+        });
+    }, );
 
     // makes the forms labels appear and input background change when text is present
     $(".form-item").on("input propertychange", function () {

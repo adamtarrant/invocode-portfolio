@@ -7,19 +7,28 @@ const bodyParser = require('body-parser');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 const compression = require('compression');
-const enforce = require('express-sslify');
-
-//Config
-const config = process.env.NODE_ENV == 'production' ? require('./config/config_prod.js') : require('./config/config_dev.js');
+//const enforce = require('express-sslify');
 
 //Init of express app
 const app = express();
+
+//Custom JS modules
+//Route handlers import
+require('./js_modules/randomQuote_handler.js')(app);
+require('./js_modules/wikiSearch_handler.js')(app);
+require('./js_modules/twitchTv_handler.js')(app);
+require('./js_modules/oldPortfolio_handler.js')(app);
+require('./js_modules/tribute_handler.js')(app);
+require('./js_modules/weatherApp_handler.js')(app);
+
+//Config
+const config = process.env.NODE_ENV == 'production' ? require('./config/config_prod.js') : require('./config/config_dev.js');
 
 //Set view engine
 app.set('view engine', 'ejs');
 
 //Static middleware
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+//app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -92,201 +101,12 @@ app.post('/form_post', validator, (req,res) => {
     }
 });
 
-//Random quote page route handlers
-app.get('/randomquote', (req, res) => {
-    res.render('pages/randomquote', {}, (err, html) => {
-        if(err) {
-            console.error(err.stack);
-            res.status(500).send('There was an error on the server');
-        } else {
-            res.send(html);
-        }
-    });
-});
-
-app.get('/randomquote/newquote', (req, res) => {
-    try {
-    randomQuoteReq()
-        .then(quoteRes => {
-            res.send(quoteRes[0]);
-        })
-        .catch(err => {
-            console.error(err.stack);
-            res.status(500).send('There was an error on the server');
-        });
-    } catch (err) {
-        console.error(err.stack);
-        res.status(500).send('There was an error on the server');
-    }
-});
-
-//Wikipedia search engine route handler
-app.get('/wikisearch', (req, res) => {
-    res.render('pages/wikisearch', {}, (err, html) => {
-        if(err) {
-            console.error(err.stack);
-            res.status(500).send('There was an error on the server');
-        } else {
-            res.send(html);
-        }
-    });
-});
-
-app.get('/wikisearch/search', (req, res) => {
-    console.log(req.url);
-    
-    try {
-    wikiSearchReq(req.query.q)
-        .then(apiRes => {
-            res.send(apiRes);
-        })
-        .catch(err => {
-            console.error(err.stack);
-            res.status(500).send('There was an error on the server');
-        });
-    } catch (err) {
-        console.error(err.stack);
-        res.status(500).send('There was an error on the server');
-    }
-});
-
-//Twitch tv project route handler
-app.get('/twitchtv', (req, res) => {
-    try {
-        res.render('pages/twitchtv', {}, (err, html) => {
-            if(err) {
-                console.error(err.stack);
-                res.status(500).send('There was an error on the server');
-            } else {
-                res.send(html);
-            }
-        });
-    } catch (err) {
-        console.error(err.stack);
-        res.status(500).send('There was an error on the server');
-    }
-});
-
-//Tribute page route handler
-app.get('/tribute', (req, res) => {
-    try {
-        res.render('pages/tribute', {}, (err, html) => {
-            if(err) {
-                console.error(err.stack);
-                res.status(500).send('There was an error on the server');
-            } else {
-                res.send(html);
-            }
-        });
-    } catch (err) {
-        console.error(err.stack);
-        res.status(500).send('There was an error on the server');
-    }
-});
-
-//Old portfolio site route handler
-app.get('/oldportfolio', (req, res) => {
-    try {
-        res.render('pages/oldportfolio', {}, (err, html) => {
-            if(err) {
-                console.error(err.stack);
-                res.status(500).send('There was an error on the server');
-            } else {
-                res.send(html);
-            }
-        });
-    } catch (err) {
-        console.error(err.stack);
-        res.status(500).send('There was an error on the server');
-    }
-});
-
-//Weatherapp route handler
-app.get('/weatherapp', (req, res) => {
-    try {
-        res.render('pages/weatherapp', {}, (err, html) => {
-            if(err) {
-                console.error(err.stack);
-                res.status(500).send('There was an error on the server');
-            } else {
-                res.send(html);
-            }
-        });
-    } catch (err) {
-        console.error(err.stack);
-        res.status(500).send('There was an error on the server');
-    }
-});
-
 //Catch all for unhandled routes
 app.all('/*', (req, res) => {
    
     res.writeHead(404, { "Content-Type": "text/plain" });
     res.end("Page not found.");
 });
-
-
-//Named function declarations
-function randomQuoteReq () {
-    return new Promise((resolve, reject) => {
-        let reqParams = {
-            method: 'GET',
-            hostname: 'andruxnet-random-famous-quotes.p.mashape.com',
-            path: '/?cat=',
-            headers: {
-                "X-Mashape-Key": config.randomQuoteApiKey,
-                "Content-Type": 'application/x-www-form-urlencoded',
-                Accept: "application/json"
-            }
-        }
-    
-        let quoteReq = https.request(reqParams, (res) => {
-            if (res) {
-                let quoteRes = '';
-                res.on('data', d => quoteRes += d);
-                res.on('end', () => resolve(JSON.parse(quoteRes)));
-            } else {
-                reject('https request failed');
-            }
-        });
-        quoteReq.on('error', err => {
-            console.log('err is' + err);
-            reject(err);
-        });
-        quoteReq.end();
-    });
-}
-
-function wikiSearchReq (searchTerm) {
-    searchTerm = searchTerm.replace(/\s+/g, "+");
-    console.log(searchTerm);
-    return new Promise((resolve, reject) => {
-        let reqParams = {
-            method: 'GET',
-            hostname: 'en.wikipedia.org',
-            path: '/w/api.php?action=query&format=json&origin=*&prop=extracts|pageimages&list=&generator=search&exchars=150&exintro=1&explaintext=1&piprop=thumbnail|name&pithumbsize=200&gsrenablerewrites=1&gsrsearch=' + searchTerm,
-            headers: {
-                "Api-User-Agent": "AdamTazWikiViewer/1.0; FreeCodeCampExercise"
-            }
-        }
-    
-        let req = https.request(reqParams, (res) => {
-            if (res) {
-                let completeRes = '';
-                res.on('data', d => completeRes += d);
-                res.on('end', () => resolve(completeRes));
-            } else {
-                reject('https request failed');
-            }
-        });
-        req.on('error', err => {
-            console.log('err is' + err);
-            reject(err);
-        });
-        req.end();
-    });
-}
-
 
 //Exported functions and objects
 module.exports = {
